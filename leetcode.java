@@ -7,6 +7,7 @@
 // 71. Simplify path
 public class Solution {
     public String simplifyPath(String path) {
+
      	if(path == null || path.length() == 0){return new String();}
 
      	path = path.trim();
@@ -96,8 +97,10 @@ public class Solution {
 
 // 75. sort colors
 public class Solution {
+
     public void sortColors(int[] nums) {
-	    if(nums == null || nums.length <= 1){
+	
+        if(nums == null || nums.length <= 1){
 		  return;    
 	      //System.out.println("fuck you!!");
 		}
