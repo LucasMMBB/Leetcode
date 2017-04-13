@@ -162,6 +162,8 @@ public class Solution {
       }
    }
 
+
+
     private void swag(int[] arr, int a, int b){
 	    if(arr[a]!=arr[b]){
 	   		int temp = arr[b];
@@ -170,4 +172,110 @@ public class Solution {
 	    }
   }
 
+}
+
+// 134. Gas Station
+public class Solution {
+
+    // Time Comflexity: O(n)
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int start = 0;
+        int total = 0;
+        int tank = 0;
+        for(int i=0;i<gas.length;i++){
+            tank += gas[i] - gas[i];
+            if( tank < 0 ){
+                start = i + 1;
+                total += tank;
+                tank = 0;
+            }
+        }
+        return (total+tank<0)?-1:start;
+    }// canCompleteCircuit ends here
+}
+
+// 20. Valid Parentheses
+public class Solution {
+    public boolean isValid(String s) {
+        if( (s == null) || s.length() == 0){
+            return true;
+        }
+
+        if( s.length()%2 == 1 ){
+            return false;
+        }
+
+        char[] str = s.toCharArray();
+        Deque<Character> stack = new LinkedList<Character>();
+
+        for(char ch : str){
+            // Case 1: left parenthese --> put into stack
+            if(ch == '(' || ch == '[' || ch == '{'){
+                stack.offerLast(ch);
+            } else {
+                //Case 2: right parenthese --> check stack.peer()
+                if(stack.isEmpty()){return false;}
+                char left = stack.pollLast();
+                if( (ch == ')' && left == '(') ||
+                    (ch == ']' && left == '[') ||
+                    (ch == '}' && left == '{') ){
+                    continue;
+                }else{
+                    return false;
+                }
+
+            }
+
+        }
+
+        return stack.isEmpty();
+
+
+    }
+}
+
+
+// 22. Generate Parentheses
+// 32. Longest Valid Parentheses
+public class Solution {
+    public int longestValidParentheses(String s) {
+        if( (s == null) || s.length() == 0 || s.length() == 1){
+            return 0;
+        }
+
+        int mx = 0;
+        char[] str = s.toCharArray();
+        Deque<Integer> stack = new LinkedList<Integer>();
+
+        for(int i=0;i<s.length();i++){
+            // Case 1: left parenthese --> put into stack
+            if(str[i] == '('){
+                stack.offerLast(i);
+            } else {
+                //Case 2: right parenthese --> check stack.peer()
+                if(stack.isEmpty()){ 
+                    stack.offerLast(i);
+                }else{
+                    if(str[stack.peekLast()] == ')'){
+                      stack.offerLast(i);
+                    }else{
+                      stack.removeLast();
+                    }
+                }
+            }
+        } // for ends
+        
+        if(stack.isEmpty()){return s.length();}
+        else{
+            int a = s.length();int b = 0;
+            while(!stack.isEmpty()){
+                b = stack.peekLast();
+                stack.removeLast();
+                mx = Math.max(mx,a-b-1);
+                a = b;
+            }// while ends
+            mx = Math.max(mx,a);
+            return mx;
+        }
+    }// function ends
 }
