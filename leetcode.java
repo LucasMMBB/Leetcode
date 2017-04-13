@@ -278,4 +278,38 @@ public class Solution {
             return mx;
         }
     }// function ends
+
+    public int longestValidParentheses_better(String s){
+        if( (s == null) || s.length() == 0 || s.length() == 1){
+            return 0;
+        }
+
+        int mx = 0; int left = -1;
+        char[] str = s.toCharArray();
+        Deque<Integer> stack = new LinkedList<Integer>();
+
+        for(int i=0;i<s.length();i++){
+            // Case 1: left parenthese --> put into stack
+            if(str[i] == '('){
+                stack.offerLast(i);
+            } else {
+                //Case 2: right parenthese --> check stack.peer()
+                if(stack.isEmpty()){ 
+                    stack.offerLast(i);
+                }else{
+                    if(str[stack.peekLast()] == ')'){
+                      stack.offerLast(i);
+                    }else{
+                      stack.removeLast();
+                    }
+                }
+            }
+            // calulate max length while processing data
+            if(stack.isEmpty()) mx = Math.max(mx, i - left);
+            else mx = Math.max(mx, i-stack.peekLast());
+
+        } // for ends
+        return mx;
+    }
+
 }
