@@ -339,12 +339,37 @@ public class Solution extends VersionControl {
     }
 }
 
-// 34. Search for a Range
+// 74. Search a 2D Matrix
 public class Solution {
-    public int[] searchRange(int[] nums, int target) {
-     int s1 = 0; int s2 = 0;
-     int e1 = nums.length; int e2 = nums.length;
-     
-     
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length == 0){return false;}
+        if(matrix[0] == null || matrix[0].length == 0){return false;}
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int start = 0;
+        int end = m*n-1;
+
+        // One-D binary search
+        while(end >= start){
+            int mid = start + (end -  start)/2;
+            if(matrix[mid/n][mid%n]==target){
+                return true;
+            }else if(matrix[mid/n][mid%n] > target){
+                end = mid -1;
+            }else{
+                start = mid +1;
+            }
+        }// while ends
+
+        return false;
+    }
+}
+
+// 240. Search a 2D Matrix TWO
+public class Solution {
+    public boolean searchMatrix_TWO(int[][] matrix, int target) {
+        
     }
 }
