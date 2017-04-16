@@ -338,3 +338,13 @@ public class Solution extends VersionControl {
         return isBadVersion(start) ? start : end;
     }
 }
+
+// 34. Search for a Range
+public class Solution {
+    public int[] searchRange(int[] nums, int target) {
+     int s1 = 0; int s2 = 0;
+     int e1 = nums.length; int e2 = nums.length;
+     
+     
+    }
+}
