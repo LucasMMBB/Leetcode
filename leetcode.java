@@ -428,3 +428,38 @@ public class Solution {
 
     }
 }
+
+// 367. Valid Perfect Square
+public class Solution {
+    public boolean isPerfectSquare(int num) {
+        // time complexity is O(sqrt(n))
+        int i = 1;
+        while(num > 0){
+            num -= i;
+            i += 2;
+        }
+        return num == 0;       
+    }
+
+    public boolean isPerfectSquare_m2(int num){
+        int low = 1, high = num;
+        while(low<=high){
+            long mid = low + (high - low) / 2;
+            if(mid * mid == num){
+                return true;
+            }else if( mid*mid < num ){
+                low = (int)mid + 1;
+            }else{
+                high = (int)mid - 1;
+            }
+        }// while ends
+        return false;
+    }
+}
+
+// 69. Sqrt(x)
+public class Solution {
+    public int mySqrt(int x) {
+        
+    }
+}
