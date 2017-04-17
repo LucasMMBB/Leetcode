@@ -370,6 +370,33 @@ public class Solution {
 // 240. Search a 2D Matrix TWO
 public class Solution {
     public boolean searchMatrix_TWO(int[][] matrix, int target) {
+        // Corned Case Checked
+        if(matrix == null || matrix.length == 0){return false;}
+        if(matrix[0] == null || matrix[0].length == 0){return false;}
+
+        int m = matrix.length;
+        int n = matrix[0].length;
         
+        return binarySearch(matrix, target, 0, 0, m-1, n-1);
+    }
+
+    private boolean binarySearch(int[][] matrix, int target, int startX, int startY, int endX, int endY){
+        if(startX > endX || startY > endY){return false;}
+
+        int midX = startX + (endX - startX) / 2;
+        int midY = startY + (endY - startY) / 2;
+
+        if(matrix[midX][midY] == target){
+            // case 1: found
+            return true;
+        }else if (matrix[midX][midY] > target){
+            // case 2: larger than target, go into left or up
+            return binarySearch(matrix, target, startX, startY, endX, midY - 1) ||
+                   binarySearch(matrix, target, startX, startY, midX - 1, endY);
+        }else{
+            // case 3: less than target, go into right or down
+            return binarySearch(matrix, target, startX, midY + 1, endX, endY) ||
+                   binarySearch(matrix, target, midX + 1, startY, endX, endY);
+        }// if ends
     }
 }
