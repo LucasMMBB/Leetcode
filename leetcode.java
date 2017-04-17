@@ -376,7 +376,7 @@ public class Solution {
 
         int m = matrix.length;
         int n = matrix[0].length;
-        
+
         return binarySearch(matrix, target, 0, 0, m-1, n-1);
     }
 
@@ -398,5 +398,33 @@ public class Solution {
             return binarySearch(matrix, target, startX, midY + 1, endX, endY) ||
                    binarySearch(matrix, target, midX + 1, startY, endX, endY);
         }// if ends
+    }
+
+    public boolean searchMatrix_Three(int[][] matrix, int target){
+        
+        if(matrix == null){return false;}
+        int row = matrix.length;
+        if(row == 0 || matrix[0] == null){return false;}
+        int col = matrix[0].length;
+        if(col == 0){return false;}
+
+        // Start from the top-right point
+        int curRow = 0;
+        int curCol = col - 1;
+
+        while(curRow < row && curCol >= 0){
+            if(matrix[curRow][curCol] == target){
+                // Case 1: found
+                return true;
+            }else if(matrix[curRow][curCol] > target){
+                // Case 2: larger than target --> go left
+                curCol --;
+            }else{
+                // Case 3: less than target --> go right
+                curRow ++;
+            }
+        }// while ends
+        return false;
+
     }
 }
