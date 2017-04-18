@@ -565,6 +565,18 @@ public class Solution {
 }
 
 
+// 338. Counting Bits
+public class Solution {
+    public int[] countBits(int num) {
+        int[] f = new int[num + 1];
+        for(int i=1;i<=num;i++){
+            f[i]=f[i>>1]+(i&1);
+        }
+        return f;
+    }
+}
+
+
 // 50. Pow(x,n)
 public class Solution {
     public double myPow(double x, int n) {
