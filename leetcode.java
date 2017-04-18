@@ -533,6 +533,23 @@ public class Solution {
     }
 }
 
+
+// 190. Reverse Bits
+public class Solution {
+    // you need treat n as an unsigned value
+    public int reverseBits(int n) {
+        int result = 0;
+        for(int i=0;i<32;i++){
+            result += (n&1);
+            n >>= 1;
+            if(i<31){result<<=1;}
+        }
+        return result;   
+    }
+}
+
+// 191. Number of 1 Bits
+
 // 50. Pow(x,n)
 public class Solution {
     public double myPow(double x, int n) {
