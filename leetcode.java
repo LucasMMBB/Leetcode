@@ -460,6 +460,49 @@ public class Solution {
 // 69. Sqrt(x)
 public class Solution {
     public int mySqrt(int x) {
+        if( x == 0 ){return 0;}
+        int left = 1, right = Integer.MAX_VALUE;
+        while(true){
+            int mid = left + ( right - left ) / 2;
+            if(mid > x / mid){
+                right = mid -1;
+            }else{
+                if(mid + 1 > x/(mid+1)){
+                    return mid;
+                }
+                left = mid + 1;
+            }
+        }// while ends
+    }
+}
+
+
+// 231. Power of Two
+public class Solution {
+    public boolean isPowerOfTwo(int n) {
+        if(n <= 0){return false;}
+        int bitCount = 0;
+
+        for(int i = 0; i < 32; i++){
+            if( (n&1) == 1){
+                bitCount++;
+            }
+            n = n >> 1;
+        }
+
+        return bitCount == 1;
+    }
+
+    public boolean isPowerOfTwo_m2(int n){
+        // Example 8 == 1000, 8-1 = 0111, so 1000 & 0111 = 0; Time complexity is O(1)
+        return n > 0 && ( n & ( n - 1 ) ) == 0;
+    }
+}
+
+
+// 50. Pow(x,n)
+public class Solution {
+    public double myPow(double x, int n) {
         
     }
 }
