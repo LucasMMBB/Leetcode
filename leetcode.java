@@ -500,6 +500,39 @@ public class Solution {
 }
 
 
+// 326. Power of Three
+public class Solution {
+    public boolean isPowerOfThree(int n) {
+        if(n<=0){return false;}
+        while(n%3==0){
+            n = n/3;
+        }
+        return n == 1;       
+    }
+    public boolean isPowerOfThree_M2(int n) {
+        // Time complexity: O(1), space complexity: O(1)
+        return n > 0 && 1162261467 % n == 0;
+    }
+
+}
+
+
+// 342. Power of Four
+public class Solution {
+    public boolean isPowerOfFour(int num) {
+        if(n<=0){return false;}
+        while(n%4==0){
+            n = n/4; // or n /= 4
+        }
+        return n == 1;
+    }
+    //1.073741824E9
+    public boolean isPowerOfFour_M2(int n) {
+        // Time complexity: O(1), space complexity: O(1)
+        return n > 0 && 1073741824 % n == 0;
+    }
+}
+
 // 50. Pow(x,n)
 public class Solution {
     public double myPow(double x, int n) {
