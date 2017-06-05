@@ -710,3 +710,11 @@ public class Solution {
         }
     }
 }
+
+
+// 46. Permutations
+public class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        
+    }
+}
