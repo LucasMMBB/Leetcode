@@ -720,8 +720,54 @@ public class Solution {
 }
 
 // 31. Next Permutation
+/**
+ * Algorithme:
+ *      1. Start scanning from the right
+ *      2. Find a digit D1 which is not in ascending order from right
+ *      3. If all the digiits from right to left are ascending then print None
+ *      4. Find a digit D2 which is right of D1, such that it is the smallest number greater than D1
+ *      5. Swap D1 and D2
+ *      6. Now sort the digits right of D1's original position
+ */
 public class Solution {
     public void nextPermutation(int[] nums) {
+        if(nums.length <= 1)
+            return;
+
+        int i = nums.length - 1;
+
+        while(i>=1){
+            if(nums[i]>nums[i-1])
+                break;
+            i--;
+        }
         
+        if(i!=0)
+            swap(nums,i-1);
+
+        reverse(nums, i);
+    }
+
+    private void swap(int[] a, int i){
+        for(int j = a.length - 1; j>i; j--){
+            if(a[j]>a[i]){
+                int t = a[j];
+                a[j] = a[i];
+                a[i] = t;
+                break;
+            }
+        }
+    }// swap ends
+
+    private void reverse(int[] a, int i){
+        int first = i;
+        int last = a.length - 1;
+        while(first<last){
+            int t = a[first];
+            a[first] = a[last];
+            a[last] = t;
+            first ++;
+            last --;
+        }
     }
 }
