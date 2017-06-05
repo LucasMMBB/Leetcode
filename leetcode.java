@@ -718,3 +718,10 @@ public class Solution {
         
     }
 }
+
+// 31. Next Permutation
+public class Solution {
+    public void nextPermutation(int[] nums) {
+        
+    }
+}
