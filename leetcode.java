@@ -771,10 +771,27 @@ public class Solution {
 public class Solution {
     public List<List<Integer>> permute(int[] nums) {
         // method 1
+        // corner case checked
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         List<Integer> list = new ArrayList<Integer>();
-        helper(nums, list, res);
-        return result;
+        dfsHelper(nums, list, res);
+        return res;
+    }
+
+    private void dfsHelper(int nums[], List<Integer> list, List<List<Integer>> result){
+        if(list.size()==nums.length){
+            result.add(new ArrayList<Integer>(list));
+            return;
+        }
+
+        for(int i=0;i<nums.length;i++){
+            if(!list.contains(nums[i])){
+                list.add(nums[i]);
+                dfsHelper(nums, list, result);// next position
+                // empty last position for next iteration
+                list.remove(list.size()-1);
+            }
+        }
     }
 
     /*
@@ -791,7 +808,7 @@ public class Solution {
             List<List<Integer>> nextRes = new ArrayList<List<Integer>>();
             for(List<Integer> list: res){
                 // for each list in res
-                for(int j=0; i<list.size()+1; j++){
+                for(int j=0; j<list.size()+1; j++){
                     // copy a list to nextList
                     List<Integer> nextList = new ArrayList<Integer>(list);
                     nextList.add(j, nums[i]);
@@ -806,3 +823,44 @@ public class Solution {
 
 }
 
+
+// 47. Permutation 2
+public class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        // Corner case CHecked
+        /*
+        METHOD: DFS, and using a HashSet<Integer> in each pos to remove duplicates
+        */
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        dfsHelper(res, nums, 0);
+        return res;
+    }
+
+    private void dfsHelper(List<List<Integer>>, int[] nums, int pos){
+
+        if(pos == nums.length){
+            List<Integer> list =  new ArrayList<Integer>();
+            for(int num: nums){
+                list.add(num);
+            }
+            res.add(list);
+            return;
+        }
+
+        Set<Integer> used = new HashSet<Integer>();
+        for(int i = pos; i < nums.length; i++){
+            if(used.add(nums[i])){
+                swap(nums, i, pos);
+                dfsHelper(res, nums, pos+1);
+                swap(nums, i, pos);
+            }
+        }
+        
+    }
+    private int[] swap(int[] nums, int a, int b){
+        int t = nums[a];
+        nums[a] = nums[b];
+        nums[b] = t;
+        return nums;
+    }
+}
