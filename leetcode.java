@@ -898,3 +898,36 @@ public class Solution {
         return String.valueOf(sb);
     }
 }
+
+// 44. Wildcard Matching
+public class Solution {
+    public boolean isMatch(String str, String pattern) {
+        int s=0, p=0, match=0, ss = -1;
+        while(s<str.length()){
+            if(p<pattern.length() && 
+                (pattern.chatAt(p)=='?'
+                || str.chatAt(s) == pattern.charAt(p))){
+                // advancing both pointers
+                s++;p++;
+            }else if(p<pattern.length()
+                && pattern.charAt(p) == '*'){
+                // * found, only advancing pattern pointer
+                ss = p;
+                match = s;
+                p++;
+            }else if(ss != -1){
+                // last pattern pointer was *, advancing string pointer
+                p = ss + 1;
+                match++;
+                s = match;
+            }else{
+                return false;
+            }
+        }
+
+        while(p<pattern.length() && pattern.charAt(p) == '*')
+            p++;
+
+        return p ==  pattern.length();
+    }
+}
