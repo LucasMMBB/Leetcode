@@ -821,6 +821,15 @@ public class Solution {
     
     }
 
+    public List<List<Integer>> permute2(int[] nums) {
+        // method 3: best way so far
+        // corner case checked
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> list = new ArrayList<Integer>();
+        dfsHelper2(nums, list, res);
+        return res;
+    }
+
 }
 
 
