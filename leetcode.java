@@ -712,13 +712,6 @@ public class Solution {
 }
 
 
-// 46. Permutations
-public class Solution {
-    public List<List<Integer>> permute(int[] nums) {
-        
-    }
-}
-
 // 31. Next Permutation
 /**
  * Algorithme:
@@ -771,3 +764,45 @@ public class Solution {
         }
     }
 }
+
+
+
+// 46. Permutations
+public class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        // method 1
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> list = new ArrayList<Integer>();
+        helper(nums, list, res);
+        return result;
+    }
+
+    /*
+        basic method. O(n!)
+    */
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(nums == null || nums.length == 0)
+            return res;
+
+        res.add(new ArrayList<Integer>());
+
+        for(int i = 0; i < nums.length; i++){
+            List<List<Integer>> nextRes = new ArrayList<List<Integer>>();
+            for(List<Integer> list: res){
+                // for each list in res
+                for(int j=0; i<list.size()+1; j++){
+                    // copy a list to nextList
+                    List<Integer> nextList = new ArrayList<Integer>(list);
+                    nextList.add(j, nums[i]);
+                    nextRes.add(nextList);
+                }
+            }
+            res = nextRes;// Move to next level
+        }
+        return res;
+    
+    }
+
+}
+
