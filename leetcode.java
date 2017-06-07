@@ -1020,3 +1020,10 @@ public class Solution {
         return profit;
     }
 }
+
+// 152. Maximum Product Subarray
+public class Solution {
+    public int maxProduct(int[] nums) {
+        
+    }
+}
