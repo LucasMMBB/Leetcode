@@ -995,8 +995,28 @@ public class Solution {
 
 
 // 121. Best Time to Buy and Sell Stock
+/**
+ * Kadane's algorithm - O(n)
+ */
 public class Solution {
     public int maxProfit(int[] prices) {
-        
+        int maxCur = 0, maxSoFar = 0;
+        for(int i = 1; i < prices.length; i++) {
+            maxCur = Math.max(0, maxCur += prices[i] - prices[i-1]);
+            maxSoFar = Math.max(maxCur, maxSoFar);
+        }
+        return maxSoFar;
+    }
+
+    // Sample test case {4,7,1,8,20,15}
+    public int maxProfit_2(int[] prices){
+        int profit = 0;
+        int minp = Integer.MAX_VALUE;//MINIMUM PRICE
+
+        for (int i=0; i<prices.length; i++) {
+            profit = Math.max(profit, prices[i]-minp);
+            minp = Math.min(prices[i], minp);
+        }
+        return profit;
     }
 }
