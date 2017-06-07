@@ -1021,6 +1021,15 @@ public class Solution {
     }
 }
 
+
+// 122. Best Time to Buy and Sell Stock ||
+public class Solution {
+    public int maxProfit(int[] prices) {
+        
+    }
+}
+
+
 // 152. Maximum Product Subarray
 public class Solution {
     public int maxProduct(int[] nums) {
