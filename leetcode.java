@@ -943,33 +943,36 @@ public class Solution {
 
 // 10. Regular Expression Matching
 public class Solution {
-    public boolean isMatch(String str, String pattern) {
-        int s=0, p=0, match=0, ss = -1;
-        while(s<str.length()){
-            if(p<pattern.length() && 
-                (pattern.charAt(p)=='.'
-                || str.charAt(s) == pattern.charAt(p))){
-                // advancing both pointers
-                s++;p++;
-            }else if(p<pattern.length()
-                && pattern.charAt(p) == '*'){
-                // * found, only advancing pattern pointer
-                ss = p;
-                match = s;
-                p++;
-            }else if(ss != -1){
-                // last pattern pointer was *, advancing string pointer
-                p = ss + 1;
-                match++;
-                s = match;
-            }else{
+    public boolean isMatch(String s, String p) {
+        
+            if (s == null || p == null) {
                 return false;
             }
-        }
+            boolean[][] dp = new boolean[s.length()+1][p.length()+1];
+            dp[0][0] = true;
+            for (int i = 0; i < p.length(); i++) {
+                if (p.charAt(i) == '*' && dp[0][i-1]) {
+                    dp[0][i+1] = true;
+                }
+            }
+            for (int i = 0 ; i < s.length(); i++) {
+                for (int j = 0; j < p.length(); j++) {
+                    if (p.charAt(j) == '.') {
+                        dp[i+1][j+1] = dp[i][j];
+                    }
+                    if (p.charAt(j) == s.charAt(i)) {
+                        dp[i+1][j+1] = dp[i][j];
+                    }
+                    if (p.charAt(j) == '*') {
+                        if (p.charAt(j-1) != s.charAt(i) && p.charAt(j-1) != '.') {
+                            dp[i+1][j+1] = dp[i+1][j-1];
+                        } else {
+                            dp[i+1][j+1] = (dp[i+1][j] || dp[i][j+1] || dp[i+1][j-1]);
+                        }
+                    }
+                }
+            }
+            return dp[s.length()][p.length()];
 
-        while(p<pattern.length() && pattern.charAt(p) == '*')
-            p++;
-
-        return p ==  pattern.length();
     }
 }
