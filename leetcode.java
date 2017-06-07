@@ -944,7 +944,7 @@ public class Solution {
 // 10. Regular Expression Matching
 public class Solution {
     public boolean isMatch(String s, String p) {
-        
+
             if (s == null || p == null) {
                 return false;
             }
@@ -974,5 +974,21 @@ public class Solution {
             }
             return dp[s.length()][p.length()];
 
+    }
+}
+
+
+// 53. Maximum Subarray
+// Time and space complexity O(n) 
+public class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxsf = nums[0]; // max sum so far
+        int maxi = nums[0]; // max sum is in current index
+
+        for (int i=1; i<nums.length; i++) {
+            maxi = Math.max(maxi+nums[i], nums[i]);
+            maxsf = Math.max(maxi, maxsf);
+        }
+        return maxsf;
     }
 }
