@@ -1023,9 +1023,24 @@ public class Solution {
 
 
 // 122. Best Time to Buy and Sell Stock ||
+/**
+ * Time complexity: O(n)
+ * Space complexity: O(1): constant space required.
+ * Use Greedy algorithm(
+ * Sample test case {100, 80, 120, 130, 70, 60, 100, 125}
+ * The sequences of buy-sell is : 
+ *      80(b)->120(s)->120(b)->130(s)->60(b)->100(s)->100(b)->125(s)
+ */
 public class Solution {
     public int maxProfit(int[] prices) {
-        
+        if(prices == null || prices.length == 0)
+            return 0;
+        int profit = 0;
+        for (int i = 0; i < prices.length-1; i++) {
+            if(prices[i] < prices[i + 1])
+                profit += prices[i + 1] - prices[i];
+        }
+        return profit;
     }
 }
 
