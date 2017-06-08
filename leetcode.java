@@ -1045,9 +1045,21 @@ public class Solution {
 }
 
 // 123. Best Time to Buy and Sell Stock |||
+/**
+ * Time complexity: O(n), Space complexity: O(1)
+ */
 public class Solution {
     public int maxProfit(int[] prices) {
-        
+        int buyOne = Integer.MIN_VALUE, buyTwo = Integer.MIN_VALUE;
+        int sellOne = 0, sellTwo = 0;
+
+        for(int i : prices){
+            sellTwo = Math.max(sellTwo, buyTwo + i);
+            buyTwo = Math.max(buyTwo, sellOne - i);
+            sellOne = Math.max(sellOne, buyOne + i);
+            buyOne = Math.max(buyOne, -i);
+        }
+        return sellTwo;
     }
 }
 
