@@ -1073,8 +1073,24 @@ public class Solution {
 
 
 // 152. Maximum Product Subarray
+/**
+ * Time complexity: O(n); Space complextiy: O(1) - const required
+ */
 public class Solution {
     public int maxProduct(int[] nums) {
-        
+        if(nums == null || nums.length == 0)
+            return 0;
+
+        int max = nums[0]; // maximum product summ so far
+        int maxCurPre = nums[0], minCurPre = nums[0];
+        int maxCur = 1, minCur = 1;
+        for(int i=1; i < nums.length; i++){
+            maxCur = Math.max(Math.max(maxCurPre * nums[i], minCurPre * nums[i]), nums[i]);
+            minCur = Math.min(Math.min(maxCurPre * nums[i], minCurPre * nums[i]), nums[i]);
+            max = Math.max(max, maxCur);
+            maxCurPre = maxCur;
+            minCurPre = minCur;
+        }
+        return max;
     }
 }
