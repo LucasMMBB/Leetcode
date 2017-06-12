@@ -1161,4 +1161,19 @@ public class Solution {
         }
         return res[m-1][n-1];
     }
+
+    public int uniquePaths_2(int m, int n){
+        // Math method
+    }
+}
+
+
+//63. Unique Paths ||
+/**
+ *
+ */
+public class Solution {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        
+    }
 }
