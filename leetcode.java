@@ -1114,3 +1114,27 @@ public class Solution {
         return maxSum;
     }
 }
+
+
+// 213. House Robber ||
+public class Solution {
+    public int rob(int[] nums) {
+        if(nums == null || nums.length == 0)
+            return 0;
+        return Math.max(robHelper(nums, 1, nums.length-1), robHelper(nums, 0, nums.length-2));
+    }
+
+    public int robHelper(int[] nums, int s, int e) {// i/e: start/end indices
+        if(nums == null || nums.length == 0)
+            return 0;
+        if(nums.length == 1)
+            return nums[0];
+        int maxSum = nums[s], maxSum0 = 0, maxSum1 = nums[s];
+        for(int i = s+1; i < e + 1; i++){
+            maxSum = Math.max( maxSum1, nums[i] + maxSum0);
+            maxSum0 = maxSum1;
+            maxSum1 = maxSum;
+        }
+        return maxSum;
+    }
+}
