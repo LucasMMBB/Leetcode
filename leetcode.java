@@ -1097,8 +1097,20 @@ public class Solution {
 
 
 // 198. House Robber
+/**
+ * Dynamic Programming
+ * Time complexity: O(n);  Space complexity: O(1)
+ */
 public class Solution {
     public int rob(int[] nums) {
-        
+        if(nums == null || nums.length == 0)
+            return 0;
+        int maxSum = nums[0], maxSum0 = 0, maxSum1 = nums[0];
+        for(int i = 1; i < nums.length; i++){
+            maxSum = Math.max( maxSum1, nums[i] + maxSum0);
+            maxSum0 = maxSum1;
+            maxSum1 = maxSum;
+        }
+        return maxSum;
     }
 }
