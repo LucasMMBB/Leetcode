@@ -1222,3 +1222,32 @@ public class Solution {
 
     }
 }
+
+
+// 64. Minimum Path Sum
+/**
+ * Dynamic programming
+ * Time complexity: O(m*n); Space complexity: O(m*n)
+ */
+public class Solution {
+    public int minPathSum(int[][] grid) {
+        int row = grid.length, col = grid[0].length;
+        if(grid == null || grid.length == 0 || row == 0 || col == 0)
+            return 0;
+        int[][] res = new int[row][col];
+        for(int i = 0; i < row; i++){
+            for(int j = 0; j < col; j++){
+                if(i == 0 && j == 0)
+                    res[i][j] = grid[i][j];
+                else if(i != 0 && j == 0)
+                    res[i][j] = res[i-1][j] + grid[i][j];
+                else if(i == 0 && j != 0)
+                    res[i][j] = res[i][j-1] + grid[i][j];
+                else
+                    res[i][j] = Math.min(res[i-1][j] + grid[i][j], res[i][j-1] + grid[i][j]);
+            }// for ends
+        }// for ends
+
+        return res[row-1][col-1];
+    }
+}
