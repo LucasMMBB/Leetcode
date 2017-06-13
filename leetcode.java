@@ -1254,6 +1254,10 @@ public class Solution {
 
 
 // 174. Dungeon Game
+/**
+ * Dynamic programming
+ * Time complexity: O(m*n); Space complexity: O(m*n)
+ */
 public class Solution {
     public int calculateMinimumHP(int[][] dungeon) {
         int m = dungeon.length, n = dungeon[0].length;// rows and cols
