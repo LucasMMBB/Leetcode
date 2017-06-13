@@ -1256,6 +1256,23 @@ public class Solution {
 // 174. Dungeon Game
 public class Solution {
     public int calculateMinimumHP(int[][] dungeon) {
-        
+        int m = dungeon.length, n = dungeon[0].length;// rows and cols
+        if(dungeon.length == 0 || dungeon == null)
+            return 0;
+
+        int[][] ih = new int[m][n];
+        for(int i = m - 1; i >= 0; i--){
+            for(int j = n - 1; j >= 0; j--){
+                if(i == m-1 && j == n-1)
+                    ih[i][j] = Math.max(1, 1 - dungeon[i][j]);
+                else if(i == m-1 && j != n-1)
+                    ih[i][j] = Math.max(1, ih[i][j+1] - dungeon[i][j]);
+                else if(i != m-1 && j == n-1)
+                    ih[i][j] = Math.max(1, ih[i+1][j] - dungeon[i][j]);
+                else
+                    ih[i][j] = Math.max(1, Math.min(ih[i+1][j], ih[i][j+1]) - dungeon[i][j]);
+            }// for ends
+        }// for ends
+        return ih[0][0];
     }
 }
