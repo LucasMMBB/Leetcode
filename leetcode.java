@@ -1170,10 +1170,55 @@ public class Solution {
 
 //63. Unique Paths ||
 /**
- *
+ * Dynamic programming
+ * Time complexity: O(n*m); Space: O(n*m)
  */
 public class Solution {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        
+
+        int rows = obstacleGrid.length, cols = obstacleGrid[0].length;
+        if(obstacleGrid == null || obstacleGrid[0][0] == 1 || obstacleGrid.length == 0 || rows == 0 || cols == 0)
+            return 0;
+        int [][] res = new int[rows][cols];
+        for(int r = 0; r < rows; r++){
+            for(int c = 0; c < cols; c++){
+                // condition
+                if(obstacleGrid[r][c] == 1){
+                    res[r][c] = -1;
+                }else{
+                    if(r == 0 && c == 0){
+                        res[0][0] = 1;
+                    }else if(r == 0 && c != 0){
+                        if(obstacleGrid[r][c-1] == -1){
+                            res[r][c] = -1;
+                        }else{
+                            res[r][c] = res[r][c-1];
+                        }
+                    }else if(r != 0 && c == 0){
+                        if(obstacleGrid[r-1][c] == -1){
+                            res[r][c] = -1;
+                        }else{
+                            res[r][c] = res[r-1][c];
+                        }
+                    }else{
+                        if(res[r-1][c] == -1 && res[r][c-1] == -1){
+                            res[r][c] = -1;
+                        }else if(res[r-1][c] == -1 && res[r][c-1] != -1){
+                            res[r][c] = res[r][c-1];
+                        }else if(res[r-1][c] != -1 && res[r][c-1] == -1){
+                            res[r][c] = res[r-1][c];
+                        }else{
+                            res[r][c] = res[r-1][c] + res[r][c-1];
+                        }
+                    }
+                }
+            }// for ends
+        }// for ends
+        if(res[rows-1][cols-1] == -1){
+            return 0;
+        }else {
+            return res[rows-1][cols-1];
+        }
+
     }
 }
