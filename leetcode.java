@@ -1421,3 +1421,29 @@ public class Solution {
         return -1;
     }
 }
+
+// 268. Missing Number
+/**
+ * Time complexity: O(n); Space complexity: O(1)
+ */
+public class Solution {
+    public int missingNumber_m1(int[] nums) {
+        // method1: sum
+        int len = nums.length;
+        int sum = len*(len+1)/2;
+        for(int i=0; i<len; i++)
+            sum -=nums[i];
+        return sum;
+    }
+
+    public int missingNumber_m1(int[] nums) {
+        // method2: XOR
+        int res = 0;
+        for (int i = 0; i<nums.length; i++) {
+            res ^= i;
+            res ^= nums[i];
+        }
+
+        return res;
+    }
+}
