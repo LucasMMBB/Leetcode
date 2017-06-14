@@ -1343,3 +1343,24 @@ public class Solution {
         return median;
     }
 }
+
+
+// 26. Remove Duplicates from Sorted Array
+public class Solution {
+    public int removeDuplicates(int[] nums) {
+
+       int length = nums.length;
+       if(length <= 1) return length;
+       int len = 1;
+       
+       for(int i = 0, j = 0; i < nums.length - 1; i++){
+          if(nums[i] != nums[i+1]){
+            len += 1;
+            nums[j+1] = nums[i+1];
+            j++;
+          }
+       }
+       return len; 
+
+    }
+}
