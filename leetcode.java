@@ -1295,25 +1295,40 @@ public class Solution {
             return mOne;
         }else if(mOne < mTwo){
             if(m == 1 && n == 1){
-                return (m + n)/2;
-            }
-            else if(m == 1 && n != 1){
-                return findMedianSortedArrays(nums1, Arrays.copyOfRange(nums2, 0, n/2));
-            }else if(m != 1 && n == 1){
-                return findMedianSortedArrays(Arrays.copyOfRange(nums1, m/2, m-1), nums2);
-            }else{
                 return findMedianSortedArrays(Arrays.copyOfRange(nums1, m/2, m-1), Arrays.copyOfRange(nums2, 0, n/2));
             }
         }else{
-            if(m == 1 && n == 1){
-                return (m + n)/2;
-            }else if(m == 1 && n != 1){
-                return findMedianSortedArrays(nums1, Arrays.copyOfRange(nums2, n/2, n-1));
-            }else if(m != 1 && n == 1){
-                return findMedianSortedArrays(Arrays.copyOfRange(nums1, 0, m/2), nums2);
-            }else{
                 return findMedianSortedArrays(Arrays.copyOfRange(nums1, 0, m/2), Arrays.copyOfRange(nums2, n/2, n-1));
             }
+        }
+
+    }
+    
+    public double findMedianSortedArrays_m2(int[] nums1, int[] nums2) {
+        int m = nums1.length, n = nums2.length;
+        if(m < n)
+            return findMedianSortedArrays_m2(nums2, nums1); // make sure nums2 is shorter
+        if(m == 0)
+            return ((double)nums1[(m-1)/2] + (double)nums1[m/2])/2;
+
+        int lo = 0, hi = n * 2;
+
+        while(lo <= hi){
+            int mid2 = (lo + hi) / 2; // Try cut 2
+            int mid1 = m + n -mid2; // Calculate Cut 1 accordingly
+
+            // get L1, R1, L2, R2 respectively
+            double l1 = (mid1 == 0) ? Integer.MIN_VALUE : nums1[(mid1 - 1) / 2];
+            double l2 = (mid2 == 0) ? Integer.MIN_VALUE : nums2[(mid2-1)/2];
+            double r1 = (mid1 == m*2) ? Integer.MAX_VALUE : nums1[(mid1)/2];
+            double r2 = (mid2 == n*2) ? Integer.MAX_VALUE : nums2[(mid2)/2];
+
+            if(l1 > r2)
+                lo = mid2 + 1;
+            else if(l2 > r1)
+                hi = mid2 + 1;
+            else
+                return (Math.max(l1,l2) + Math.min(r1,r2)) / 2; // Otherwise, that's the right cut
         }
 
     }
