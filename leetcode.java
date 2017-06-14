@@ -1379,3 +1379,23 @@ public class Solution {
         return len;
     }
 }
+
+// 283. Move Zeroes
+/**
+ * Array, Two pointers
+ * Space: O(1); Time: O(n)
+ */
+public class Solution {
+    public void moveZeroes(int[] nums) {
+        if(nums == null || nums.length == 0) return;
+        int j = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0)
+                nums[j++] = nums[i];
+        }// for ends
+
+        while(j < nums.length){
+            nums[j++] = 0;
+        }
+    }
+}
