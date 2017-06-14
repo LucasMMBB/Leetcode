@@ -1283,8 +1283,16 @@ public class Solution {
 
 
 // 4. Median of Two Sorted Arrays
+/**
+ * method1: Merge sort time complexity: O(n+m)
+ * method2: Comparing methods recursively
+ */
 public class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        
+        int m = nums1.length, n = nums2.length;
+        if(m == n){
+            return median;
+        }
+
     }
 }
