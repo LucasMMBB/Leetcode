@@ -1290,9 +1290,41 @@ public class Solution {
 public class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int m = nums1.length, n = nums2.length;
-        if(m == n){
-            return median;
+        double mOne = findMedian(nums1), mTwo = findMedian(nums2);
+        if(mOne == mTwo){
+            return mOne;
+        }else if(mOne < mTwo){
+            if(m == 1 && n == 1){
+                return (m + n)/2;
+            }
+            else if(m == 1 && n != 1){
+                return findMedianSortedArrays(nums1, Arrays.copyOfRange(nums2, 0, n/2));
+            }else if(m != 1 && n == 1){
+                return findMedianSortedArrays(Arrays.copyOfRange(nums1, m/2, m-1), nums2);
+            }else{
+                return findMedianSortedArrays(Arrays.copyOfRange(nums1, m/2, m-1), Arrays.copyOfRange(nums2, 0, n/2));
+            }
+        }else{
+            if(m == 1 && n == 1){
+                return (m + n)/2;
+            }else if(m == 1 && n != 1){
+                return findMedianSortedArrays(nums1, Arrays.copyOfRange(nums2, n/2, n-1));
+            }else if(m != 1 && n == 1){
+                return findMedianSortedArrays(Arrays.copyOfRange(nums1, 0, m/2), nums2);
+            }else{
+                return findMedianSortedArrays(Arrays.copyOfRange(nums1, 0, m/2), Arrays.copyOfRange(nums2, n/2, n-1));
+            }
         }
 
+    }
+
+    public double findMedian(int[] nums){
+        double median;
+        if(nums.length%2 == 0)
+            median = (double)( nums[nums.length/2] + nums[nums.length/2-1] )/2;
+        else
+            median = (double)nums[nums.length/2]; // 5/2 = 2   
+            
+        return median;
     }
 }
