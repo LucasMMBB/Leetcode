@@ -1475,3 +1475,33 @@ public class Solution {
     }// swap ends
 
 }
+
+
+// 11. Container with Most Water
+/**
+ * Two pointers: left, right on each side of array
+ * Time: O(n); Space: O(1)
+ */
+public class Solution {
+    public int maxArea(int[] height) {
+        if(height == null || height.length < 2)
+            return 0;
+        int lf = 0; // left pointer
+        int rt = height.length - 1; // right pointer
+        int area = Math.min(height[lf], height[rt]) * (rt - lf);
+
+        while(lf < rt){
+            if(height[lf] < height[rt]){
+                lf++;
+            }else if(height[lf] > height[rt]){
+                rt--;
+            }else{
+                lf++; rt--;
+            }
+            int prev = area;
+            int cur = Math.min(height[lf], height[rt]) * (rt - lf);
+            area = Math.max(prev, cur);
+        }// while ends
+        return area;
+    }
+}
