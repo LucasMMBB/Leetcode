@@ -1436,7 +1436,7 @@ public class Solution {
         return sum;
     }
 
-    public int missingNumber_m1(int[] nums) {
+    public int missingNumber_m2(int[] nums) {
         // method2: XOR
         int res = 0;
         for (int i = 0; i<nums.length; i++) {
@@ -1446,4 +1446,32 @@ public class Solution {
 
         return res;
     }
+
+    public int missingNumber_m3(int[] nums) {
+        // method3: Binary search
+    }
+}
+
+// 41. First Missing Positive
+public class Solution {
+    public int firstMissingPositive(int[] nums) {
+        for(int i = 0; i < nums.length; i++){
+            while(nums[i] > 0 && nums[i] <= n && nums[nums[i]-1] != nums[i])
+                swap(nums[i], nums[nums[i]-1]);
+        }
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != i + 1)
+                return i + 1;
+        }
+
+        return nums.length + 1;
+    }
+
+    public void swap(int a, int b){
+        int temp = b;
+        b = a;
+        a = temp;
+    }// swap ends
+
 }
