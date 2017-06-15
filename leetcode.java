@@ -1505,3 +1505,11 @@ public class Solution {
         return area;
     }
 }
+
+
+// 42. Trapping Rain Water
+public class Solution {
+    public int trap(int[] height) {
+        
+    }
+}
