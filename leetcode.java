@@ -1508,8 +1508,31 @@ public class Solution {
 
 
 // 42. Trapping Rain Water
+/**
+ * Two pointers: 
+ * Brute force: Time complexity: O(n^2)  Space complexity: O(1) extra space
+ *
+ */
 public class Solution {
     public int trap(int[] height) {
-        
+    
+    }
+
+    // Method2: Brute force
+    public int trap_m2(int[] height) {
+        int ans = 0;
+        int len = height.length;
+        for(int i = 1; i < len - 1; i++){
+            int max_left = 0, max_right = 0;
+            for (int j = i; j >= 0; j--) {
+                // search the left part
+                max_left = Math.max(max_left, height[j]);
+            }
+            for (int j = i; j < len; j++) {
+                max_right = Math.max(max_right, height[j]);
+            }
+            ans += Math.min(max_left, max_right) - height[i];
+        }// for ends
+        return ans;
     }
 }
