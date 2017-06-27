@@ -1594,3 +1594,34 @@ public class Solution {
         return res;
     }
 }
+
+
+// 16. 3Sum closest
+public class Solution {
+    public int threeSumClosest(int[] nums, int target) {
+ 		
+ 		int sum, diff; // keep updating res
+ 		if(nums == null || nums.length < 3)
+        	return sum;
+
+        Arrays.sort(nums);
+
+        int size = 0;
+        for(int i = 0; i < size - 2; i++){
+        	left = i + 1;
+        	right = size - 1;
+
+        	while(left < right){
+        		int temSum = nums[i] + nums[left] + nums[right];
+
+        		if(temSum == target){
+        			return temSum;
+        		}else if(temSum > target){
+        			
+        		}else{
+
+        		}// end if
+        	} 
+        }
+    }
+}
