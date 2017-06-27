@@ -1536,3 +1536,61 @@ public class Solution {
         return ans;
     }
 }
+
+
+// 15. 3Sum
+public class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+
+        if(nums == null || nums.length < 3)
+        	return res;
+        
+        // sort array
+        Arrays.sort(nums);
+        int size = nums.length;
+
+        for(int i = 0; i < size - 2; i++){
+        	int target = nums[i];
+        	int left = i + 1; // left index
+        	int right = size - 1; // right index
+
+        	while(left < right){
+        		int sum = nums[left] + nums[right];
+
+        		if(sum == -1 * target){
+        			List<Integer> l = new ArrayList<Integer>();
+        			l.add(target);
+        			l.add(nums[left]);
+        			l.add(nums[right]);
+        			res.add(l);
+        			
+        			int leftValue = nums[left];
+        			int rightValue = nums[right];
+        			left++;
+        			right--;
+
+        			// skip duplicates for both sides
+	        		while(left < size && nums[left] == leftValue){
+	        			left++;
+	        		}
+	        		while(right > i && nums[right] == rightValue){
+	        			right--;
+	        		}
+
+        		}else if(sum < -1 * target){
+        			left++;
+        		}else{
+        			right--;
+        		}
+        	}// while ends
+
+        	// skip duplicates
+        	while(i+1 < size && nums[i+1] ==  target){
+        		i++;
+        	}
+
+        }// for ends
+        return res;
+    }
+}
