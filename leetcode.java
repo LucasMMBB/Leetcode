@@ -1630,3 +1630,10 @@ public class Solution {
         return res;
     }
 }
+
+// 259. 3Sum Smaller
+public class Solution {
+    public int threeSumSmaller(int[] nums, int target) {
+        
+    }
+}
