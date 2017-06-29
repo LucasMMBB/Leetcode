@@ -1660,3 +1660,11 @@ public class Solution {
         return res;
     }
 }
+
+
+// 18. 4Sum
+public class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        
+    }
+}
