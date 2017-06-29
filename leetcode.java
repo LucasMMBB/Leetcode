@@ -1600,28 +1600,33 @@ public class Solution {
 public class Solution {
     public int threeSumClosest(int[] nums, int target) {
  		
- 		int sum, diff; // keep updating res
+ 		int size = nums.length;
  		if(nums == null || nums.length < 3)
-        	return sum;
+        	return 0;
 
         Arrays.sort(nums);
+        int res = nums[0] + nums[1] + nums[2];
 
-        int size = 0;
-        for(int i = 0; i < size - 2; i++){
-        	left = i + 1;
-        	right = size - 1;
+        for(int i = 0; i < size; i++){
+        	int left = i + 1;
+        	int right = size - 1;
 
         	while(left < right){
-        		int temSum = nums[i] + nums[left] + nums[right];
+        		int sum = nums[i] + nums[left] + nums[right];
 
-        		if(temSum == target){
-        			return temSum;
-        		}else if(temSum > target){
-        			
+        		if(Math.abs(sum - target) < Math.abs(res - target))
+        			res = sum;
+
+        		if(sum == target){
+        			return sum;
+        		}else if(sum > target){
+        			right--;
         		}else{
-
+        			left++;
         		}// end if
-        	} 
-        }
+        	}// while ends 
+        }// for ends
+
+        return res;
     }
 }
