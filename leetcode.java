@@ -1663,8 +1663,73 @@ public class Solution {
 
 
 // 18. 4Sum
+/**
+ * Time complexity: O(n^3)
+ * Space complexity: O(n)
+ */
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        
+        if(nums == null || nums.length < 4){
+        	return null;
+        }
+        List<List<Integer>> res =  new ArrayList<List<Integer>>();
+        int size = nums.length;
+        Arrays.sort(nums);
+
+        for(int i = 0; i < size; i++){
+        	int numI = nums[i];
+        	for(int j = 1; j < size; j++){
+        		List<Integer> innerList = new ArrayList<Integer>();
+
+        		int left = j + 1; // left index
+        		int right = size - 1; // right index
+
+        		int numJ = nums[j];
+
+        		while(left < right){
+        			int sum = nums[i] + nums[j] + nums[left] + nums[right];
+
+        			if(sum == target){
+        				innerList.add(nums[i]);
+        				innerList.add(nums[j]);
+        				innerList.add(nums[left]);
+        				innerList.add(nums[right]);
+        				res.add(innerList);
+        				left++;
+        				right--;
+
+        				// remove duplicates
+	        			int leftValue = nums[left];
+	        			int rightValue = nums[right];
+	        			left++;
+	        			right--;
+		        		while(left < size && nums[left] == leftValue){
+		        			left++;
+		        		}
+		        		while(right > j && nums[right] == rightValue){
+		        			right--;
+		        		}
+
+        			}else if(sum > target){
+        				right--;
+        			}else{
+        				left++;
+        			}
+
+
+        		}// while ends here
+
+        		// remove duplicates in second for loop
+        		while(j < size - 1 && nums[j + 1] == numJ){
+        			j++;
+        		}
+        	}// for ends
+
+        	//remove duplicates in first for loop
+        	while(i + 1 < size && nums[i + 1] == numI){
+        		i++;
+        	}
+        }// for ends
+        return res;
     }
 }
