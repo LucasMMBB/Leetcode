@@ -1802,6 +1802,7 @@ public class Solution {
 /**
  * 1. if index is odd, nums[i] >= nums[i+1]
  * 2. if index is even, nums[i] <= nums[i-1]
+ * Time complexity: O(n), space complexity: O(1)
  */
 public class Solution {
     public void wiggleSort(int[] nums) {
@@ -1815,10 +1816,19 @@ public class Solution {
         }// for ends
     }
 
-    private int[] swap(int[] nums, int a, int b){
+    public int[] swap(int[] nums, int a, int b){
         int t = nums[a];
         nums[a] = nums[b];
         nums[b] = t;
         return nums;
+    }
+
+    public void wiggleSort_m2(int[] nums){
+    	// this is an obvious method.
+    	/**
+    	 * First sort it in ascending, then swap elements pair-wise starting from second element.
+    	 * Time complexity: O(nlog(n)): sorting cost
+    	 */
+    	Arrays.sort
     }
 }
