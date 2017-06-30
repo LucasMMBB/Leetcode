@@ -1733,3 +1733,10 @@ public class Solution {
         return res;
     }
 }
+
+// 1. Two Sum
+public class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+    }
+}
