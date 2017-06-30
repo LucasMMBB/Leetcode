@@ -1799,8 +1799,26 @@ public class Solution {
 }
 
 // 280. Wiggle sort
+/**
+ * 1. if index is odd, nums[i] >= nums[i+1]
+ * 2. if index is even, nums[i] <= nums[i-1]
+ */
 public class Solution {
     public void wiggleSort(int[] nums) {
-        
+        for(int i = 0; i < nums.length - 1; i++){
+        	if ( (i%2)==0 && (nums[i] > nums[i+1]) ){// even
+        		swap(nums, i, i+1);
+        	}
+        	if ( (i%2)==1 && (nums[i] < nums[i+1]) ){// odd
+        		swap(nums, i, i+1);
+        	}
+        }// for ends
+    }
+
+    private int[] swap(int[] nums, int a, int b){
+        int t = nums[a];
+        nums[a] = nums[b];
+        nums[b] = t;
+        return nums;
     }
 }
