@@ -1734,9 +1734,41 @@ public class Solution {
     }
 }
 
+
 // 1. Two Sum
+/**
+ * Using hashmap to store nums as key and indices as values
+ */
 public class Solution {
     public int[] twoSum(int[] nums, int target) {
-        
+    	Map<Integer, Integer> hashmap = new HashMap<>();
+    	for(int i = 0; i < nums.length; i++){
+    		int element = target - nums[i];
+    		if(hashmap.containsKey(element)){
+    			return new int[] {hashmap.get(element), i};
+    		}
+    		hashmap.put(nums[i], i);
+    	}
+    	throw new IllegalArgumentException("No two sum solution");
+    }
+
+    public int[] twoSum_m2(int[] nums, int target) {
+    	Map<Integer, Integer> hashmap = new HashMap<>();
+    	int[] res = new int[2];
+    	// put elements into hashmap
+    	for(int i = 0; i < nums.length; i++){
+    		hashmap.put(nums[i], i);
+    	}
+
+    	for(int i = 0; i < nums.length; i++){
+    		int keyToBeFind = target - nums[i];
+    		if(hashmap.containsKey(keyToBeFind) && hashmap.get(keyToBeFind) != i){
+    			res[0] = i;
+    			res[1] = hashmap.containsKey(keyToBeFind);
+    			return res;
+    		}
+    	}
+    	return res;
+    	//throw new IllegalArgumentException("No two sum solution");
     }
 }
