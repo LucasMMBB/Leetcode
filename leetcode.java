@@ -1738,6 +1738,7 @@ public class Solution {
 // 1. Two Sum
 /**
  * Using hashmap to store nums as key and indices as values
+ * Time complexity: O(n), space: O(n)
  */
 public class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -1770,5 +1771,29 @@ public class Solution {
     	}
     	return res;
     	//throw new IllegalArgumentException("No two sum solution");
+    }
+}
+
+//167. Two Sum || - Input array is sorted
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        if(numbers == null || numbers.length < 2)
+        	return null;
+        int[] res = new int[2];
+        int size = numbers.length;
+        int left = 0, right = size - 1;
+        Arrays.sort(numbers);
+        while(left < right){
+        	if((numbers[left] + numbers[right]) == target){
+        		res[0] = left;
+        		res[1] = right;
+        		return res;
+        	}else if((numbers[left] + numbers[right]) < target){
+        		left++;
+        	}else{
+        		right--;
+        	}
+        }
+        return res;
     }
 }
