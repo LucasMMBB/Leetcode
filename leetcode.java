@@ -1816,19 +1816,22 @@ public class Solution {
         }// for ends
     }
 
-    public int[] swap(int[] nums, int a, int b){
-        int t = nums[a];
-        nums[a] = nums[b];
-        nums[b] = t;
-        return nums;
-    }
-
     public void wiggleSort_m2(int[] nums){
     	// this is an obvious method.
     	/**
     	 * First sort it in ascending, then swap elements pair-wise starting from second element.
     	 * Time complexity: O(nlog(n)): sorting cost
     	 */
-    	Arrays.sort
+    	Arrays.sort(nums);
+    	for (int i = 1; i < nums.length; i+=2) {
+    		swap(nums, i, i + 1);
+    	}
+    }
+
+    public int[] swap(int[] nums, int a, int b){
+        int t = nums[a];
+        nums[a] = nums[b];
+        nums[b] = t;
+        return nums;
     }
 }
