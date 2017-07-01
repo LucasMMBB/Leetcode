@@ -1845,3 +1845,11 @@ class Solution(object):
         half = len(nums[::2]) - 1
         nums[::2], nums[1::2] = nums[half::-1], nums[:half:-1]
 */
+
+// 215. Kth Largest Element in an Array
+public class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        Arrays.sort(nums);
+        int size = nums.length;
+    }
+}
