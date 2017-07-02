@@ -1,5 +1,5 @@
 /*\
-|*| Leetcode answers
+|*| Leetcode answers in Java
 |*| Author: Maoxu
 |*| Description: share my answers to whoever needs
 |*| Create date: April 3rd, 2017
@@ -1925,5 +1925,44 @@ public class Solution {
 public class Solution {
     public List<Interval> merge(List<Interval> intervals) {
         
+    }
+}
+
+
+
+// 28. Implement strStr()
+// Description: find needle in haystack and return first occurrence, or -1 if needle is not found
+public class Solution {
+    public int strStr(String haystack, String needle) {
+        int sizeHay = haystack.length, sizeN = needle.length;
+        for(int i = 0; i < sizeHay + 1; i++){
+        	for(int j = 0; j < sizeN + 1; j++){
+
+        		if(j == sizeN)
+        			return i;
+
+        		if(i + j == sizeHay)
+        			return -1;
+
+        		if(haystack.charAt(i + j) != needle(j))
+        			break;
+        	}//for ends
+        }// for ends
+    }
+
+    public int strStr_m2(String haystack, String needle) {
+        for(int i = 0; ; i++){
+        	for(int j = 0; ; j++){
+
+        		if(j == needle.length())
+        			return i;
+
+        		if(i + j == haystack.length())
+        			return -1;
+
+        		if(haystack.charAt(i + j) != needle.charAt(j))
+        			break;
+        	}//for ends
+        }// for ends
     }
 }
