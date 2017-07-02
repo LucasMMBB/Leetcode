@@ -1862,6 +1862,10 @@ public class Solution {
 
     public int findKthLargest_m2(int[] nums, int k){
     	// method 2
-    	
+
+    }
+
+    public int findKthLargest_m3(int[] nums, int k){
+    	// method3
     }
 }
