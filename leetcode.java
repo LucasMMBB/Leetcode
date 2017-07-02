@@ -1850,8 +1850,8 @@ class Solution(object):
 /**
  * Method1: Simplest method
  * Time complexity: O(NlogN), space complexity: O(1)
- * Method2: The smart approach for this problem is to use the selection algorithm
- * (based on the partition method - the same one as used in quicksort)
+ * Method2: Other possibility is to use a min oriented priority queue that will
+ * store the k-th largest values.
  */
 public class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -1862,6 +1862,12 @@ public class Solution {
 
     public int findKthLargest_m2(int[] nums, int k){
     	// method 2
+    	final PriorityQueue<Integer> pq = new PriorityQueue<>();
+    	for(int val : nums){
+    		pq.off(val);
+
+    		if(pq.size() > )
+    	}// for ends
 
     }
 
