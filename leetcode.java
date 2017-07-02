@@ -1966,3 +1966,34 @@ public class Solution {
         }// for ends
     }
 }
+
+
+// 88. Merge Sorted Array
+/**
+ * Example: 12345, 357 merge => 1,2,3,3,4,5,5,7
+ * Method: Two pointers from the end
+ */
+public class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+    	int i = m - 1; // index of nums1
+    	int j = n - 1; // index of nums2
+    	int k = m + n - 1; // index of merged array
+
+    	while(i >= 0 && j >= 0){
+    		if(nums1[i] > nums2[j]){
+    			nums1[k] = nums1[i];
+    			i--;
+    		}else{
+    			nums1[k] = nums2[j];
+    			j--;
+    		}
+    		k--;
+    	}// while ends
+
+    	while(j >= 0){
+    		nums1[k] = nums2[j];
+    		j--;
+            k--;
+    	}
+    }
+}
