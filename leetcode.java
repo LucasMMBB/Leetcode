@@ -1847,9 +1847,16 @@ class Solution(object):
 */
 
 // 215. Kth Largest Element in an Array
+/**
+ * Method1: Simplest method
+ * Time complexity: O(NlogN), space complexity: O(1)
+ * Method2: The smart approach for this problem is to use the selection algorithm
+ * (based on the partition method - the same one as used in quicksort)
+ */
 public class Solution {
     public int findKthLargest(int[] nums, int k) {
         Arrays.sort(nums);
         int size = nums.length;
+        return nums[size-k];
     }
 }
