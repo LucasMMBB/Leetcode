@@ -1859,4 +1859,9 @@ public class Solution {
         int size = nums.length;
         return nums[size-k];
     }
+
+    public int findKthLargest_m2(int[] nums, int k){
+    	// method 2
+    	
+    }
 }
