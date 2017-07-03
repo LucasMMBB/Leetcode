@@ -53,3 +53,21 @@ class Solution(object):
 
         if j >= 0:
         	nums1[:j+1] = nums2[:j+1]
+
+    # SMALLEST DIFFERENCE
+    def smallestDifference(self, A, B):
+    	A.sort()
+    	B.sort()
+
+    	i = j = 0
+    	diff = 2147483647
+
+    	while i < len(A) and j < len(B):
+    		if A[i] > B[j]:
+    			diff = min(A[i] - B[i], diff)
+    			j += 1
+    		else:
+    			diff = min(B[j] - A[i], diff)
+    			i += 1
+
+    	return diff

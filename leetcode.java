@@ -61,40 +61,6 @@ public class Solution {
     }
 }
 
-// 42. Trapping rain water
-public class Solution {
-    public int trap(int[] arr) {
-    	if(arr == null || arr.length <=2 ) {return 0;}
-
-    	//Two scanners
-    	int left = 0;
-    	int right = arr.length - 1;
-    	int sum = 0;
-
-    	//Two walls
-    	int leftMax = 0;
-    	int rightMax = 0;
-    	while(left<=right){
-    		//Move lower wall first: Guarantee middle region can trap water
-    		if(leftMax<=rightMax){
-    			leftMax = Math.max(leftMax, arr[left]);
-	    		if(arr[left]<leftMax){
-	    			sum+=leftMax - arr[left];
-	    			left++;
-	    		}
-    		}else{
-    			rightMax = Math.max(rightMax, arr[right]);
-    			if(arr[right]<rightMax){
-    				sum += rightMax - arr[right];
-    				right--
-    			}
-    		}
-    	}
-    	return sum;
-	}
-}
-
-
 // 75. sort colors
 public class Solution {
 
@@ -1509,13 +1475,44 @@ public class Solution {
 
 // 42. Trapping Rain Water
 /**
- * Two pointers: 
- * Brute force: Time complexity: O(n^2)  Space complexity: O(1) extra space
- *
+ * Method1: Two pointers: 
+ * Method2: Brute force: Time complexity: O(n^2)  Space complexity: O(1) extra space
+ * Method3: Stack
  */
 public class Solution {
     public int trap(int[] height) {
-    
+    	// find the wall position for this array,which is of the maximum of array
+    	if(height.length == 0 || height ==null)
+    		return 0;
+    	int maxid = 0;
+    	
+    	for(int i = 1; i < height.length; i++){
+    		if(height[i] > height[maxid])
+    			maxid = i;
+    	}// for ends
+
+    	int water = 0, l = 0, r = height.length - 1;// left, right indices
+
+    	while( l < r && height[l] < height[l + 1])
+    		l++;
+    	while( l < r && height[r] < height[r - 1])
+    		r--;
+
+    	for(int i = l + 1; i < maxid; i++){
+    		if(height[i] < height[l])
+    			water += height[l] - height[i];
+    		else
+    			l = i;
+    	}// for ends
+
+    	for (int i = r - 1; i > maxid ; i--) {
+    		if(height[i] < height[r])
+    			water += height[r] - height[i];
+    		else
+    			r = i;
+    	}// for ends
+
+    	return water;
     }
 
     // Method2: Brute force
@@ -1995,5 +1992,19 @@ public class Solution {
     		j--;
             k--;
     	}
+    }
+}
+
+
+
+// 459. Repeated Substring Pattern
+public class Solution {
+    public boolean repeatedSubstringPattern(String s) {
+    	String ss = s.concat(s).substring(1, 2 * s.length() - 1);
+
+    	if(ss.contains(s))
+    		return true;
+    	else
+    		return false;
     }
 }
