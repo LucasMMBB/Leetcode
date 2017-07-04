@@ -2081,4 +2081,11 @@ public class Solution {
         }//for ends
         return s.substring(startIndex, max_len + startIndex);
     }
+
+    public String longestPalindrome_m2(){
+    	/**
+    	 * Method 2: Manacher's algorithm
+    	 * Time complexity: linear time
+    	 */
+    }
 }
