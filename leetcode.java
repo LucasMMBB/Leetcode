@@ -2089,3 +2089,10 @@ public class Solution {
     	 */
     }
 }
+
+// 214. Shortest Palindrome
+public class Solution {
+    public String shortestPalindrome(String s) {
+        
+    }
+}
