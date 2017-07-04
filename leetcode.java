@@ -2079,6 +2079,6 @@ public class Solution {
         		}
         	}// for ends
         }//for ends
-        return s.substring(startIndex, max_len);
+        return s.substring(startIndex, max_len + startIndex);
     }
 }
