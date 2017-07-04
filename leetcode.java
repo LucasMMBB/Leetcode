@@ -2051,7 +2051,34 @@ public class Solution {
         if(s == null || s.length() == 0)
         	return "";
 
-        int size = s.length();
-         
+        int size = s.length(), max_len = 1, startIndex = 0;
+        boolean[][] palindrome = new boolean[size][size];
+
+        for(int i = 0; i < size; i++){
+        	palindrome[i][i] = true;
+        }
+
+        // Finding palindromes of two characters
+        for(int i = 0; i < size - 1; i++){
+        	if(s.charAt(i) == s.charAt(i + 1)){
+        		palindrome[i][i + 1] = true;
+        		startIndex = i;
+        		max_len = 2;
+        	}
+        }// for ends
+
+        // Finding palindromes of more characters than two
+        for(int cur_len = 3; cur_len <= size; cur_len++){
+        	for(int i = 0; i < size - cur_len + 1; i++){
+        		int j = i + cur_len - 1; // end index of substring
+        		if(s.charAt(i) == s.charAt(j)
+        			&& palindrome[i + 1][j - 1]){
+        			palindrome[i][j] = true;
+        			startIndex = i;
+        			max_len = cur_len;
+        		}
+        	}// for ends
+        }//for ends
+        return s.substring(startIndex, max_len);
     }
 }
