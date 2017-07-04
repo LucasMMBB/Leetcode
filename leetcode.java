@@ -2041,3 +2041,17 @@ public class Solution {
 
     }
 }
+
+
+// 5. Longest Palindromic Substring
+public class Solution {
+    public String longestPalindrome(String s) {
+        // method 1: Dynamic programming
+        // Time and space complexity: O(n^2)
+        if(s == null || s.length() == 0)
+        	return "";
+
+        int size = s.length();
+         
+    }
+}
