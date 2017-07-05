@@ -16,7 +16,7 @@ class LinkedList(object):
 			tem = tem.next
 
 	def size(self):
-		cur = self.head
+		#cur = self.head
 		count = 0
 		while cur:
 			count += 1
@@ -29,12 +29,17 @@ def print_list(node):
         print node.val,
         node = node.next
 
-llist = LinkedList()
-llist.head = Node(1)
-second = Node(2)
-third = Node(3)
+def size(node):
+	count = 0
+	while node:
+		node = node.next
+		count += 1
+	return count
 
-llist.head.next = second
-second.next = third
-listsize = llist.size()
-print(listsize)
+a = Node(0)
+a.next = Node(1)
+a.next.next = Node(2)
+
+p = a.next
+print(size(a))
+print(size(p))

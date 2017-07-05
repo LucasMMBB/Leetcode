@@ -2242,3 +2242,49 @@ public class Solution {
         return dummy1.next;
     }
 }
+
+// 61. Rotate List
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if(head == null || head.next == null || k == 0)
+        	return head;
+
+        int size = getSize(head);
+        k = k % size;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode p = head;
+        
+        for(int i = 0; i < k; i++){
+        	p = p.next;
+        }// for ends
+
+        for(int j = 0; j < size - k - 1; j++){
+        	p = p.next;
+        	head = head.next;
+        }// for ends
+
+        p.next = dummy.next;
+        dummy.next = head.next;
+        head.next = null;
+
+        return dummy.next;
+    }
+
+    public int getSize(ListNode head){
+    	int count = 0;
+    	while(head != null){
+    		head = head.next;
+    		count++;
+    	}// while ends
+    	return count;
+    }
+}
