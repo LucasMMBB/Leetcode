@@ -2288,3 +2288,32 @@ public class Solution {
     	return count;
     }
 }
+
+
+// 189. ROTATE ARRAY
+// Const space complexity. Time complexity: O(n)
+public class Solution {
+    public void rotate(int[] nums, int k) {
+  		if(nums == null || nums.length == 0 || k == 0)
+  			return;
+  		int size = nums.length;
+  		k %= size;
+
+  		reverseArray(nums, size - k, size - 1);
+  		reverseArray(nums, 0, size - k - 1);
+  		reverseArray(nums, 0, size - 1);
+    }
+
+    public void reverseArray(int[] nums, int start, int end){
+    	if(nums == null || nums.length == 0 || nums.length == 1)
+    		return;
+
+    	while(start < end){
+    		int temp = nums[end];
+    		nums[end] = nums[start];
+    		nums[start] = temp;
+            start++;
+            end--;
+    	}// while ends
+    }
+}
