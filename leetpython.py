@@ -72,4 +72,35 @@ class Solution(object):
 
     	return diff
 
+# 86. Partition List
 
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def partition(self, head, x):
+        """
+        :type head: ListNode
+        :type x: int
+        :rtype: ListNode
+        """
+        dummy1, dummy2 = ListNode(0), ListNode(0)
+        cur1, cur2 = dummy1, dummy2
+
+        while head:
+        	if head.val < x:
+        		cur1.next = head
+        		cur1 = cur1.next
+        	else:
+        		cur2.next = head
+        		cur2 = cur2.next
+
+        	head = head.next
+
+        cur2.next = None
+        cur1.next = dummy2.next
+
+        return dummy1.next
