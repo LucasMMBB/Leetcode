@@ -2168,6 +2168,30 @@ public class Solution {
 // 66. PLUS ONE
 public class Solution {
     public int[] plusOne(int[] digits) {
-        
+    	
+        int size = digits.length;
+        int i = size - 1;
+
+        while(i >= 0){
+        	if(digits[i] == 9){
+        		digits[i] = 0;
+        	}else{
+        		digits[i] = digits[i] + 1;
+        		break;
+        	}
+            
+            i--;
+        }// while ends
+
+        if(i == -1){
+        	int[] res = new int[size + 1];
+        	res[0] = 1;
+        	for(int j = 1; j < size + 1; j++){
+        		res[j] = 0;
+        	}//for ends
+        	return res;
+        }else{
+        	return digits;
+        }// if ends
     }
 }
