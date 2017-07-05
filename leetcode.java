@@ -2210,3 +2210,35 @@ public class Solution {
         return sb.reverse().toString();
     }
 }
+
+
+// 86. Partition List
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode partition(ListNode head, int x) {
+        ListNode dummy1 = new ListNode(0), dummy2 = new ListNode(0);
+        ListNode cur1 = dummy1, cur2 = dummy2;
+
+        while(head != null){
+        	if(head.val < x){
+        		cur1.next = head;
+        		cur1 = cur1.next;
+        	}else{
+        		cur2.next = head;
+        		cur2 = cur2.next;
+        	}// if ends
+        	head = head.next;
+        }// while ends
+
+        cur2.next = null;
+        cur1.next = dummy2.next;
+        return dummy1.next;
+    }
+}
