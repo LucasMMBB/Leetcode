@@ -4,21 +4,37 @@ class Node(object):
         self.val = data
         self.next = next_node
 
-   	def get_data(self):
-   		return self.val
-
-	def get_next(self):
-		return self.next
-
-	def set_next(self, new_next):
-		self.next = new_next
-
 # Definition for singly-linked list.
+class LinkedList(object):
+	def __init__(self):
+		self.head = None
+
+	def printlist(self):
+		tem = self.head
+		while tem:
+			print tem.val
+			tem = tem.next
+
+	def size(self):
+		cur = self.head
+		count = 0
+		while cur:
+			count += 1
+			cur = cur.next
+		return count
+
+# some useful methods
 def print_list(node):
     while node:
         print node.val,
         node = node.next
 
-a = Node(0)
-a.set_next(Node(2))
-print_list(a)
+llist = LinkedList()
+llist.head = Node(1)
+second = Node(2)
+third = Node(3)
+
+llist.head.next = second
+second.next = third
+listsize = llist.size()
+print(listsize)

@@ -104,3 +104,47 @@ class Solution(object):
         cur1.next = dummy2.next
 
         return dummy1.next
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def rotateRight(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        if not head or not head.next or k==0:
+        	return head
+
+        size = self.getSize(head)
+        k %= size
+
+        dummy = ListNode(0)
+        dummy.next = head
+
+        p = head
+
+        for i in range(k):
+        	p = p.next
+
+        for i in range(size - k - 1):
+        	p = p.next
+        	head = head.next
+
+        p.next = dummy.next
+        dummy.next = head.next
+        head.next = None
+
+        return dummy.next
+
+    def getSize(self, head):
+    	i = 0
+    	while head:
+    		head = head.next
+    		i += 1
+    	return i
