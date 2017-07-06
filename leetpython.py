@@ -148,3 +148,48 @@ class Solution(object):
     		head = head.next
     		i += 1
     	return i
+
+
+# 234. Palindrome Linked List
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def isPalindrome(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        if head == None:
+        	return True
+
+        mid = self.getMid(head)
+
+        right = mid.next
+        mid.next = None
+
+        return self.compare(head, self.rotate(right))
+
+     def getMid(self, head):
+     	slow = head
+     	fast = head.next
+
+     	while fast and fast.next:
+     		slow = slow.next
+     		fast = fast.next.next
+
+     	return slow
+
+
+     def rotate(self, head):
+     	pre = None
+     	while head:
+     		temp = head.next
+     		head.next = pre
+     		pre = head
+     		head = temp
+
+     	return pre
