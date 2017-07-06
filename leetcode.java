@@ -2334,7 +2334,29 @@ public class Solution {
 
     }
 }
+// 206. Reverse Linked List
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode cur = head, prev = null, next = null;
 
+        while(cur != null){
+        	next = cur.next;
+        	cur.next = prev;
+        	prev = cur;
+        	cur = next;
+        }// while ends
+        return prev;
+        
+    }
+}
 // 234. Palindrome Linked List
 /**
  * Definition for singly-linked list.

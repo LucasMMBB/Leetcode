@@ -22,6 +22,7 @@ class LinkedList(object):
 			count += 1
 			cur = cur.next
 		return count
+	def reverse(self):
 
 # some useful methods
 def print_list(node):
@@ -49,6 +50,7 @@ def reverse(node):
 		cur = nex
 
 	return pre
+	
 a = Node(0)
 a.next = Node(1)
 a.next.next = Node(2)
