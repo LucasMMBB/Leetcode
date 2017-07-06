@@ -193,3 +193,13 @@ class Solution(object):
      		head = temp
 
      	return pre
+
+     def compare(sefl, h1, h2):
+     	while h1 and h2:
+     		if h1.val != h2.val:
+     			return False
+
+     		h1 = h1.next
+     		h2 = h2.next
+
+     	return True

@@ -36,6 +36,19 @@ def size(node):
 		count += 1
 	return count
 
+def reverse(node):
+	# reverse a linked list
+	cur = head
+	nex = None
+	pre = None
+
+	while cur:
+		nex = cur.next
+		cur.next = pre
+		pre = cur
+		cur = nex
+
+	return pre
 a = Node(0)
 a.next = Node(1)
 a.next.next = Node(2)
