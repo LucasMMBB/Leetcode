@@ -2354,11 +2354,12 @@ public class Solution {
         	cur = next;
         }// while ends
         return prev;
-        
+
     }
 }
 // 234. Palindrome Linked List
 /**
+ * test case: 1 2 3 4 5
  * Definition for singly-linked list.
  * public class ListNode {
  *     int val;
@@ -2368,6 +2369,43 @@ public class Solution {
  */
 public class Solution {
     public boolean isPalindrome(ListNode head) {
+        // get median
+        if(head == null || head.next == null) return true;
+        ListNode mid = getMedian(head);
+        ListNode rightpart = mid.next;
+        mid.next = null;
+        return compareTwoList(head, reverseList(rightpart));
+    }
+
+    public ListNode getMedian(ListNode head){
+    	ListNode slow = head;
+    	ListNode fast = head.next;
+    	while(fast != null && fast.next != null){
+    		slow = slow.next;
+    		fast = fast.next.next;
+    	}// while ends
+    	return slow;
+    }
+    public ListNode reverseList(ListNode head) {
+        ListNode cur = head, prev = null, next = null;
+
+        while(cur != null){
+        	next = cur.next;
+        	cur.next = prev;
+        	prev = cur;
+        	cur = next;
+        }// while ends
+        return prev;
         
+    }
+    public boolean compareTwoList(ListNode l1, ListNode l2){
+
+    	while(l1 != null && l2 != null){
+    		if(l1.val != l2.val)
+    			return false;
+    		l1 = l1.next;
+    		l2 = l2.next;
+    	}// while ends
+    	return true;
     }
 }
