@@ -203,7 +203,29 @@ class Solution(object):
      		h2 = h2.next
 
      	return True
+# 19. Remove nth node from end of list
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        dummy = cur = head
+        for i in range(n):
+            head = head.next
+        
+        if head is None:
+            dummy = dummy.next
+            return dummy
+        while head.next:
+            cur = cur.next
+            head = head.next
 
+        cur.next = cur.next.next
+        return dummy
+
+        
 # 92. Reverse Linked List
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -213,6 +235,6 @@ class Solution(object):
 
 class Solution(object):
     def reverseBetween(self, head, m, n):
-    	dummy = head
+    	dummy = cur = head
     	left, right = m, n
     	
