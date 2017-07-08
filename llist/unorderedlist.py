@@ -86,6 +86,8 @@ class UnorderedList(object):
             self.head = cur.next
         else:
             pre.next = cur.next
+
+
     def removeNthfromEnd(self, n):
         # Remove nth node from the end of list and assume n is valid
         size = self.size()
@@ -106,6 +108,5 @@ mylist.add(2)
 mylist.add(3)
 mylist.add(4)
 mylist.add(5)
-mylist.removeNthfromEnd(1)
+mylist.remove2(3)
 mylist.printlist()
-

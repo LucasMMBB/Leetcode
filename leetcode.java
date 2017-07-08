@@ -2419,9 +2419,37 @@ public class Solution {
 
 
 // 237. Delete Node in a Linked List
+/**
+ * Time and Space: const
+ * Method: copy next node value to current and point current to next.next node 
+ */
 public class Solution {
     public void deleteNode(ListNode node) {
-        
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+}
+
+// 203. Remove Linked List Elements
+public class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode dummy = new ListNode(0), pre = new ListNode(0);
+        ListNode cur = head;
+        dummy = pre;
+        pre.next = cur;
+
+        if(cur == null)
+            return null;
+
+        while(cur != null){
+            if(cur.val == val){
+                pre.next = cur.next;
+            }else{
+                pre = cur;
+            }// if ends
+            cur = cur.next;
+        }// while ends
+        return dummy.next;
     }
 }
 

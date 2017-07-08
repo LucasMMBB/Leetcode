@@ -235,6 +235,30 @@ class Solution(object):
         node.val = node.next.val
         node.next = node.next.next
 
+# 203. Remove Linked List Elements
+class Solution(object):
+    def removeElements(self, head, val):
+        """
+        :type head: ListNode
+        :type val: int
+        :rtype: ListNode
+        """
+        dummy = pre = ListNode(0)
+        pre.next = cur = head
+        if cur is None:
+            return None
+        
+        if cur.val is val and cur.next is None:
+            return None
+
+        while cur:
+            if cur.val == val:
+                pre.next = cur.next
+            else:
+                pre = cur
+
+            cur = cur.next
+        return dummy.next
 
 # 92. Reverse Linked List ||
 # Definition for singly-linked list.
