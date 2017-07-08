@@ -225,8 +225,15 @@ class Solution(object):
         cur.next = cur.next.next
         return dummy
 
-        
-# 92. Reverse Linked List
+# 237.Delete Node in a Linked List
+class Solution(object):
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
+
+# 92. Reverse Linked List ||
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
@@ -237,4 +244,4 @@ class Solution(object):
     def reverseBetween(self, head, m, n):
     	dummy = cur = head
     	left, right = m, n
-    	
+
