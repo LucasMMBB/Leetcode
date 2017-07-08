@@ -2411,6 +2411,13 @@ public class Solution {
 }
 
 
+// 237. Delete Node in a Linked List
+public class Solution {
+    public void deleteNode(ListNode node) {
+        
+    }
+}
+
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
