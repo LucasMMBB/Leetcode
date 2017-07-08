@@ -2410,6 +2410,13 @@ public class Solution {
     }
 }
 
+// 19. Remove Nth Node From End of List
+public class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        
+    }
+}
+
 
 // 237. Delete Node in a Linked List
 public class Solution {
