@@ -15,6 +15,11 @@ class Node:
     def setNext(self,newnext):
         self.next = newnext
 
+    def listNode(self):
+        cur = self
+        while cur:
+            print cur.data
+            cur = cur.next
 
 class UnorderedList(object):
     """docstring for UnorderedList"""
@@ -56,6 +61,15 @@ class UnorderedList(object):
         return count
     def rotate(self):
         # reverse(rotate) the linked list
+        pre = None
+        while head:
+            temp = head.next
+            head.next = pre
+            pre = head
+            head = temp
+
+        return pre
+            
         
     def search(self, item):
         cur = self.head
@@ -103,12 +117,4 @@ class UnorderedList(object):
         else:
             pre.next = cur.next
             cur.next = None
-#---------- following are test codes -----------#
-mylist = UnorderedList()
-mylist.add(1)
-mylist.add(2)
-mylist.add(3)
-mylist.add(4)
-mylist.add(5)
-mylist.remove2(3)
-mylist.printlist()
+#---------- Some useful functions --------------#
