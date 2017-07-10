@@ -2453,6 +2453,45 @@ public class Solution {
     }
 }
 
+
+// 2. Add two numbers
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0), cur = dummy;
+        int carry = 0;
+        while(l1 != null || l2 != null){
+            if(l1 != null)
+                int a = l1.val;
+            else
+                int a = 0;
+
+            if(l2 != null)
+                int b = l2.val;
+            else
+                int b = 0;
+
+            int sum = a + b + carry;
+            cur.next = new ListNode(sum % 10);
+            cur = cur.next;
+            if(l1 != null)
+                l1 = l1.next;
+            if(l2 != null)
+                l2 = l2.next;
+            
+        }// while ends
+        if(carry > 0)
+            cur.next = new ListNode(1);
+        return dummy.next;
+    }
+}
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
