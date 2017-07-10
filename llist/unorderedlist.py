@@ -118,3 +118,6 @@ class UnorderedList(object):
             pre.next = cur.next
             cur.next = None
 #---------- Some useful functions --------------#
+a = Node(1)
+a.next = Node(3)
+a.listNode()

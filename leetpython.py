@@ -302,3 +302,48 @@ class Solution(object):
             cur.next = ListNode(1)
 
         return dummy.next
+
+
+# 445. Add Two Numbers ||
+class Solution(object):
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        l1 = self.rotate(l1)
+        l2 = self.rotate(l2)
+        dummy = cur = ListNode(0)
+        carry = 0
+
+        while l1 or l2:
+            a = l1.val if l1 else 0
+            b = l2.val if l2 else 0
+
+            sm = a + b + carry
+            cur.next = ListNode(sm%10)
+            cur = cur.next
+            carry = sm/10
+            
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
+
+
+        if carry > 0:
+            cur.next = ListNode(1)
+
+        return self.rotate(dummy.next)
+    def rotate(self, head):
+        # reverse(rotate) the linked list
+        pre = None
+        while head:
+            temp = head.next
+            head.next = pre
+            pre = head
+            head = temp
+
+        return pre
