@@ -54,7 +54,9 @@ class UnorderedList(object):
             count += 1
 
         return count
-
+    def rotate(self):
+        # reverse(rotate) the linked list
+        
     def search(self, item):
         cur = self.head
         found = False
