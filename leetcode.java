@@ -2531,6 +2531,11 @@ public class Solution {
 }
 
 // 147. Insertion sort list
+public class Solution {
+    public ListNode insertionSortList(ListNode head){
+
+    }
+}
 // 148. Sort List
 public class Solution {
     public ListNode sortList(ListNode head) {
