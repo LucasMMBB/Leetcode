@@ -117,7 +117,23 @@ class UnorderedList(object):
         else:
             pre.next = cur.next
             cur.next = None
+
+    def hasCycle(self):
+        node = self.head
+        slow = fast = node
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if id(slow) == id(fast):
+                return True
+
+        return False
 #---------- Some useful functions --------------#
-a = Node(1)
-a.next = Node(3)
-a.listNode()
+a = UnorderedList()
+a.add(-4)
+a.add(0)
+a.add(2)
+a.add(3)
+print a.hasCycle()

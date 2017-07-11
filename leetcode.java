@@ -2577,6 +2577,21 @@ public class Solution {
         return res.next;
     }
 }
+
+// 141. Linked List Cycle
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+       ListNode slow = fast = head;
+
+       while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) return true;
+       }// while ends 
+
+       return false;
+    }
+}
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
