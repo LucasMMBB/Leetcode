@@ -346,3 +346,30 @@ class Solution(object):
             head = temp
 
         return pre
+
+
+# 147. INSERTION SORT LIST
+# Method: insertion sort list
+class Solution(object):
+    def insertionSortList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if head is None:
+            return head
+
+        dummy = ListNode(0)
+        dummy.next = head
+        while head and head.next:
+            if head.val <= head.next.val:
+                head = head.next
+            else:
+                cur = dummy
+                while cur.next.val <= head.next.val:
+                    cur = cur.next
+                tmp = head.next
+                head.next = tmp.next
+                tmp.next = cur.next
+                cur.next = tmp
+        return dummy.next
