@@ -350,6 +350,8 @@ class Solution(object):
 
 # 147. INSERTION SORT LIST
 # Method: insertion sort list
+# Time: O(n^2)
+# Space: O(1)
 class Solution(object):
     def insertionSortList(self, head):
         """
@@ -373,3 +375,20 @@ class Solution(object):
                 tmp.next = cur.next
                 cur.next = tmp
         return dummy.next
+
+
+        
+# 148. SORT LIST
+# Method: merge sort
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution(object):
+    def sortList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
