@@ -377,7 +377,7 @@ class Solution(object):
         return dummy.next
 
 
-        
+
 # 148. SORT LIST
 # Method: merge sort
 
@@ -392,3 +392,4 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        

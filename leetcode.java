@@ -2531,7 +2531,47 @@ public class Solution {
 }
 
 // 147. Insertion sort list
+// 148. Sort List
+public class Solution {
+    public ListNode sortList(ListNode head) {
+      if(head == null || head.next == null) return head;
 
+      // 1. cur the list to two halves
+      ListNode prev = null, slow = head, fast = head;
+      while(fast != null && fast.next != null){
+        prev = slow;
+        slow = slow.next;
+        fast = fast.next.next;
+      }// while ends
+      prev.next = null;
+
+      // 2. sort each half
+      ListNode l1 = sortList(head);
+      ListNode l2 = sortList(slow);
+
+      // 3. merge l1 and l2
+      return merge(l1, l2);
+    }
+
+    public ListNode merge(ListNode l1, ListNode l2){
+        ListNode res = new ListNode(0), cur = res;
+        while(l1 != null && l2 != null){
+            if(l1.val <= l2.val){
+                cur.next = new ListNode(l1.val);
+                l1 = l1.next;
+            }else{
+                cur.next = new ListNode(l2.val);
+                l2 = l2.next;
+            }// if ends
+            cur = cur.next;
+        }// while ends
+        if(l1 != null)
+            cur.next = l1;
+        if(l2 != null)
+            cur.next = l2;
+        return res.next;
+    }
+}
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
