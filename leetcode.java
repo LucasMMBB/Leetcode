@@ -2591,6 +2591,10 @@ public class Solution {
 
        return false;
     }
+
+    public boolean hasCycle_m2(ListNode head){
+        // method 2: hashset
+    }
 }
 // 92. Reverse Linked List ||
 public class Solution {
