@@ -2485,11 +2485,48 @@ public class Solution {
                 l1 = l1.next;
             if(l2 != null)
                 l2 = l2.next;
-            
+
         }// while ends
         if(carry > 0)
             cur.next = new ListNode(1);
         return dummy.next;
+    }
+}
+
+// 445. Add Two Numbers ||
+public class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        Stack<Integer> s1 = new Stack<Integer>();
+        Stack<Integer> s2 = new Stack<Integer>();
+
+        while(l1 != null){
+            s1.push(l1.val);
+            l1 = l1.next;
+        }// while ends
+
+        while(l2 != null){
+            s2.push(l2.val);
+            l2 = l2.next;
+        }// while ends
+
+        int sum = 0, carry = 0;
+        ListNode cur = null;
+        while(!s1.empty() || !s2.empty()){
+            if(!s1.empty()) sum += s1.pop();
+            if(!s2.empty()) sum += s2.pop();
+            sum += carry;
+            ListNode temp = new ListNode(sum % 10);
+            temp.next = cur;
+            cur = temp;
+            carry = sum / 10;
+            sum = 0;
+        }// while ends
+        if(carry > 0){
+            ListNode temp = new ListNode(carry);
+            temp.next = cur;
+            cur = temp;
+        }
+        return cur;
     }
 }
 // 92. Reverse Linked List ||
