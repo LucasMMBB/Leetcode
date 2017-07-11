@@ -392,4 +392,6 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        if !head or !head.next:
+            return head
         
