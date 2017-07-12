@@ -431,3 +431,11 @@ class Solution(object):
                     fast = fast.next
                 return slow
         return None
+
+# 274. H-Index
+class Solution(object):
+    def hIndex(self, citations):
+        """
+        :type citations: List[int]
+        :rtype: int
+        """

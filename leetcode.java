@@ -2629,6 +2629,16 @@ public class Solution {
         return null;
     }
 }
+
+
+// 274. H-Index
+public class Solution {
+    public int hIndex(int[] citations) {
+        
+    }
+}
+
+
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
