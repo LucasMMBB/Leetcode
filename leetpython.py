@@ -410,3 +410,11 @@ class Solution(object):
                 return True
 
         return False
+
+# 142. Linked List Cycle ||
+class Solution(object):
+    def detectCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
