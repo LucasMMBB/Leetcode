@@ -2682,7 +2682,20 @@ public class Solution {
     }
 }
 
-
+// 275. H-Index ||
+public class Solution {
+    public int hIndex(int[] citations) {
+        int count = 0, len = citations.length;
+        for (int h = 1; h < citations.length + 1; h++) {
+            if(citations[len - h] >= h){
+                count++;
+            }else{
+                break;
+            }
+        }
+        return count;   
+    }
+}
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
