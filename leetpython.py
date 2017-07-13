@@ -439,9 +439,11 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
-        citations.sort()
-        l = len(citations)
 
-        for i in range(len(citations)):
-            j = l - i
-            for m in range(j):
+# 275. H-Index ||
+class Solution(object):
+    def hIndex(self, citations):
+        """
+        :type citations: List[int]
+        :rtype: int
+        """
