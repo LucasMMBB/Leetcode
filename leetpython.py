@@ -447,3 +447,35 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
+
+# 230 Kth Smallest Element in a BST
+# Method one: DC + Binary Search
+"""
+: Definition for a binary tree node.
+: class TreeNode(object):
+:     def __init__(self, x):
+:         self.val = x
+:         self.left = None
+:         self.right = None
+"""
+class Solution(object):
+    def kthSmallest(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: int
+        """
+        n = self.count(root.left)
+        if n + 1 == k:
+            return root.val
+        elif n + 1 < k:
+            return self.kthSmallest(root.right, k - n -1)
+        else:
+            return self.kthSmallest(root.left, k)
+
+    def count(self, root):
+        # count total node number of the root
+        if root == None:
+            return 0
+
+        return self.count(root.left) + self.count(root.right) + 1

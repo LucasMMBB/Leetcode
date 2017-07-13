@@ -2716,6 +2716,37 @@ public class Solution {
         return n - l;
     }
 }
+
+// 230. Kth Smallest Element in BST
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        int size = getSize(root.left);
+
+        if(size + 1 == k){
+            return root.val;
+        }else if(size + 1 < k){
+            return kthSmallest(root.right, k - size - 1);
+        }else{
+            return kthSmallest(root.left, k);
+        }// if ends
+    }
+
+    public int getSize(TreeNode root){
+        if(root == null)
+            return 0;
+
+        return getSize(root.left) + getSize(root.right) + 1;
+    }
+}
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
