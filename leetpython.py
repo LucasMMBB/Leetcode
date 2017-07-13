@@ -479,3 +479,5 @@ class Solution(object):
             return 0
 
         return self.count(root.left) + self.count(root.right) + 1
+
+# 94. Binary Tree Inorder Traversal
