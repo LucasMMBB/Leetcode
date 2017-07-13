@@ -2632,9 +2632,53 @@ public class Solution {
 
 
 // 274. H-Index
+/**
+ * Method One: Sort first, scan from end to front
+ * Method Two: Binary Search
+ */
 public class Solution {
     public int hIndex(int[] citations) {
-        
+        int len = citations.length;
+        Arrays.sort(citations);
+        int tag = 0;
+        for (int h = len; h > 0; h--) {
+            for(int j = 1; j <= h; j++){
+                if(citations[len - j] < h){
+                    tag = 2;
+                    break;
+                }
+                tag = 1;
+            }// for ends
+            if(tag == 1){
+                if(len - h - 1 >= 0 && citations[len - h - 1] <= h)
+                    return h;
+
+                if(len - h -1 < 0)
+                    return h;
+            }
+        }// for ends
+        return 0;
+    }
+
+    public int hIndex_m2(int[] citations){
+        // method two
+        int n = citations.length;
+        int[] buckets = new int[n + 1];
+        for (int c : citations) {
+            if(c >= n){
+                buckets[n]++;
+            }else{
+                buckets[c]++;
+            }
+        }// for ends
+
+        int count = 0;
+        for (int i = n; i >= 0; i--) {
+            count += buckets[i];
+            if(count >= i)
+                return i;
+        }// for ends
+        return 0;
     }
 }
 
