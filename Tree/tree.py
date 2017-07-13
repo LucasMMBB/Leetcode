@@ -26,19 +26,32 @@ class Tree:
 
 #-------------- Some useful methods ---------------#
 def total(tree):
-	# preoder
-	ans = []
+	# print preoder
 	if tree is  None: return
 	ans.append(tree.val)
+
 	print tree.val
 	total(tree.left)
 	total(tree.right)
 
 def inorder(tree):
-#-------------- test part --------------------------#
-#t = Tree(5, Tree(2, Tree(1), Tree(3)), Tree(6, Tree(5), Tree(7)))
-test = Tree(2, Tree(1, Tree(10), Tree(100)), Tree(3, Tree(30), Tree(300)))
+	# print inorder
+	if tree is None: return
 
-a = total(test)
-print a
-print type(a)
+	inorder(tree.left)
+	ans.append(tree.val)
+	print tree.val
+	inorder(tree.right)
+	return ans
+
+def postorder(tree):
+	# print postorder
+	if tree:
+
+		postorder(tree.left)
+		postorder(tree.right)
+		print tree.val
+#-------------- test part --------------------------#
+test = Tree(1, Tree(2, Tree(4), Tree(5)), Tree(3))
+ans = []
+print inorder(test)
