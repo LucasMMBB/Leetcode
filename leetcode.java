@@ -2695,6 +2695,26 @@ public class Solution {
         }
         return count;   
     }
+
+    public int hIndex_m2(int[] citations){
+        // method two: Binary Search
+        // time: O(log(n))
+        int n = citations.length;
+        int l = 0, r = n - 1;
+
+        while(l <= r){
+            mid = l + (r - l) / 2;
+
+            if(citations[mid] == n - mid){
+                return n - mid;
+            }else if(citations[mid] < n - mid){
+                l = mid + 1;
+            }else{
+                r = mid - 1;
+            }// if ends
+        }// while ends
+        return n - l;
+    }
 }
 // 92. Reverse Linked List ||
 public class Solution {
