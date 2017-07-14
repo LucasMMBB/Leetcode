@@ -2752,18 +2752,12 @@ public class Solution {
 public class Solution {
     public int findPeakElement(int[] nums) {
         int len = nums.length;
-        int l = 0, r = len - 1;
-        while(l <= r){
-            mid =  l + (r - l) / 2;
-            if( (mid == 0 || nums[mid] > nums[mid - 1]) && (mid == nums[len] - 1 || nums[mid] > nums[mid + 1]) ){
-                return mid;
-            }else if(mid < len - 1 && nums[mid] < nums[mid + 1]){
-                l = mid + 1;
-            }else{
-                r = mid - 1;
-            }// if ends
-        }// while ends
-        return -1;
+
+        for(int i = 0; i < len - 1; i++){
+            if(nums[i] > nums[i + 1])
+                return i;
+        }// for ends
+        return len - 1;
     }
 }
 // 92. Reverse Linked List ||
