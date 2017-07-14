@@ -2778,6 +2778,21 @@ public class Solution {
        return res;
     }
 }
+
+// 442. Finad All duplicate numbers in an array
+public class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        List<Integer> res = new ArrayList<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            int index = Math.abs(nums[i]) - 1;
+            if(nums[index] > 0)
+                nums[index] = -nums[index];
+            else
+                res.add(index + 1);
+        }
+        return res;
+    }
+}
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {

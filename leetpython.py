@@ -517,3 +517,19 @@ class Solution(object):
             if nums[i] > 0:
                 ans.append(i + 1)
         return ans
+
+# 442. Find All Duplicates in an Array
+class Solution(object):
+    def findDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        res = []
+        for i in range( len(nums) ):
+            index = abs(nums[i]) - 1
+            if nums[index] > 0:
+                nums[index] = -nums[index]
+            else:
+                res.append(index + 1)
+        return res
