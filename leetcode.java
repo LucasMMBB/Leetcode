@@ -2747,6 +2747,25 @@ public class Solution {
         return getSize(root.left) + getSize(root.right) + 1;
     }
 }
+
+// 162. Find Peak Element
+public class Solution {
+    public int findPeakElement(int[] nums) {
+        int len = nums.length;
+        int l = 0, r = len - 1;
+        while(l <= r){
+            mid =  l + (r - l) / 2;
+            if( (mid == 0 || nums[mid] > nums[mid - 1]) && (mid == nums[len] - 1 || nums[mid] > nums[mid + 1]) ){
+                return mid;
+            }else if(mid < len - 1 && nums[mid] < nums[mid + 1]){
+                l = mid + 1;
+            }else{
+                r = mid - 1;
+            }// if ends
+        }// while ends
+        return -1;
+    }
+}
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
