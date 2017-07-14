@@ -3,6 +3,7 @@ class Tree:
 		self.val = val
 		self.left = left
 		self.right = right
+	def size(self):
 
 	def __str__(self):
 		return str(self.val)
@@ -55,4 +56,4 @@ def postorder(tree):
 #-------------- test part --------------------------#
 test = Tree(1, Tree(2, Tree(4), Tree(5)), Tree(3))
 
-inorder(test)
+print test.size()
