@@ -2793,7 +2793,15 @@ public class Solution {
         return res;
     }
 }
-
+// 628. Maximum Product of Three Numbers
+public class Solution {
+    public int maximumProduct(int[] nums) {
+        Arrays.sort(nums);
+        int a1 = nums[nums.length - 1] * nums[nums.length - 2] * nums[nums.length - 3];
+        int a2 = nums[0] * nums[1] * nums[nums.length - 1];
+        return Math.max(a1, a2);
+    }
+}
 // 222. Count Complete Tree Nodes
 /**
  * Definition for a binary tree node.
@@ -2809,6 +2817,7 @@ public class Solution {
         
     }
 }
+
 // 92. Reverse Linked List ||
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {

@@ -533,3 +533,23 @@ class Solution(object):
             else:
                 res.append(index + 1)
         return res
+
+# 628. Maximum Product of Three Numbers
+class Solution(object):
+    def maximumProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort()
+        a = nums[-1] * nums[-2] * nums[-3]
+        b = nums[0] * nums[1] * nums[-1]
+        return max(a,b)
+        
+# 222. Count Complete Tree Nodes
+class Solution(object):
+    def countNodes(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
