@@ -499,3 +499,21 @@ class Solution(object):
             else:
                 l = mid + 1
         return -1
+
+# 448. Find All Numbers Disappeared in an Array
+class Solution(object):
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        ans = []
+        for i in range(len(nums)):
+            index = abs(nums[i]) - 1
+            if(nums[index] > 0):
+                nums[index] = -nums[index]
+
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                ans.append(i + 1)
+        return ans
