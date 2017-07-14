@@ -480,4 +480,10 @@ class Solution(object):
 
         return self.count(root.left) + self.count(root.right) + 1
 
-# 94. Binary Tree Inorder Traversal
+# 162. Find Peak Element
+class Solution(object):
+    def findPeakElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """

@@ -27,8 +27,8 @@ class Tree:
 #-------------- Some useful methods ---------------#
 def total(tree):
 	# print preoder
+	# Sequence: root left right
 	if tree is  None: return
-	ans.append(tree.val)
 
 	print tree.val
 	total(tree.left)
@@ -36,22 +36,23 @@ def total(tree):
 
 def inorder(tree):
 	# print inorder
+	# Sequence: left root right
 	if tree is None: return
 
 	inorder(tree.left)
-	ans.append(tree.val)
 	print tree.val
 	inorder(tree.right)
-	return ans
 
 def postorder(tree):
 	# print postorder
+	# Sequence: left, right, root
 	if tree:
-
 		postorder(tree.left)
 		postorder(tree.right)
 		print tree.val
+
+
 #-------------- test part --------------------------#
 test = Tree(1, Tree(2, Tree(4), Tree(5)), Tree(3))
-ans = []
-print inorder(test)
+
+inorder(test)
