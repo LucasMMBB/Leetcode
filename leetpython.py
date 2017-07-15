@@ -545,7 +545,24 @@ class Solution(object):
         a = nums[-1] * nums[-2] * nums[-3]
         b = nums[0] * nums[1] * nums[-1]
         return max(a,b)
-        
+# 35. Search Insert Position
+class Solution(object):
+    def searchInsert(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        l,r = 0, len(nums)
+        while l < r:
+            mid = l + (l - r) / 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] < target:
+                l = mid + 1
+            else:
+                r = mid - 1
+        return l        
 # 222. Count Complete Tree Nodes
 class Solution(object):
     def countNodes(self, root):

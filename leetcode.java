@@ -2829,6 +2829,23 @@ public class Solution {
         return Math.max(min1*min2*max1, max3*max2*max1);
     }
 }
+
+
+// 35. Search Insert Position
+public class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        while(l <= r){
+            int mid = l + (r - l) / 2;
+            if(nums[mid] ==  target) return mid;
+            else if(nums[mid] > target) r = mid - 1;
+            else l = mid + 1;
+        }
+        return l;
+    }
+}
+
+
 // 222. Count Complete Tree Nodes
 /**
  * Definition for a binary tree node.
