@@ -584,7 +584,14 @@ class Solution(object):
 
 
 # 219. Contains Duplicate ||
-
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
+        
 # 222. Count Complete Tree Nodes
 class Solution(object):
     def countNodes(self, root):

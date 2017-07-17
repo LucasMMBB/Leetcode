@@ -2883,7 +2883,13 @@ public class Solution {
 // 219. Contains Duplicate ||
 public class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
-        
+        // hashset
+        HashSet set = new HashSet<Integer>();
+        for(int i = 0; i < nums.length - 1; i++){
+            if(!set.contains(nums[i])){
+                set.add(nums[i]);
+            }
+        }
     }
 }
 
