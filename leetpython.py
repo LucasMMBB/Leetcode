@@ -591,12 +591,12 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        pyset = set()
+        tem = {}
         for i in range(len(nums)):
-            if nums[i] not in pyset:
-                pyset.add(nums[i])
-            else:
-                
+            if tem.has_key(nums[i]) and i - tem[nums[i]] <= k:
+                return True
+            tem[nums[i]] = i
+        return False
 
 # 222. Count Complete Tree Nodes
 class Solution(object):
