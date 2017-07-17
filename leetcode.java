@@ -2884,7 +2884,7 @@ public class Solution {
 public class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         // hashset
-        HashMap map = new HashMap<Integer>();
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
             if(map.containsKey(nums[i])){
                 int sub = Math.abs(i - map.get(nums[i]));
@@ -2897,6 +2897,9 @@ public class Solution {
         return false;
     }
 }
+
+
+// 220. Contains Duplicate |||
 
 
 // 222. Count Complete Tree Nodes

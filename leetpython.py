@@ -598,6 +598,24 @@ class Solution(object):
             tem[nums[i]] = i
         return False
 
+# 220. Contains Duplicate |||
+class Solution(object):
+    def containsNearbyAlmostDuplicate(self, nums, k, t):
+        """
+        :type nums: List[int]
+        :type k: int
+        :type t: int
+        :rtype: bool
+        """
+        nums.sort()
+        l,r = 0, len(nums) - 1
+        while l <= r:
+            mid = l + (r - l) / 2
+            if nums[r] - nums[l] <= t and r - l <= k:
+                return True
+            elif
+        return False
+
 # 222. Count Complete Tree Nodes
 class Solution(object):
     def countNodes(self, root):
