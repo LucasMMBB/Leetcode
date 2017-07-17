@@ -2857,7 +2857,7 @@ public class Solution {
     }
 
     public boolean containsDuplicate_m2(int[] nums){
-        HashSet set = new HashSet<Integer>();
+        HashSet<Integer> set = new HashSet<Integer>();
         for(int num: nums){
             if(set.contains(num)){
                 return true;
@@ -2884,12 +2884,17 @@ public class Solution {
 public class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         // hashset
-        HashSet set = new HashSet<Integer>();
-        for(int i = 0; i < nums.length - 1; i++){
-            if(!set.contains(nums[i])){
-                set.add(nums[i]);
-            }
-        }
+        HashMap map = new HashMap<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if(map.containsKey(nums[i])){
+                int sub = Math.abs(i - map.get(nums[i]));
+                if(sub <= k)
+                    return true;
+            }else{
+                map.put(nums[i], i);
+            }// if ends
+        }// for ends
+        return false;
     }
 }
 
