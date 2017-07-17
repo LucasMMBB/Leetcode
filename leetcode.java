@@ -2879,6 +2879,15 @@ public class Solution {
     }
 }
 
+
+// 219. Contains Duplicate ||
+public class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        
+    }
+}
+
+
 // 222. Count Complete Tree Nodes
 /**
  * Definition for a binary tree node.
