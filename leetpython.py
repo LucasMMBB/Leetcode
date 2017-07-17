@@ -563,6 +563,8 @@ class Solution(object):
             else:
                 r = mid - 1
         return l        
+# 217. Contains Duplicate
+
 # 222. Count Complete Tree Nodes
 class Solution(object):
     def countNodes(self, root):

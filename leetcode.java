@@ -2846,6 +2846,17 @@ public class Solution {
 }
 
 
+// 217. Contains Duplicate
+public class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet set = new HashSet<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            set.add(nums[i]);
+        }
+        return set.size() != nums.length;
+    }
+}
+
 // 222. Count Complete Tree Nodes
 /**
  * Definition for a binary tree node.
