@@ -2855,6 +2855,17 @@ public class Solution {
         }
         return set.size() != nums.length;
     }
+
+    public boolean containsDuplicate(int[] nums){
+        HashSet set = new HashSet<Integer>();
+        for(int num: nums){
+            if(set.contains(num)){
+                return true;
+            }
+            set.add(num);
+        }
+        return false;
+    }
 }
 
 // 222. Count Complete Tree Nodes
