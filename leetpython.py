@@ -625,6 +625,22 @@ class Solution(object):
 
         return False
 
+# 111. Minimum Depth of Binary Tree
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def minDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        
+
 # 222. Count Complete Tree Nodes
 class Solution(object):
     def countNodes(self, root):
