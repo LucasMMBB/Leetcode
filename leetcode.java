@@ -2856,7 +2856,7 @@ public class Solution {
         return set.size() != nums.length;
     }
 
-    public boolean containsDuplicate(int[] nums){
+    public boolean containsDuplicate_m2(int[] nums){
         HashSet set = new HashSet<Integer>();
         for(int num: nums){
             if(set.contains(num)){
@@ -2865,6 +2865,11 @@ public class Solution {
             set.add(num);
         }
         return false;
+    }
+
+    public boolean containsDuplicate_m3(int[] nums){
+        // method 3: sort
+        // Time: O(nlogn), Space: O(1)
     }
 }
 
