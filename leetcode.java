@@ -2900,7 +2900,11 @@ public class Solution {
 
 
 // 220. Contains Duplicate |||
-
+public class Solution {
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        
+    }
+}
 
 // 222. Count Complete Tree Nodes
 /**
