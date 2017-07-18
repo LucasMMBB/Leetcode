@@ -655,6 +655,23 @@ class Solution(object):
                     return level
             level += 1
         return level
+    def minDepth_m2(self, root):
+        '''
+        :method: DFS
+        :time: O(n), Space: O(logn)
+        '''
+        if not root:
+            return 0
+
+        if not root.left and not root.right:
+            return 1
+        elif root.left == None:
+            return self.minDepth_m2(root.right) + 1
+        elif root.right == None:
+            return self.minDepth_m2(root.left) + 1
+        else:
+            return min(self.minDepth_m2(root.left), self.minDepth_m2(root.right)) + 1
+            
 
 
 
