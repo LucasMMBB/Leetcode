@@ -636,10 +636,27 @@ class Solution(object):
 class Solution(object):
     def minDepth(self, root):
         """
+        :method: Breadth First Search
         :type root: TreeNode
         :rtype: int
         """
-        
+        queue = [root]
+        level = 1
+
+        while queue:
+            for i in range(len(queue)):
+                node = queue.pop(0)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+                if not node.left and not node.right:
+                    return level
+            level += 1
+        return level
+
+
 
 # 222. Count Complete Tree Nodes
 class Solution(object):

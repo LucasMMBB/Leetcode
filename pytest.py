@@ -1,13 +1,31 @@
-nums = [4, 3, 2, 7, 8, 2, 3, 1]
-ans = []
-for i in range(len(nums)):
-    index = abs(nums[i]) - 1
-    print index
-    if(nums[index] > 0):
-        nums[index] = -nums[index]
+class TreeNode(object):
+	"""docstring for TreeNode"""
+	def __init__(self, arg, left=None, right=None):
+		self.val = arg
+		self.left = left
+		self.right = right
 
-for i in range(len(nums)):
-    if nums[i] > 0:
-        ans.append(i + 1)
+left = TreeNode(1)
+left.left = TreeNode(2)
+left.left.left = TreeNode(3)
+right = TreeNode(10)
+root = TreeNode(0, left, right)
 
-print ans
+
+queue = [root]
+level = 1
+
+while queue:
+	size = len(queue)
+	for i in range(len(queue)):
+		node = queue.pop(0)
+
+		if node.left:
+			queue.append(node.left)
+
+		if node.right:
+			queue.append(node.right)
+
+		if node.left == None and node.right == None:
+			return level
+	level += 1		
