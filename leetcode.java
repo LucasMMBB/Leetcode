@@ -2963,6 +2963,33 @@ public class Solution {
 }
 
 
+// 637.Average of Levels in Binary Tree
+public class Solution {
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(root == null) return res;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        while(!q.isEmpty()){
+            int size = q.size();
+            List<Integer> lres = new ArrayList<Integer>();
+            for(int i = 0; i < size; i++){
+                TreeNode node = q.poll();
+                lres.add(node.val);
+                if(node.left != null){
+                    q.offer(node.left);
+                }
+                if(node.right != null){
+                    q.offer(node.right);
+                }
+            }
+            res.add(lres);
+        }// while ends
+        return res;      
+    }
+} 
+
+
 // 220. Contains Duplicate |||
 public class Solution {
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {

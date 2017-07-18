@@ -697,6 +697,38 @@ class Solution(object):
         return res
 
 
+# 637. Average of Levels in Binary Tree
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def averageOfLevels(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[float]
+        """
+        queue = [root]
+        res = []
+
+        while queue:
+            size = len(queue)
+            sm = 0
+            for i in range(size):
+                node = queue.pop(0)
+                sm += node.val
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            avg = sm / range(size)
+            res.append(avg)
+        return res
+
+
 # 222. Count Complete Tree Nodes
 class Solution(object):
     def countNodes(self, root):
