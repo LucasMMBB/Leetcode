@@ -671,8 +671,30 @@ class Solution(object):
             return self.minDepth_m2(root.left) + 1
         else:
             return min(self.minDepth_m2(root.left), self.minDepth_m2(root.right)) + 1
-            
 
+  
+# 102.Binary Tree Level Order Traversal
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        res = []
+        queue = [root]
+
+        while queue:
+            size = len(queue)
+            lres = []
+            for i in range(size):
+                node = queue.pop(0)
+                lres.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            res.append(lres)
+        return res
 
 
 # 222. Count Complete Tree Nodes
