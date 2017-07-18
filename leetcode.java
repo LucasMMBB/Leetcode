@@ -2990,6 +2990,34 @@ public class Solution {
 } 
 
 
+// 107. Binary Tree Level Order Traversal ||
+public class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(root == null) return res;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            int len = queue.size();
+            List<Integer> lres = new ArrayList<Integer>();
+            for(int i = 0; i < len; i++){
+                TreeNode node = queue.poll();
+                lres.add(node.val);
+                if(node.left != null){
+                    queue.offer(node.left);
+                }
+                if(node.right != null){
+                    queue.offer(node.right);
+                }
+            }// for ends
+            res.add(0, lres);
+        }// while ends
+        return res;
+
+    }
+}
+
+
 // 220. Contains Duplicate |||
 public class Solution {
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {

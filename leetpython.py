@@ -680,6 +680,8 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        if not root:
+            return []
         res = []
         queue = [root]
 
@@ -726,6 +728,31 @@ class Solution(object):
                     queue.append(node.right)
             avg = sm / range(size)
             res.append(avg)
+        return res
+
+# 107. Binary Tree Level Order Traversal ||
+class Solution(object):
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return []
+        res = []
+        queue = [root]
+
+        while queue:
+            size = len(queue)
+            lres = []
+            for i in range(size):
+                node = queue.pop(0)
+                lres.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            res.insert(0, lres)
         return res
 
 
