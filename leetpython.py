@@ -695,7 +695,7 @@ class Solution(object):
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            res.append(lres)
+            res.append(lres.pop())
         return res
 
 
@@ -784,6 +784,23 @@ class Solution(object):
             res.append(lres)
             tag = -tag
         return res
+
+# 199. Binary Tree Right Side View
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def rightSideView(self, root):
+        """
+        :method: BFS
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+
 # 222. Count Complete Tree Nodes
 class Solution(object):
     def countNodes(self, root):

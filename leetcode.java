@@ -3019,7 +3019,18 @@ public class Solution {
 
 
 // 103. Binary Tree Zigzag Level Order Traversal
+public class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        
+    }
+}
 
+// 199. Binary Tree Right Side View
+public class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        
+    }
+}
 // 220. Contains Duplicate |||
 public class Solution {
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
