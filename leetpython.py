@@ -871,7 +871,43 @@ class Solution:
                     queue.append(node.right)
             last.next = None
         return
+
 # 117. Populating Next Right Pointers in Each Node ||
+class Solution:
+    def connect(self, root):
+        # method: lnked list in each level
+        if root is None:
+            return
+        queue = [root]
+        level = 0
+
+        while queue:
+            size = len(queue)
+            last = None
+            for i in range(size):
+                node = queue.pop(0)
+                if last:
+                    last.next = node
+                last = node
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            last.next = None
+        return
+
+
+# 133. Clone Graph
+# Definition for a undirected graph node
+# class UndirectedGraphNode:
+#     def __init__(self, x):
+#         self.label = x
+#         self.neighbors = []
+
+class Solution:
+    # @param node, a undirected graph node
+    # @return a undirected graph node
+    def cloneGraph(self, node):
 
 
 # 222. Count Complete Tree Nodes
