@@ -756,6 +756,34 @@ class Solution(object):
         return res
 
 
+# 103. Binary Tree Zigzag Level Order Traversal
+class Solution(object):
+    def zigzagLevelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return []
+        res = []
+        queue = [root]
+        tag = 1
+        while queue:
+            size = len(queue)
+            lres = []
+            for i in range(size):
+                node = queue.pop(0)
+                if tag == 1:
+                    lres.append(node.val)
+                else:
+                    lres.insert(0, node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            res.append(lres)
+            tag = -tag
+        return res
 # 222. Count Complete Tree Nodes
 class Solution(object):
     def countNodes(self, root):
