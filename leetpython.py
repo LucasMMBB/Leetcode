@@ -695,7 +695,7 @@ class Solution(object):
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            res.append(lres.pop())
+            res.append(lres)
         return res
 
 
@@ -800,6 +800,77 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
+        if not root:
+            return []
+        res = []
+        queue = [root]
+
+        while queue:
+            size = len(queue)
+            lres = []
+            for i in range(size):
+                node = queue.pop(0)
+                lres.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            res.append(lres.pop())
+        return res
+# 116. Populating Next Right Pointers in Each Node
+# Definition for binary tree with next pointer.
+# class TreeLinkNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+#         self.next = None
+
+class Solution:
+    # @param root, a tree link node
+    # @return nothing
+    def connect(self, root):
+        if root is None:
+            return
+
+        queue = [root]
+        level = 0
+
+        while queue:
+            size = len(queue)
+            for i in range(size):
+                node = queue.pop(0)
+                if i == size - 1:
+                    node.next = None
+                else:
+                    node.next = queue[0]
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+        return
+
+    def connect(self, root):
+        # method: lnked list in each level
+        if root is None:
+            return
+        queue = [root]
+        level = 0
+
+        while queue:
+            size = len(queue)
+            last = None
+            for i in range(size):
+                node = queue.pop(0)
+                if last:
+                    last.next = node
+                last = node
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            last.next = None
+        return
 
 # 222. Count Complete Tree Nodes
 class Solution(object):
