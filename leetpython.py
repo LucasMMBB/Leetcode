@@ -942,7 +942,7 @@ class Solution(object):
 
         stack = [(p, q)]
         while stack:
-            lnode, rnode = stack.pop()
+            lnode, rnode = stack.pop(0)
 
             if lnode == None and rnode == None:
                 continue

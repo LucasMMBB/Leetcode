@@ -3062,6 +3062,37 @@ public class Solution {
             return false;
         }// if ends
     }
+
+    public boolean isSameTree(TreeNode p, TreeNode q){
+        if(p == null && q == null){
+            return false;
+        }
+        List<List<TreeNode>> stack = new LinkedList<List<TreeNode>>();
+        List<TreeNode> list = new ArrayList<TreeNode>();
+        list.add(p);
+        list.add(q);
+        stack.add(list);
+        while(!stack.isEmpty()){
+            List<TreeNode> tem = stack.poll();
+            TreeNode l = tem.remove(0); ///get first elment
+            TreeNode r = tem.remove(0);
+            if(l == null && r == null){
+                continue;
+            }else if(l != null && r != null && l.val == r.val){
+                List<TreeNode> llist = new ArrayList<TreeNode>();
+                llist.add(l.left);
+                llist.add(r.right);
+                stack.add(llist);
+                List<TreeNode> rlist = new ArrayList<TreeNode>();
+                rlist.add(l.right);
+                rlist.add(r.right);
+                stack.add(rlist);
+            }else{
+                return false;
+            }
+        }//  while ends
+        return true;
+    }
 }
 
 
