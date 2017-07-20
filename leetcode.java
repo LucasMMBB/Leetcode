@@ -3034,12 +3034,14 @@ public class Solution {
     }
 
     public int singleNumber_m2(int[] nums){
+        // bit manipulation: xor
         int res = 0;
         for(int num: nums)
             res ^= num;
         return res;
     }
 }
+
 
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
