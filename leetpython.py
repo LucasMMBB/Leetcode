@@ -958,6 +958,7 @@ class Solution(object):
 class Solution(object):
     def isSymmetric(self, root):
         """
+        :method: no recursion
         :type root: TreeNode
         :rtype: bool
         """
@@ -982,6 +983,17 @@ class Solution(object):
 
         return True
 
+    def isSymmetric(self, root):
+        if root == None:
+            return True
+
+    def helper(self, left, right):
+        if left == None and right == None:
+            return True
+        elif left and right and left.val == right.val:
+            return self.helper(left.left, right.right) and self.helper(left.right, right.left)
+        else:
+            return False
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
