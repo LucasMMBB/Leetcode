@@ -3065,7 +3065,7 @@ public class Solution {
 
     public boolean isSameTree(TreeNode p, TreeNode q){
         if(p == null && q == null){
-            return false;
+            return true;
         }
         List<List<TreeNode>> stack = new LinkedList<List<TreeNode>>();
         List<TreeNode> list = new ArrayList<TreeNode>();
@@ -3073,7 +3073,7 @@ public class Solution {
         list.add(q);
         stack.add(list);
         while(!stack.isEmpty()){
-            List<TreeNode> tem = stack.poll();
+            List<TreeNode> tem = stack.remove(0);
             TreeNode l = tem.remove(0); ///get first elment
             TreeNode r = tem.remove(0);
             if(l == null && r == null){
@@ -3081,7 +3081,7 @@ public class Solution {
             }else if(l != null && r != null && l.val == r.val){
                 List<TreeNode> llist = new ArrayList<TreeNode>();
                 llist.add(l.left);
-                llist.add(r.right);
+                llist.add(r.left);
                 stack.add(llist);
                 List<TreeNode> rlist = new ArrayList<TreeNode>();
                 rlist.add(l.right);
@@ -3091,7 +3091,7 @@ public class Solution {
                 return false;
             }
         }//  while ends
-        return true;
+        return true;  
     }
 }
 
