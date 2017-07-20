@@ -954,6 +954,34 @@ class Solution(object):
         return True
 
 
+# 101. Symmetric Tree
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if root == None:
+            return True
+
+        left = root.left
+        right = root.right
+        if left == None and right == None:
+            return True
+        stack = [[left, right]]
+        while stack:
+            lnode, rnode = stack.pop(0)
+
+            if lnode == None and rnode == None:
+                continue
+            elif lnode and rnode and lnode.val == rnode.val:
+                stack.append([lnode.left, rnode.right])
+                stack.append([lnode.right, rnode.left])
+            else:
+                return False
+
+        return True
+
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
