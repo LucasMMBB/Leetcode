@@ -897,6 +897,21 @@ class Solution:
         return
 
 
+# 136. Single Number
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        st = Set()
+        for num in nums:
+            if num in st:
+                st.remove(num)
+            else:
+                st.add(num)
+        return st.pop()
+
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:

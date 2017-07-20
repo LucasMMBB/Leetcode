@@ -3018,6 +3018,29 @@ public class Solution {
 }
 
 
+// 136. Single Number
+public class Solution {
+    public int singleNumber(int[] nums) {
+        Set<Integer> set = new HashSet<Integer>();
+        for (int num: nums) {
+             if(!set.contains(num)){
+                set.add(num);
+             }else{
+                set.remove(num);
+             }// if ends
+         }// for ends
+         Iterator<Integer> itr = set.iterator();
+         return itr.next();
+    }
+
+    public int singleNumber_m2(int[] nums){
+        int res = 0;
+        for(int num: nums)
+            res ^= num;
+        return res;
+    }
+}
+
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
