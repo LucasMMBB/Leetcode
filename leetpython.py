@@ -912,6 +912,48 @@ class Solution(object):
                 st.add(num)
         return st.pop()
 
+# 100. Same Tree
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isSameTree(self, p, q):
+        """
+        :method: recursion
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        if p == None and q == None:
+            return True
+        elif p and q and p.val == q.val:
+            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        else:
+            return False    
+
+    def isSameTree(self, p, q):
+        # method: no recursion
+        if p == None and q == None:
+            return True
+
+        stack = [(p, q)]
+        while stack:
+            lnode, rnode = stack.pop()
+
+            if lnode == None and rnode == None:
+                continue
+            elif lnode and rnode and lnode.val == rnode.val:
+                stack.append((lnode.left, rnode.left))
+                stack.append((lnode.right, rnode.right))
+            else:
+                return False
+        return True
+
+
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
