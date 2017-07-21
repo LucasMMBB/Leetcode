@@ -1012,6 +1012,30 @@ class Solution(object):
         if l == -1 or r == -1 or abs(l - r) > 1:
             return -1
         return max(l, r) + 1
+
+# 108. Convert Sorted Array to Binary Search Tree
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution(object):
+    def sortedArrayToBST(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: TreeNode
+        """
+        if len(nums) == 0:
+            return None
+        mid = (0 + len(nums) - 1) / 2
+        node = TreeNode(nums[mid])
+        node.left = self.sortedArrayToBST(nums[0:mid])
+        node.right = self.sortedArrayToBST(nums[mid + 1 : len(nums)])
+        return node   
+
+
+
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:

@@ -3153,6 +3153,36 @@ public class Solution {
 
     }
 }
+
+
+// 108. Convert Sorted Array to Binary Search Tree
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if(nums.length == 0 || nums == null) return null;
+        TreeNode tree = new helper(nums, 0, nums.length - 1);
+        return tree;
+    }
+
+    public TreeNode helper(int[] nums, int l, int r){
+        if(l >  r) return null;
+
+        int mid = l + (l - r) / 2;
+        TreeNode node = new TreeNode(nums[mid]);
+        node.left = new helper(nums, l, mid - 1);
+        node.right = new helper(nums, mid + 1, r);
+        return node;
+    }
+}
+
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
