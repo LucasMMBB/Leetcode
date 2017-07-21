@@ -2933,6 +2933,21 @@ public class Solution {
         }
         return depth;
     }
+
+    public int minDepth(TreeNode root){
+        if(root == null)
+            return 0;
+
+        if(root.left != null && root.right != null){
+            return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+        }else if(root.left != null && root.right == null){
+            return minDepth(root.left) + 1;
+        }else if(root.left == null && root.right != null){
+            return minDepth(root.right) + 1;
+        }else{
+            return 1;
+        }// if ends
+    }
 }
 
 
@@ -3116,6 +3131,28 @@ public class Solution {
     }
 }
 
+
+// 104. Maximum Depth of Binary Tree
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+
+        if(root.left != null || root.right != null)
+            return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+        else
+            return 1;
+
+    }
+}
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
