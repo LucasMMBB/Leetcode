@@ -1070,6 +1070,23 @@ class Solution(object):
             
         right = slow.next
         return [slow.val, left, right]
+
+
+# 112. Path Sum
+class Solution(object):
+    def hasPathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: bool
+        """
+        if root is None:
+            return False
+        
+
+    def helper(self, root, sum):
+
+
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
