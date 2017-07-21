@@ -3096,6 +3096,25 @@ public class Solution {
 }
 
 
+// 110. Balanced Binary Tree
+public class Solution {
+    public boolean isBalanced(TreeNode root) {
+        return height(root) != -1;
+    }
+
+    public int height(TreeNode root){
+        if(root == null)
+            return 0;
+        // left and right height
+        int l = height(root.left);
+        int r = height(root.right);
+
+        if(l == -1 || r == -1 || Math.abs(l - r) > 1)
+            return -1; // -1 means that tree is not balanced
+
+        return Math.max(l, r) + 1;
+    }
+}
 
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {

@@ -1002,14 +1002,16 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
+        return self.height(root) != -1
+    def height(self, root):
         if root == None:
-            return True
-        return self.heightBalanced(root.left) and self.heightBalanced(root.right)
-    def heightBalanced(self, tree):
-        if tree == None:
-            return True
-        # to be continue
+            return 0
+        l = self.height(root.left)
+        r = self.height(root.right)
 
+        if l == -1 or r == -1 or abs(l - r) > 1:
+            return -1
+        return max(l, r) + 1
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
