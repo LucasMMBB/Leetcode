@@ -994,6 +994,22 @@ class Solution(object):
             return self.helper(left.left, right.right) and self.helper(left.right, right.left)
         else:
             return False
+
+# 110. Balanced Binary Tree
+class Solution(object):
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if root == None:
+            return True
+        return self.heightBalanced(root.left) and self.heightBalanced(root.right)
+    def heightBalanced(self, tree):
+        if tree == None:
+            return True
+        # to be continue
+
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
