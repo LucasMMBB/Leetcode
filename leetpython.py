@@ -1035,7 +1035,41 @@ class Solution(object):
         return node   
 
 
+# 109. Convert Sorted List to Binary Search Tree
+class Solution(object):
+    def sortedListToBST(self, head):
+        """
+        :type head: ListNode
+        :rtype: TreeNode
+        """
+        if head == None:
+            return None
+        rt = self.midElem(head)
+        midValue = rt[0]
+        node = TreeNode(midValue)
+        node.left = self.sortedListToBST(rt[1])
+        node.right = self.sortedListToBST(rt[2])
+        return node
 
+    def midElem(self, head):
+        if head == None:
+            return None
+        prev = None
+        slow = head
+        fast = head.next
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+
+        if prev:
+            prev.next = None
+            left = head
+        else:
+            left = None
+            
+        right = slow.next
+        return [slow.val, left, right]
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:

@@ -130,10 +130,19 @@ class UnorderedList(object):
                 return True
 
         return False
+
+    def midElement(self):
+        slow = self.head
+        fast = self.head.next
+        while fast != None and fast.next != None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow.data
 #---------- Some useful functions --------------#
 a = UnorderedList()
-a.add(-4)
-a.add(0)
-a.add(2)
+a.add(5)
+a.add(4)
 a.add(3)
-print a.hasCycle()
+a.add(2)
+a.add(1)
+print a.midElement()

@@ -3168,17 +3168,39 @@ public class Solution {
 public class Solution {
     public TreeNode sortedArrayToBST(int[] nums) {
         if(nums.length == 0 || nums == null) return null;
-        TreeNode tree = new helper(nums, 0, nums.length - 1);
+        TreeNode tree = helper(nums, 0, nums.length - 1);
         return tree;
     }
 
     public TreeNode helper(int[] nums, int l, int r){
         if(l >  r) return null;
 
-        int mid = l + (l - r) / 2;
+        int mid = l + (r - l) / 2;
         TreeNode node = new TreeNode(nums[mid]);
-        node.left = new helper(nums, l, mid - 1);
-        node.right = new helper(nums, mid + 1, r);
+        node.left = helper(nums, l, mid - 1);
+        node.right = helper(nums, mid + 1, r);
+        return node;
+    }
+}
+
+// 109. Convert Sorted List to Binary Search Tree
+public class Solution {
+    public TreeNode sortedListToBST(ListNode head) {
+        if(head == null) return null;
+        return toBST(head, null);
+    }
+
+    public TreeNode toBST(ListNode head, ListNode tail){
+        if(head == tail) return null;
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while(fast != tail && fast.next != tail){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        TreeNode node = new TreeNode(slow.val);
+        node.left = toBST(head, slow);
+        node.right = toBST(slow.next, tail);
         return node;
     }
 }
