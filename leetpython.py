@@ -1082,9 +1082,11 @@ class Solution(object):
         """
         if root is None:
             return False
-        
 
-    def helper(self, root, sum):
+        if root.left == None and root.right == None and sum - root.val == 0:
+            return True;
+
+        return hasPathSum(root.left, sum - root.val) or hasPathSum(root.right, sum - root.val)
 
 
 # 133. Clone Graph

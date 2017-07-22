@@ -3205,6 +3205,21 @@ public class Solution {
     }
 }
 
+
+// 112. Path Sum
+public class Solution {
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root == null) return false;
+
+        if(root.left == null && root.right == null && sum - root.val == 0){
+            return true;
+        }
+        
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+    }
+}
+
+
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
