@@ -3213,11 +3213,17 @@ public class Solution {
 
         if(root.left == null && root.right == null && sum - root.val == 0){
             return true;
+        }else if(sum - root.val < 0){
+            return false;
         }
         
         return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
     }
 }
+
+
+// 113. Path Sum ||
+
 
 
 // 103. Binary Tree Zigzag Level Order Traversal

@@ -1089,6 +1089,41 @@ class Solution(object):
         return hasPathSum(root.left, sum - root.val) or hasPathSum(root.right, sum - root.val)
 
 
+# 113. Path Sum ||
+class Solution(object):
+    def pathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: List[List[int]]
+        """
+        self.pathHelper(self, root, sum, [], [])
+        return res
+
+    def pathHelper(self, root, sum, cur, res): 
+        if root == None:
+            return
+
+        if root.left == None and root.right == None and sum - root.val == 0:
+            cur.append(root.val)
+            res.append(cur)
+            return
+        elif root.left != None and root.right != None:
+            cur.append(root.val)
+            self.pathHelper(root.left, sum - root.val, cur, res)
+            self.pathHelper(root.right, sum - root.val, cur, res)
+        elif root.left != None and root.right == None:
+            cur.append(root.val)
+            self.pathHelper(root.left, sum - root.val, cur, res)
+        elif root.left == None and root.right != None:
+            cur.append(root.val)
+            self.pathHelper(root.right, sum - root.val, cur, res)
+        else:
+            # do nothing
+
+
+
+
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
