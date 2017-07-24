@@ -1185,7 +1185,15 @@ class TwoSum(object):
                     return True
         return False
 
-
+# 105. Construct Binary Tree from Preorder and Inorder
+class Solution:
+    def buildTree(self, preorder, inorder):
+        if len(inorder) > 0:
+            mid = inorder.index(preorder.pop(0))
+            root = TreeNode(mid)
+            root.left = self.buildTree(preorder, inorder[:mid])
+            root.right = self.buildTree(preorder, inorder[mid + 1:])
+            return root
 # 437. Path Sum |||
 
 
