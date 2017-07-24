@@ -1280,6 +1280,31 @@ class Solution(object):
         return res
 
 
+# 202. Happy Number
+class Solution(object):
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        set = {1}
+        while n not in set:
+            set.add(n)
+            sum = 0
+            while n > 0:
+                sum += (n%10)**2
+                n = n / 10
+            if sum == 1:
+                return True
+            n = sum
+        return n == 1
+
+    def isHappy(self, n):
+        set = {1}
+        while n not in set:
+            set.add(n)
+            n = sum(int(x)**2 for x in str(n))
+        return n == 1
 # 437. Path Sum |||
 
 
