@@ -1146,6 +1146,49 @@ class Solution(object):
             return [[root.val]]
         tmp = self.pathSum_m3(root.left, sum - root.val) + self.pathSum_m3(root.right, sum - root.val)
         return [[root.val] + i for i in tmp]
+
+
+# 170. Two Sum ||| - Data structure design
+class TwoSum(object):
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.hashtable = dict()
+        
+
+    def add(self, number):
+        """
+        Add the number to an internal data structure..
+        :type number: int
+        :rtype: void
+        """
+        if number in self.hashtable:
+            self.hashtable[number] += 1
+        else:
+            self.hashtable[number] = 1
+
+
+    def find(self, value):
+        """
+        Find if there exists any pair of numbers which sum is equal to the value.
+        :type value: int
+        :rtype: bool
+        """
+        for key in self.hashtable:
+            if key * 2 == value:
+                if self.hashtable[key] >= 2:
+                    return True
+            else:
+                if value - key in self.hashtable:
+                    return True
+        return False
+
+
+# 437. Path Sum |||
+
+
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:

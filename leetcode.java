@@ -3254,6 +3254,41 @@ public class Solution {
 }
 
 
+//170. Two Sum ||| - Data structure design
+public class TwoSum {
+
+    // Map interface
+    Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+    /** Initialize your data structure here. */
+    public TwoSum() {
+        
+    }
+    
+    /** Add the number to an internal data structure.. */
+    public void add(int number) {
+        if(map.containsKey(number)){
+            map.put(number, map.get(number) + 1);
+        }else{
+            map.put(number, 1);
+        }
+    }
+    
+    /** Find if there exists any pair of numbers which sum is equal to the value. */
+    public boolean find(int value) {
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+            int k = entry.getKey();
+            int v = entry.getValue();
+            if(k*2 == value){
+                if(v >= 2)return true;
+            }else{
+                if(map.containsKey(value - k)) return true;
+            }
+        }// for ends
+        return false;
+    }
+}
+
+
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
