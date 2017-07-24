@@ -1097,11 +1097,55 @@ class Solution(object):
         :type sum: int
         :rtype: List[List[int]]
         """
-        
+        res = []
+        path = []
+        self.helper(root, sum, result, path)
+        return result
 
+    def helper(self, root, sum, res, path):
+        if root is None:
+            return
 
+        path.append(root.val)
+        if root.left is None and root.right is None:
+            if sum == root.val:    
+                newlist = p
+                res.append(newlist)
+            return
 
+        if root.left is not None:
+            self.helper(root.left, sum - root.val, res, p)
+            p.pop(len(p) - 1)
 
+        if root.right is not None:
+            self.helper(root.right, sum - root.val, res, p)
+            p.pop(len(p) - 1)
+
+    def pathSum_m2(self, root, sum):
+        # method: recursion with python
+        if root is None:
+            return []
+        res = []
+        self.dfs(root, sum, [], res)
+
+    def dfs(self, root, sum, ls, res):
+        if root is None:
+            return
+        if root.left is None and root.right is None and sum == root.val:
+            ls.append(root.val)
+            res.append(ls)
+        if root.left:
+            self.dfs(root.left, sum - root.val, ls + [root.val], res)
+        if root.right:
+            self.dfs(root.right, sum - root.val, ls + [root.val], res)
+
+    def pathSum_m3(self, root, sum):
+        if not root:
+            return
+        if not root.left and not root.right and sum == root.val:
+            return [[root.val]]
+        tmp = self.pathSum_m3(root.left, sum - root.val) + self.pathSum_m3(root.right, sum - root.val)
+        return [[root.val] + i for i in tmp]
 # 133. Clone Graph
 # Definition for a undirected graph node
 # class UndirectedGraphNode:

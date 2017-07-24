@@ -3231,7 +3231,7 @@ public class Solution {
         return res;
     }
 
-    public void dfs(TreeNode root, int sum, List<List<Integer>>, List<Integer>){
+    public void dfs(TreeNode root, int sum, List<List<Integer>> res, List<Integer> path){
         if(root == null) return;
         path.add(root.val);
 
