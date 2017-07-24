@@ -1190,10 +1190,29 @@ class Solution:
     def buildTree(self, preorder, inorder):
         if len(inorder) > 0:
             mid = inorder.index(preorder.pop(0))
-            root = TreeNode(mid)
+            root = TreeNode(inorder[mid])
             root.left = self.buildTree(preorder, inorder[:mid])
             root.right = self.buildTree(preorder, inorder[mid + 1:])
             return root
+
+
+# 106. Construct Binary Tree from Inorder and Postorder
+class Solution(object):
+    def buildTree(self, inorder, postorder):
+        """
+        :type inorder: List[int]
+        :type postorder: List[int]
+        :rtype: TreeNode
+        """
+        if len(postorder) > 0:
+            mid = inorder.index(postorder.pop())
+            root = TreeNode(inorder[mid])
+            root.left = self.buildTree(inorder[:mid], postorder)
+            root.right = self.buildTree(inorder[mid + 1 :], postorder)
+            return root
+        return
+
+
 # 437. Path Sum |||
 
 
