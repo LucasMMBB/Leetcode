@@ -3319,6 +3319,58 @@ public class Solution {
     }
 }
 
+// 545. Boundary of Binary Tree
+public class Solution {
+    public List<Integer> boundaryOfBinaryTree(TreeNode root) {
+        List<Integer> res = new ArrayList<Integer>();
+        if(root == null)return res;
+        if(!isLeaf(root)) res.add(root.val);
+
+        TreeNode left = root.left;
+        while(left != null){
+            if(!isLeaf(left))res.add(left.val);
+            if(left.left != null)
+                left = left.left;
+            else{
+                left = left.right;
+            }
+        }// while ends
+
+        addLeaves(res, root);
+
+        TreeNode right = root.right;
+        Stack<Integer> st = new Stack<Integer>();
+        while(right != null){
+            if(!isLeaf(right)) st.push(right.val);
+            if(right.right != null){
+                right = right.right;
+            }else{
+                right = right.left;
+            }
+        }// while ends
+        while(!st.empty()){
+            res.add(st.pop());
+        }
+        return res;
+    }
+
+    public boolean isLeaf(TreeNode root){
+        if(root == null) return false;
+        return root.left == null && root.right == null;
+    }
+
+    public void addLeaves(List<Integer> res, TreeNode root){
+        if(isLeaf(root)){
+            res.add(root.val);
+        }else{
+            if(root.left != null)
+                addLeaves(res, root.left);
+            if(root.right != null)
+                addLeaves(res, root.right);
+        }
+    }
+}
+
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {

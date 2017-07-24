@@ -817,6 +817,23 @@ class Solution(object):
                     queue.append(node.right)
             res.append(lres.pop())
         return res
+
+    def rightSideView_2(self, root):
+        #method: DFS
+        res = []
+        self.helper(res, root, 0)
+        return res
+
+    def helper(self, res, root, level):
+        if not root:
+            return
+
+        if level == len(res):
+            res.append(root.val)
+        
+        self.helper(res, root.right, level + 1)
+        self.helper(res, root.left, leve + 1)
+
 # 116. Populating Next Right Pointers in Each Node
 # Definition for binary tree with next pointer.
 # class TreeLinkNode:
@@ -1211,6 +1228,56 @@ class Solution(object):
             root.right = self.buildTree(inorder[mid + 1 :], postorder)
             return root
         return
+
+
+# 545. Boundary of Binary Tree
+class Solution(object):
+    def isLeaf(self, root):
+        '''
+        :rtype: bool
+        '''
+        if not root:
+            return False
+        return root.left == None and root.right == None
+
+    def addLeaves(self, res, root):
+        if self.isLeaf(root):
+            res.append(root.val)
+        else:
+            if root.left:
+                self.addLeaves(res, root.left)
+            if root.right:
+                self.addLeaves(res, root.right)
+
+    def boundaryOfBinaryTree(self, root):
+        res = []
+        if not root:
+            return res
+
+        if not self.isLeaf(root):
+            res.append(root.val)
+
+        t = root.left
+        while t:
+            if not self.isLeaf(t):
+                res.append(t.val)
+
+            if t.left:
+                t = t.left
+            else:
+                t = t.right
+        self.addLeaves(res, root)
+        t = root.right
+        stack = []
+        while t:
+            if not self.isLeaf(t)
+                stack.insert(0, t.val)
+            if t.right:
+                t = t.right
+            else:
+                t = t.left
+        res += stack
+        return res
 
 
 # 437. Path Sum |||
