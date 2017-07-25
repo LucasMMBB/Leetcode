@@ -1370,6 +1370,90 @@ class Solution(object):
             ugly.append(next_ugly_no)
 
         return ugly[-1]
+
+# 242. Valid Anagram
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        if len(s) != len(t): return False
+        if len(l) == 0: return True
+        set = {}
+        for i in range(len(s)):
+            k = s[i]
+            if k not in set:
+                set[k] = 1
+            else:
+                set[k] += 1
+
+        # check and pop
+        for i in range(len(t)):
+            k = t[i]
+            if k not in set:
+                return False
+            else:
+                if set[k] == 1:
+                    set.pop(k)
+                else:
+                    set[k] -= 1
+        return set == {}
+
+    def isAnagram_m2(self, s, t):
+        return sorted(s) == sorted(t)
+    
+    def isAnagram_m3(self, s, t):
+        if len(s) != len(t): return False
+        if len(t) == 0: return True
+        res = [0 for i in range(26)]
+        for i in range(len(s)):
+            res[ord(s[i]) - ord('a')] += 1
+            res[ord(t[i]) - ord('a')] -= 1
+        for i in range(26):
+            if res[i] != 0:
+                return False
+        return True
+
+# 49. Group Angarams
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        dic = {}
+        res = []
+        for word in strs:
+            st = str(sorted(word))
+            if st in dic:
+                dic[st].append(word)
+            else:
+                dic[st] = [word]
+        for key in dic:
+            if(len(dic[key]) >= 1):
+                res.append(dic[key])
+
+        return res
+
+# 313. Super Ugly Number
+class Solution(object):
+    def nthSuperUglyNumber(self, n, primes):
+        """
+        :type n: int
+        :type primes: List[int]
+        :rtype: int
+        """
+
+    
+    def isSuperUgly(self, n, primes):
+        for prime in primes:
+            while num % prime == 0:
+                num /= prime
+            if num == 1:
+                return True
+        return False
 # 437. Path Sum |||
 
 

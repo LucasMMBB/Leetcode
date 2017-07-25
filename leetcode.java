@@ -3397,6 +3397,41 @@ public class Solution {
     }
 }
 
+// 242.Valid Angaram
+public class Solution {
+    // method 1: sort
+    // time: O(nlogn)
+    public boolean isAnagram(String s, String t) {
+        if(s == null || t == null || s.length() != t.length())
+            return false;
+
+        return sortString(s).equals( sortString(t) );
+    }
+
+    public String sortString(String s){
+        char[] sChar = s.toCharArray();
+        Arrays.sort(sChar);
+        return new String(sChar);
+    }
+
+    public boolean isAnagram_2(String s, String t){
+        if (s.length() != t.length()) {
+            return false;
+        }
+        int[] counter = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            counter[s.charAt(i) - 'a']++;
+            counter[t.charAt(i) - 'a']--;
+        }
+        for (int count : counter) {
+            if (count != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
