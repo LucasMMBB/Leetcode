@@ -1345,6 +1345,31 @@ class Solution(object):
 
         return num == 1
 
+
+# 264. Ugly Number ||
+class Solution(object):
+    def nthUglyNumber(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        ugly = [1]
+        i2 = i3 = i5 = 0
+        for i in range(n - 1):
+            next_i2, next_i3, next_i5 = ugly[i2]*2, ugly[i3]*3, ugly[i5]*5
+            next_ugly_no = min(next_i2, next_i3, next_i5)
+            if next_ugly_no == next_i2:
+                i2 += 1
+
+            if next_ugly_no == next_i3:
+                i3 += 1
+
+            if next_ugly_no == next_i5:
+                i5 += 1
+
+            ugly.append(next_ugly_no)
+
+        return ugly[-1]
 # 437. Path Sum |||
 
 
