@@ -3371,6 +3371,33 @@ public class Solution {
     }
 }
 
+// 202. Happy Number
+public class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer> set = new HashSet<Integer>();
+        set.add(1);
+        while(!set.contains(n)){
+            set.add(n);
+            int sum = 0;
+            while(n > 0){
+                sum += Math.pow(n % 10, 2);
+                n = n / 10;
+            }// while ends
+            n = sum;
+        }// while ends
+        return n == 1;
+    }
+}
+
+
+// 258. Add Digits
+public class Solution {
+    public int addDigits(int num) {
+        return num == 0 ? 0 : (num % 9 == 0 ? 9 : (num % 9)); 
+    }
+}
+
+
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {

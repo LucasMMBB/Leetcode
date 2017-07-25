@@ -1305,6 +1305,26 @@ class Solution(object):
             set.add(n)
             n = sum(int(x)**2 for x in str(n))
         return n == 1
+
+
+# 258. Add Digits
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        if num is None:
+            return None
+        numStr = str(num)
+        num = 0
+        while len(numStr) != 1:
+            for i in range(len(numStr)):
+                num += int(numStr[i])
+            numStr = str(num)
+
+        return num
+
 # 437. Path Sum |||
 
 
