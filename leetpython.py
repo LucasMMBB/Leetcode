@@ -1523,7 +1523,7 @@ class Solution(object):
                 res.add(num)
         return list(res)
 
-# 350. Intersection of Two Arrays\
+# 350. Intersection of Two Arrays ||
 class Solution(object):
     def intersect(self, nums1, nums2):
         """
@@ -1612,13 +1612,22 @@ class Solution(object):
         stack = [(root, False)]
         while stack:
             node, flag = stack.pop()
-            if flag:
-                res.append(node.val)
-            else:
-                stack.append((node.right, False))
-                stack.append((node.left, False))
-                stack.append((node, True))
+            if node:
+                if flag:
+                    res.append(node.val)
+                else:
+                    stack.append((node.right, False))
+                    stack.append((node.left, False))
+                    stack.append((node, True))
 
+        return res
+    def preorderTraversal_3(self, root):
+        # method 3: another recursive
+        res = []
+        if root:
+            res.append(root.val)
+            res += self.preorderTraversal_3(root.left)
+            res += self.preorderTraversal_3(root.right)
         return res
 
 

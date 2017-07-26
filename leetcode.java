@@ -3497,6 +3497,34 @@ public class Solution{
     }
 }
 
+// 144. Binary Tree Preorder Traversal
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<Integer>();
+        if(root == null) return res;
+        Stack<TreeNode> st = new Stack<TreeNode>();
+        st.add(root);
+        while(!st.empty()){
+            TreeNode node = st.pop();
+            if(node != null){
+                res.add(node.val);
+                st.push(node.right);
+                st.push(node.left);
+            }// if ends
+        }// while ends
+        return res;
+    }
+}
+
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
