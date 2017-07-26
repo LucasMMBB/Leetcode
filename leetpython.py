@@ -1437,6 +1437,49 @@ class Solution(object):
 
         return res
 
+# 249. Group Shifted Strings
+class Solution(object):
+    def groupStrings(self, strings):
+        """
+        :type strings: List[str]
+        :rtype: List[List[str]]
+        """
+        dic = {}
+        res = []
+        for i in range(len(strings)):
+            key = self.helper(strings[i])
+            if key not in dic:
+                dic[key] = [strings[i]]
+            else:
+                dic[key].append(strings[i])
+        for key in dic:
+            res.append(dic[key])
+        return res
+
+    def helper(self, str):
+        if len(str) == 0:
+            return ""
+        if str[0] == 'a':
+            return str
+        else:
+            newstr = ''
+            for i in range(len(str)):
+                tmp = ord(str[i]) - ord(str[0]) + ord('a')
+                if tmp < 97:
+                    tmp += 26
+                newstr += chr(tmp)
+                
+            return newstr
+
+    def isShift(self, s, t):
+        # method: 
+        if len(s) != len(t) or len(s) == 0 or len(t) == 0:
+            return False
+        for i in range(len(s - 1)):
+            if ord(s[i]) - ord(t[i]) != ord(s[i+1]) - ord(t[i+1]):
+                return False
+        return True 
+
 # 313. Super Ugly Number
 class Solution(object):
     def nthSuperUglyNumber(self, n, primes):
