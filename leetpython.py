@@ -1506,7 +1506,22 @@ class Solution(object):
 
         return sum(res) - 2
 
-
+# 349. Intersection of Two Arrays
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        if len(nums1) == 0 or len(nums2) == 0 or nums1 == None or nums2 == None:
+            return []
+        res = {}
+        set = set(nums1)
+        for num in nums2:
+            if num in set:
+                res.add(num)
+        return list(res)
 
 
 # 313. Super Ugly Number
