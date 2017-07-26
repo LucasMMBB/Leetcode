@@ -1480,6 +1480,16 @@ class Solution(object):
                 return False
         return True 
 
+# 204. Count Primes
+class Solution(object):
+    def countPrimes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+
+
+
 # 313. Super Ugly Number
 class Solution(object):
     def nthSuperUglyNumber(self, n, primes):
