@@ -1523,6 +1523,104 @@ class Solution(object):
                 res.add(num)
         return list(res)
 
+# 350. Intersection of Two Arrays\
+class Solution(object):
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        # method 1: hashset
+        # time: O(n), Space: O(n)
+        if len(nums1) == 0 or len(nums2) == 0 or nums1 == None or nums2 == None:
+            return []
+        dic = {}
+        res = []
+        for num in nums1:
+            if num in dic:
+                dic[num] += 1
+            else:
+                dic[num] = 1
+        for num in nums2:
+            if num in dic and dic[num] > 0:
+                res.append(num)
+                dic[num] -= 1
+        return res
+
+
+# 94. Binary Tree Inorder Traversal
+class Solution(object):
+    def __init__(self):
+        self.res = []
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if root:
+            self.inorderTraversal(self.left)
+            self.res.append(root.val)
+            self.inorderTraversal(self.right)
+        return self.res
+
+    def inorderTraversal(self, root):
+        # method2: iterative
+        stack = []
+        res = []
+        stack.append((root,False))
+
+        while stack:
+            node, flag = stack.pop()
+
+            if node:
+                if flag:
+                    res.append(node.val)
+                else:
+                    stack.append((node.right, False))
+                    stack.append((node, True))
+                    stack.append((node.left, False))
+
+        return res
+
+# 144. Binary Tree Preorder Traversal
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def __init__(self):
+        self.res = [] # a global value(property) to store results
+    def preorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if root:
+            self.res.append(root.val)
+            self.preorderTraversal(root.left)
+            self.preorderTraversal(root.right)
+
+        return self.res
+
+    def preorderTraversal_2(self, root):
+        # method 2: iteratively
+        res = []
+        stack = [(root, False)]
+        while stack:
+            node, flag = stack.pop()
+            if flag:
+                res.append(node.val)
+            else:
+                stack.append((node.right, False))
+                stack.append((node.left, False))
+                stack.append((node, True))
+
+        return res
+
 
 # 313. Super Ugly Number
 class Solution(object):
