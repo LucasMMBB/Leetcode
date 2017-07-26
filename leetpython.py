@@ -1631,6 +1631,29 @@ class Solution(object):
         return res
 
 
+
+# 145. Binary Postorder Traversal
+class Solution(object):
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        res = []
+        stack = [(root, False)]
+        while stack:
+            node, flag = stack.pop()
+            if node:
+                if flag:
+                    res.append(node.val)
+                else:
+                    stack.append((node, True))
+                    stack.append((node.right, False))
+                    stack.append((node.left, False))
+        return res
+
+
+
 # 313. Super Ugly Number
 class Solution(object):
     def nthSuperUglyNumber(self, n, primes):

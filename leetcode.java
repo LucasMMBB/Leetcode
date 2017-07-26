@@ -3496,7 +3496,25 @@ public class Solution{
         return result;
     }
 }
-
+// 94. Binary Tree Inorder Traversal
+public class Solution{
+    public List<Integer> inorderTraversal(TreeNode root){
+        List<Integer> res = new ArrayList<Integer>();
+        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        TreeNode p = root;
+        while(!stack.isEmpty() || p != null){
+            if(p != null){
+                stack.push(p);
+                p = p.left;
+            }else{
+                TreeNode node = stack.pop();
+                res.add(node.val);
+                p = node.right;
+            }// if ends
+        }// while ends
+        return res;
+    }
+}
 // 144. Binary Tree Preorder Traversal
 /**
  * Definition for a binary tree node.
