@@ -3433,6 +3433,13 @@ public class Solution {
 }
 
 
+// 204. Count Primes
+public class Solution {
+    public int countPrimes(int n) {
+        
+    }
+}
+
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
