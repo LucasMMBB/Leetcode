@@ -1495,6 +1495,17 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        if n < 2: return 0 # 1 is not a prime
+
+        res = [True] * n
+
+        for p in range(2, int(n ** 5) + 1):
+            if A[i]:
+                for j in range(p ** 2, n, p):
+                    A[j] = False
+
+        return sum(res) - 2
+
 
 
 
