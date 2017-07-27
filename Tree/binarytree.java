@@ -4,7 +4,7 @@
  */
 //Pre Order Traverse
 public List<Integer> preorderTraversal(TreeNode root){
-
+	List<Integer> res = new ArrayList<Integer>();
 }
 
 //In Order Traverse
