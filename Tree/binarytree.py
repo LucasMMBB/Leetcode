@@ -14,6 +14,21 @@ def preorderTraverse(root):
 			if node.left: stack.append(node.left)
 	return res
 
+def preorderTraverse_2(root):
+	# method: DFS
+	stack, res = [], []
+	cur = root
+	while stack or cur != None:
+		if cur:
+			stack.add(cur)
+			res.add(cur.val)
+			cur = cur.left
+		else:
+			node = stack.pop()
+			cur = node.right
+	return res
+
+
 def inorderTraverse(root):
 	# method: DFS
 	res = []
@@ -36,8 +51,11 @@ def postorderTraverse(root):
 	cur = root
 	while stack or cur != None:
 		if cur:
-			stack.append(node)
-			cur = cur.left
+			stack.append(cur)
+			res.insert(0, cur.val)
+			cur = cur.right
 		else:
-			cur = stack.pop()
-			
+			node = stack.pop()
+			cur = node.left
+	return res
+
