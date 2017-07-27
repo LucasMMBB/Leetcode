@@ -1652,6 +1652,52 @@ class Solution(object):
                     stack.append((node.left, False))
         return res
 
+# 155. Min Stack
+class MinStack(object):
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.list = []
+        
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: void
+        """
+        self.list.append(x)
+        
+
+    def pop(self):
+        """
+        :rtype: void
+        """
+        self.list.pop()
+        
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        return self.list[-1]
+        
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        return min(self.list)
+        
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
 
 
 # 313. Super Ugly Number
@@ -1671,6 +1717,8 @@ class Solution(object):
             if num == 1:
                 return True
         return False
+
+
 # 437. Path Sum |||
 
 
