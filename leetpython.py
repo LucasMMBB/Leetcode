@@ -1659,37 +1659,43 @@ class MinStack(object):
         """
         initialize your data structure here.
         """
-        self.list = []
-        
+        self.stack = []
 
     def push(self, x):
         """
         :type x: int
         :rtype: void
         """
-        self.list.append(x)
-        
+        curMin = self.getMin()
+        if curMin == None or x < curMin:
+            curMin = x
+        self.stack.append((x, curMin))
 
     def pop(self):
         """
         :rtype: void
         """
-        self.list.pop()
+        self.stack.pop()
         
 
     def top(self):
         """
         :rtype: int
         """
-        return self.list[-1]
+        if len(self.stack) == 0:
+            return None
+        else:
+            return self.list[-1][0]
         
 
     def getMin(self):
         """
         :rtype: int
         """
-        return min(self.list)
-        
+        if len(self.stack) != 0:
+            return self.stack[-1][1]
+        else:
+            return None
 
 
 # Your MinStack object will be instantiated and called as such:
@@ -1698,6 +1704,30 @@ class MinStack(object):
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
+
+
+# 48. Rotate Image
+class Solution(object):
+    def rotate(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: void Do not return anything, modify matrix in-place instead.
+        """
+
+
+#-------------- TO DO LIST -----------------
+
+
+# 239. Sliding Window Maximum
+class Solution(object):
+    def maxSlidingWindow(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+
+
 
 
 # 313. Super Ugly Number
