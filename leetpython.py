@@ -1725,6 +1725,31 @@ class Solution(object):
         for i in range(length):
             for j in range(length - i):
                 nums[i][j], nums[length - 1 - j][length - 1 - i] = nums[length - 1 - j][length - 1 - i], nums[i][j]
+
+
+# 17. Letter Combinations of a Phone Number
+class Solution(object):
+    def __init__(self):
+        self.dic = {
+            '2': ['a', 'b', 'c'],
+            '3': ['d', 'e', 'f'],
+            '4': ['g', 'h', 'i'],
+            '5': ['j', 'k', 'l'],
+            '6': ['m', 'n', 'o'],
+            '7': ['p', 'q', 'r', 's']
+            '8': ['t', 'u', 'v'],
+            '9': ['w', 'x', 'y', 'x']
+        }
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        res = []
+        if not digits:
+            return res
+        
+
 #-------------- TO DO LIST -----------------
 
 
