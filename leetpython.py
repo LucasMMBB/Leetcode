@@ -1713,12 +1713,11 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: void Do not return anything, modify matrix in-place instead.
         """
-        nums = nums[::-1]
-        len = len(nums)
-        for i in range(len / 2):
-            for j in range(i+1:len):
+        nums.reverse()
+        length = len(nums)
+        for i in range(length/2):
+            for j in range(i):
                 nums[i][j], nums[j][i] = nums[j][i], nums[i][j]
-
 #-------------- TO DO LIST -----------------
 
 
