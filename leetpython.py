@@ -1708,12 +1708,16 @@ class MinStack(object):
 
 # 48. Rotate Image
 class Solution(object):
-    def rotate(self, matrix):
+    def rotate(self, nums):
         """
         :type matrix: List[List[int]]
         :rtype: void Do not return anything, modify matrix in-place instead.
         """
-
+        nums = nums[::-1]
+        len = len(nums)
+        for i in range(len / 2):
+            for j in range(i+1:len):
+                nums[i][j], nums[j][i] = nums[j][i], nums[i][j]
 
 #-------------- TO DO LIST -----------------
 
