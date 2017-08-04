@@ -1715,9 +1715,16 @@ class Solution(object):
         """
         nums.reverse()
         length = len(nums)
-        for i in range(length/2):
+        for i in range(length):
             for j in range(i):
                 nums[i][j], nums[j][i] = nums[j][i], nums[i][j]
+                
+    def rotate_left(self, nums):
+        nums.reverse()
+        length = len(nums)
+        for i in range(length):
+            for j in range(length - i):
+                nums[i][j], nums[length - 1 - j][length - 1 - i] = nums[length - 1 - j][length - 1 - i], nums[i][j]
 #-------------- TO DO LIST -----------------
 
 
