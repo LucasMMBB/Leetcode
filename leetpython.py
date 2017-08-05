@@ -1827,7 +1827,20 @@ class Solution(object):
             self.helper(res, tempList, nums, remain - nums[i], i + 1)
             tempList.pop()
 
-
+# 77. Combinations
+# method: iterative
+class Solution(object):
+    def combine(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: List[List[int]]
+        """
+        combs = [[]]
+        for _ in range(k):
+            combs = [[i] + c for c in combs for i in range(1, c[0] if c else n+1)]
+        return combs
+        
 # 401. Binary Watch
 # method: backtracking
 class Solution(object):

@@ -51,3 +51,29 @@ class Solution(object):
     		tempList.append(nums[i])
     		self.helper(res, tempList, nums, remain - nums[i], i + 1)
     		tempList.pop()
+
+# 77. Combinations
+# method: backtracking
+class Solution(object):
+    def combine(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: List[List[int]]
+        """
+        res = []
+        line = []
+        if k > n:
+        	return res
+        nums = [i + 1 for i in range(n)]
+        self.helper(nums, k, res, line)
+        return res
+
+    def helper(self, nums, k, res, line):
+    	if len(line) == k:
+    		res.append([x for x in line])
+    		return
+    	for i in range(start, len(nums)):
+    		line.append(nums[i])
+    		self.helper(nums[i+1:], k, res, line)
+    		line.pop()
