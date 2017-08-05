@@ -1729,27 +1729,33 @@ class Solution(object):
 
 # 17. Letter Combinations of a Phone Number
 class Solution(object):
-    def __init__(self):
-        self.dic = {
-            '2': ['a', 'b', 'c'],
-            '3': ['d', 'e', 'f'],
-            '4': ['g', 'h', 'i'],
-            '5': ['j', 'k', 'l'],
-            '6': ['m', 'n', 'o'],
-            '7': ['p', 'q', 'r', 's']
-            '8': ['t', 'u', 'v'],
-            '9': ['w', 'x', 'y', 'x']
-        }
     def letterCombinations(self, digits):
         """
         :type digits: str
         :rtype: List[str]
         """
-        res = []
         if not digits:
-            return res
-        
-
+            return []
+        dic = {
+            '1': "",
+            '2': ['a', 'b', 'c'],
+            '3': ['d', 'e', 'f'],
+            '4': ['g', 'h', 'i'],
+            '5': ['j', 'k', 'l'],
+            '6': ['m', 'n', 'o'],
+            '7': ['p', 'q', 'r', 's'],
+            '8': ['t', 'u', 'v'],
+            '9': ['w', 'x', 'y', 'z']
+        }
+        res = [""]
+        for digit in digits:
+            lst = dic[digit]
+            temp = []
+            for char in lst:
+                for str in res:
+                    temp.append(str + char)
+            res = temp
+        return res       
 #-------------- TO DO LIST -----------------
 
 
