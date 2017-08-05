@@ -1809,7 +1809,24 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        
+        candidates.sort()
+        res = []
+        temp = []
+        self.helper(res, temp, candidates, target, 0)
+        return res
+    def helper(self, res, tempList, nums, remain, start):
+        if remain < 0:
+            return
+        if remain == 0:
+            res.append([x for x in tempList])
+            return
+        for i in range(start, len(nums)):
+            if i != start and nums[i] == nums[i - 1]:
+                continue
+            tempList.append(nums[i])
+            self.helper(res, tempList, nums, remain - nums[i], i + 1)
+            tempList.pop()
+
 
 # 401. Binary Watch
 # method: backtracking
