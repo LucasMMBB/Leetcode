@@ -3598,6 +3598,18 @@ public class Solution {
     }
 }
 
+// 401. Binary Watch
+public class Solution {
+    public List<String> readBinaryWatch(int num) {
+        List<String> times = new ArrayList<>();
+        for (int h = 0; h < 12; h++){
+            for (int m = 0; m < 60; m++){
+                
+            }
+        }
+    }
+}
+
 // 239. Sliding Window Maximum
 
 
