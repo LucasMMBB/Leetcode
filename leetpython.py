@@ -1788,10 +1788,18 @@ class Solution(object):
     def combinationSum_m2(self, candidates, target):
         res = []
         candidates.sort()
-        self.backtrack(res, [], target, 0)
+        self.backtrack(res, [], candidates, target, 0)
         return res
-    def backtrack(self, tempList, target, start):
-        
+    def backtrack(self, res, tempList, nums, target, start):
+        if target < 0:
+            return
+        elif target == 0:
+            res.append([x for x in tempList])
+        else: # target > 0
+            for i in range(start, len(nums)):
+                tempList.append(nums[i])
+                self.backtrack(res, tempList, nums, target - nums[i], i)
+                tempList.pop()
 #-------------- TO DO LIST -----------------
 
 
