@@ -77,3 +77,36 @@ class Solution(object):
     		line.append(nums[i])
     		self.helper(nums[i+1:], k, res, line)
     		line.pop()
+
+
+# 46. Permutations
+# method: backtracking(recursive)
+# time: O(n!); space: O(n)
+class Solution(object):
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        if len(nums) <= 1:
+        	return [nums]
+
+        res = []
+        for i, x in enumerate(nums):
+        	for elem in self.permute(nums[:i] + nums[i+1:]):
+        		res.append([x] + elem)
+
+       	return res
+
+    def permute_m2(self, nums):
+    	# method: iterative
+    	if len(nums) <= 1:
+    		return [nums]
+    	res = [[]]
+    	for num in nums:
+    		temp = []
+    		for line in res:
+    			for i in range(len(line) + 1):
+    				temp.append(line[:i] + [num] + line[i:])
+    		res = temp
+    	return res
