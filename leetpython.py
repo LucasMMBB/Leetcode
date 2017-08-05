@@ -1767,6 +1767,30 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
+
+        candidates.sort()
+        res = []
+        line = []
+        self.helper(candidates, target, res, line)
+        return res
+
+    def helper(self, candidates, target, res, line):
+        if target == 0:
+            res.append([x for x in line])
+            return
+
+        for i, x in enumerate(candidates):
+            if x <= target:
+                line.append(x)
+                self.helper(candidates[i:], target - x, res, line)
+                line.pop()
+    
+    def combinationSum_m2(self, candidates, target):
+        res = []
+        candidates.sort()
+        self.backtrack(res, [], target, 0)
+        return res
+    def backtrack(self, tempList, target, start):
         
 #-------------- TO DO LIST -----------------
 
