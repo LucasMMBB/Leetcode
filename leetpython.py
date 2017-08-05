@@ -1800,6 +1800,27 @@ class Solution(object):
                 tempList.append(nums[i])
                 self.backtrack(res, tempList, nums, target - nums[i], i)
                 tempList.pop()
+
+# 40. Combination Sum 2
+class Solution(object):
+    def combinationSum2(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        
+
+# 401. Binary Watch
+# method: backtracking
+class Solution(object):
+    def readBinaryWatch(self, num):
+        """
+        :type num: int
+        :rtype: List[str]
+        """
+        
+
 #-------------- TO DO LIST -----------------
 
 
