@@ -1728,6 +1728,7 @@ class Solution(object):
 
 
 # 17. Letter Combinations of a Phone Number
+# method: backtracking
 class Solution(object):
     def letterCombinations(self, digits):
         """
@@ -1756,6 +1757,17 @@ class Solution(object):
                     temp.append(str + char)
             res = temp
         return res       
+
+# 39. Combination Sum
+# method: Backtracking
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        
 #-------------- TO DO LIST -----------------
 
 
