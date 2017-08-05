@@ -73,7 +73,7 @@ class Solution(object):
     	if len(line) == k:
     		res.append([x for x in line])
     		return
-    	for i in range(start, len(nums)):
+    	for i in range(len(nums)):
     		line.append(nums[i])
     		self.helper(nums[i+1:], k, res, line)
     		line.pop()

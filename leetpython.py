@@ -624,6 +624,28 @@ class Solution(object):
                 dic.popitem(last = False)
 
         return False
+# 104. Max Depth of Binary Tree
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        :method: recursion
+        """
+        if root is None:
+            return 0
+
+        if root.left is not None or root.right is not None:
+            return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+        else:
+            return 1
 
 # 111. Minimum Depth of Binary Tree
 # Definition for a binary tree node.
@@ -1841,14 +1863,8 @@ class Solution(object):
             combs = [[i] + c for c in combs for i in range(1, c[0] if c else n+1)]
         return combs
         
-# 401. Binary Watch
-# method: backtracking
-class Solution(object):
-    def readBinaryWatch(self, num):
-        """
-        :type num: int
-        :rtype: List[str]
-        """
+
+
         
 
 #-------------- TO DO LIST -----------------
