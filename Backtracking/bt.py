@@ -133,6 +133,26 @@ class Solution(object):
        	
        	return res
 
+# 78. Subsets
+class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        nums.sort()
+        res = []
+        line = []
+        self.helper(nums, line, res)
+        return res
+    def helper(self, nums, line, res):
+    	res.append([x for x in line])
+    	for i, x in enumerate(nums):
+    		line.append(x)
+    		self.helper(nums[i+1:], line, res)
+    		line.pop()
+
+
 # 79. Word Search
 class Solution(object):
     def exist(self, board, word):
