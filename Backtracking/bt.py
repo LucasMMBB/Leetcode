@@ -110,3 +110,35 @@ class Solution(object):
     				temp.append(line[:i] + [num] + line[i:])
     		res = temp
     	return res
+
+# 47. Permutations ||
+class Solution(object):
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        :description: To handle duplication, just avoid inserting a number
+        :before any of its duplicate
+        """
+        # to be done
+    def permuteUnique(self, nums):
+    	if len(nums) <= 1:
+        	return [nums]
+        nums.sort()
+        res = []
+        for i in range(len(nums)):
+        	if i == 0 or nums[i-1] != nums[i]:
+        		for elem in self.permuteUnique(nums[:i] + nums[i + 1:]):
+        			res.append([nums[i]] + elem)
+       	
+       	return res
+
+# 79. Word Search
+class Solution(object):
+    def exist(self, board, word):
+        """
+        :type board: List[List[str]]
+        :type word: str
+        :rtype: bool
+        """
+        
