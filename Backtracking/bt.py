@@ -152,7 +152,14 @@ class Solution(object):
     		self.helper(nums[i+1:], line, res)
     		line.pop()
 
-
+    def subsets_m2(self, nums):
+    	# method: iterative
+    	res = [[]]
+    	nums.sort()
+    	for num in nums:
+    		temp = [line + [num] for line in res]
+    		res += temp
+    	return res
 # 79. Word Search
 class Solution(object):
     def exist(self, board, word):
