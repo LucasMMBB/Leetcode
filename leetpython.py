@@ -1864,8 +1864,76 @@ class Solution(object):
         return combs
         
 
-
+# LRU Cache
+# method: hashtable + double linkedlist
+class Node(object):
+    """docstring for Node"""
+    def __init__(self, key, val):
+        self.key = key
+        self.val = val
+        self.prev = None
+        self.next = None
         
+
+class LRUCache(object):
+
+    def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
+        # define double linked list
+        self.capacity = capacity
+        self.dic = dict()
+        self.head = Node(0,0)
+        self.tail = Node(0,0)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        if key in self.dic:
+            n = self.dic[key]
+            self._remove(n)
+            self._add(n)
+            return n.val        
+        return -1
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rty
+        """
+        if key in self.dic:
+            self._remove(self.dic[key])
+        node = Node(key, value)
+        self._add(node)
+        self.dic[key] = node
+        if len(self.dic) > self.capacity:
+            n = self.head.next # node
+            self._remove(n)
+            self.dic.pop(n.key)
+    #---- private methods ----
+    def _remove(self, node):
+        if node is None:
+            return
+        p = node.prev
+        n = node.next
+        p.next = n
+        n.prev = p
+
+    def _add(self, node):
+        if node is None:
+            return
+        p = self.tail.prev
+        p.next = node
+        self.tail.prev = node
+        node.prev = p
+        node.next = self.tail   
 
 #-------------- TO DO LIST -----------------
 
