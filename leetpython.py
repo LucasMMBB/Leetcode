@@ -1935,7 +1935,140 @@ class LRUCache(object):
         node.prev = p
         node.next = self.tail   
 
+
+# 232. Implement Queue using Stacks
+class MyQueue(object):
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.stack_eq = [] # enqueue
+        self.stack_dq = [] # dequeue
+        
+
+    def push(self, x):
+        """
+        Push element x to the back of queue.
+        :type x: int
+        :rtype: void
+        """
+        self.stack_eq.append(x)
+        
+
+    def pop(self):
+        """
+        Removes the element from in front of queue and returns that element.
+        :rtype: int
+        """
+        if len(self.stack_dq)>0:
+            return self.stack_dq.pop()
+        else:
+            while self.stack_eq:
+                temp = self.stack_eq.pop()
+                self.stack_dq.append(temp)
+            return self.stack_dq.pop()
+
+    def peek(self):
+        """
+        Get the front element.
+        :rtype: int
+        """
+        if len(self.stack_dq)>0:
+            return self.stack_dq[-1]
+        else:
+            while self.stack_eq:
+                temp = self.stack_eq.pop()
+                self.stack_dq.append(temp)
+            return self.stack_dq[-1]
+        
+
+    def empty(self):
+        """
+        Returns whether the queue is empty.
+        :rtype: bool
+        """
+        if len(self.stack_dq) == 0 and len(self.stack_eq) == 0:
+            return True
+        else:
+            return False
+
+# 225. Implement Stack using Queues
+# using a single queue
+# push O(n)
+# pop O(1)
+class MyStack(object):
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.queue = [] # use queue as a stack
+        
+    def push(self, x):
+        """
+        Push element x onto stack.
+        :type x: int
+        :rtype: void
+        """
+        self.queue.append(x)
+        if len(self.queue) > 1:
+        	for i in range(len(self.queue) - 1):
+        		temp = self.queue.pop(0)
+        		self.queue.append(temp)       
+
+    def pop(self):
+        """
+        Removes the element on top of the stack and returns that element.
+        :rtype: int
+        """
+        if len(self.queue) > 0:
+        	return self.queue.pop(0)
+        
+    def top(self):
+        """
+        Get the top element.
+        :rtype: int
+        """
+        if len(self.queue) > 0:
+        	return self.queue[0]
+
+    def empty(self):
+        """
+        Returns whether the stack is empty.
+        :rtype: bool
+        """
+        if not self.queue:
+        	return True
+        else:
+        	return False
+
 #-------------- TO DO LIST -----------------
+# 460. LFU Cache
+class LFUCache(object):
+
+    def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
+        self.capacity = capacity
+        self.dict = dict()
+        self.freq = dict()
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+
+        
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: void
+        """
 
 
 # 239. Sliding Window Maximum
