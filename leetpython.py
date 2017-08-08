@@ -2057,18 +2057,32 @@ class BSTIterator(object):
         """
         :type root: TreeNode
         """
-        
+        self.stack = []
+        self.helper(root)
 
     def hasNext(self):
         """
         :rtype: bool
         """
-        
+        if self.stack:
+        	return True
+        else:
+        	return False
 
     def next(self):
         """
         :rtype: int
         """
+        node = self.stack.pop()
+        self.helper(node.right)
+        return node.val
+
+
+    def helper(self, root):
+    	# put nodes in stack so that we can use next to pop next smallest key
+    	while root:
+    		self.stack.append(root)
+    		root = root.left
 
 #-------------- TO DO LIST -----------------
 # 460. LFU Cache
