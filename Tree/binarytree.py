@@ -59,3 +59,4 @@ def postorderTraverse(root):
 			cur = node.left
 	return res
 
+# Binary Search Tree Search and Insertion
