@@ -2136,6 +2136,31 @@ class Solution(object):
 	            return 1
 	        return 0
 	    return sum(sink(i, j) for i in range(len(grid)) for j in range(len(grid[i])))
+
+# 279. Perfect Numbers
+class Solution(object):
+    def numSquares(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        queue = [(0, 0)]
+        visited = [False]*(n + 1)
+
+        while queue:
+        	cur, step = queue.pop(0)
+
+        	a = 1
+        	while cur + a*a <= n:
+        		if cur + a * a == n:
+        			return step + 1
+
+        		if visited[cur + a * a] == False:
+        			queue.append((cur + a * a, step + 1))
+        			visited[cur + a * a] = True
+
+        		a += 1
+        return 0
 #-------------- TO DO LIST -----------------
 # 460. LFU Cache
 class LFUCache(object):
