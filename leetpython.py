@@ -2161,6 +2161,82 @@ class Solution(object):
 
         		a += 1
         return 0
+
+# 127. Word Ladder
+from collections import deque
+class Solution(object):
+    def ladderLength(self, beginWord, endWord, wordList):
+        """
+        :type beginWord: str
+        :type endWord: str
+        :type wordList: List[str]
+        :rtype: int
+        """
+        if endWord not in wordList:
+            return 0
+        queue = deque()
+        queue.append((beginWord,1))
+        wordList = set(wordList)
+        while queue:
+        	word, length = queue.popleft()
+        	for i in range(len(word)):
+        		for c in [chr(x) for x in range(ord('a'), ord('z') + 1)]:
+        			newWord = word[:i] + c + word[i+1:]
+        			if newWord == endWord:
+        				return length + 1
+
+        			if newWord in wordList:
+        				queue.append((newWord, length + 1))
+        				wordList.remove(newWord)
+       	return 0
+
+    def ladderLength_m2(self, beginWord, endWord, wordList):
+    	wordList = set(wordList) # save time using hashset
+        if endWord not in wordList:
+        	return 0
+        wordList.append(endWord)
+        queue = collections.deque([[beginWord, 1]])
+        while queue:
+            word, length = queue.popleft()
+            if word == endWord:
+                return length
+            for i in range(len(word)):
+                for c in 'abcdefghijklmnopqrstuvwxyz':
+                    next_word = word[:i] + c + word[i+1:]
+                    if next_word in wordList:
+                        wordList.remove(next_word)
+                        queue.append([next_word, length + 1])
+        return 0
+
+    def ladderLength_m3(self, beginWord, endWord, wordList):
+        
+        def construct_dict(word_list):
+            d = {}
+            for word in word_list:
+                for i in range(len(word)):
+                    s = word[:i] + "_" + word[i+1:]
+                    d[s] = d.get(s, []) + [word]
+            return d
+            
+        def bfs_words(begin, end, dict_words):
+            queue, visited = deque([(begin, 1)]), set()
+            while queue:
+                word, steps = queue.popleft()
+                if word not in visited:
+                    visited.add(word)
+                    if word == end:
+                        return steps
+                    for i in range(len(word)):
+                        s = word[:i] + "_" + word[i+1:]
+                        neigh_words = dict_words.get(s, [])
+                        for neigh in neigh_words:
+                            if neigh not in visited:
+                                queue.append((neigh, steps + 1))
+            return 0
+        
+        wordList = set(wordList) # saving time using hashset
+        d = construct_dict(wordList | set([beginWord, endWord]))
+        return bfs_words(beginWord, endWord, d)
 #-------------- TO DO LIST -----------------
 # 460. LFU Cache
 class LFUCache(object):
