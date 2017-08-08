@@ -2084,6 +2084,58 @@ class BSTIterator(object):
     		self.stack.append(root)
     		root = root.left
 
+# 200. Number of Islands
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        m = len(grid)
+        if m == 0:
+        	return 0
+        n = len(grid[0])
+
+        res = 0
+        queue = []
+
+        for i in range(m):
+        	for j in range(n):
+        		if grid[i][j] == '1':
+        			queue.append([i, j])
+        			grid[i][j] = '0'
+        			while queue:
+        				[a, b] = queue.pop(0)
+        				
+        				# neighbors
+        				if a + 1 < m and grid[a + 1][b] == '1':
+        					queue.append([a + 1, b])
+        					grid[a + 1][b] = '0'
+
+        				if b + 1 < n and grid[a][b + 1] == '1':
+        					queue.append([a, b + 1])
+        					grid[a][b + 1] = '0'
+
+        				if a - 1 >= 0 and grid[a - 1][b] == '1':
+        					queue.append([a - 1, b])
+        					grid[a - 1][b] == '0'
+
+        				if b - 1 >= 0 and grid[a][b - 1] == '1':
+        					queue.append([a, b - 1])
+        					grid[a][b - 1] = '0'
+
+        			res += 1
+       	return res
+
+    def numIslands_m2(self, grid):
+    	# simple way
+	    def sink(i, j):
+	        if 0 <= i < len(grid) and 0 <= j < len(grid[i]) and grid[i][j] == '1':
+	            grid[i][j] = '0'
+	            map(sink, (i+1, i-1, i, i), (j, j, j+1, j-1))
+	            return 1
+	        return 0
+	    return sum(sink(i, j) for i in range(len(grid)) for j in range(len(grid[i])))
 #-------------- TO DO LIST -----------------
 # 460. LFU Cache
 class LFUCache(object):
