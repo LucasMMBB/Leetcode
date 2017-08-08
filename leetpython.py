@@ -2237,7 +2237,47 @@ class Solution(object):
         wordList = set(wordList) # saving time using hashset
         d = construct_dict(wordList | set([beginWord, endWord]))
         return bfs_words(beginWord, endWord, d)
+
+# 344. Reverse String
+class Solution(object):
+	# method: [begin: end: step]. step is -1
+    def reverseString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return s[::-1]
+
+    def reverseString(self, s):
+    	# method: two pointer
+    	if len(s) == 0 or s is None:
+    		return s
+    	left, right = 0, len(s) - 1
+    	res = list(s)
+    	while left < right:
+    		res[left], res[right] = res[right], res[left]
+    		left += 1
+    		right -= 1
+    	return "".join(res)
+    
+    def reverseString(self, s):
+        l = len(s)
+        if l < 2:
+            return s
+        return self.reverseString(s[l/2:]) + self.reverseString(s[:l/2])
 #-------------- TO DO LIST -----------------
+
+# 126. Word Ladder ||
+class Solution(object):
+    def findLadders(self, beginWord, endWord, wordList):
+        """
+        :type beginWord: str
+        :type endWord: str
+        :type wordList: List[str]
+        :rtype: List[List[str]]
+        """
+
+
 # 460. LFU Cache
 class LFUCache(object):
 
