@@ -2265,6 +2265,22 @@ class Solution(object):
         if l < 2:
             return s
         return self.reverseString(s[l/2:]) + self.reverseString(s[:l/2])
+
+# 541. Reverse String ||
+class Solution(object):
+    def reverseStr(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
+        if len(s) < k:
+        	return s[::-1]
+        s = list(s)
+        for i in xrange(0, len(s), 2*k):
+        	s[i : i + k] = reversed(s[i : i + k])
+       	return "".join(s)
+
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
