@@ -2278,9 +2278,28 @@ class Solution(object):
         	return s[::-1]
         s = list(s)
         for i in xrange(0, len(s), 2*k):
-        	s[i : i + k] = reversed(s[i : i + k])
+        	temp = s[i : i + k]
+        	temp.reverse()
+        	s[i : i + k] = temp
        	return "".join(s)
 
+
+# 151. Reverse Words in a String
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        slow = 0
+        res = ""
+
+        for fast in range(len(s) + 1):
+        	if fast == len(s) or s[fast] == ' ':
+        		if slow != fast:
+        			res += s[slow : fast] + ' '
+        		slow = fast + 1
+        return res.strip()
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
