@@ -2300,6 +2300,41 @@ class Solution(object):
         			res += s[slow : fast] + ' '
         		slow = fast + 1
         return res.strip()
+
+
+# 186. Reverse Words in a String ||
+class Solution:
+    # @param s, a list of 1 length strings, e.g., s = ['h','e','l','l','o']
+    # @return nothing
+    def reverseWords(self, s):
+        self.reverseStr(s, 0, len(s))
+        slow = 0
+        for fast in range(len(s) + 1):
+            if fast == len(s) or s[fast] == ' ':
+                self.reverseStr(s, slow, fast)
+                slow = fast + 1
+
+    def reverseStr(self, s, slow, fast):
+        if len(s) < 2:
+            return s
+        fast -= 1
+        while slow < fast:
+            tmp = s[slow]
+            s[slow] = s[fast]
+            s[fast] = tmp
+            slow += 1
+            fast -= 1
+
+    def reverseWords_m2(self, s):
+    	# using reverse() and reversed()
+    	s.reverse()
+
+    	slow = 0
+    	for fast in range(len(s)):
+    		if s[fast] == ' ':
+    			s[slow : fast] = reversed(s[slow : fast])
+    			slow = fast + 1
+    	s[slow:fast + 1] = reversed(s[slow:fast + 1])
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
