@@ -2335,6 +2335,44 @@ class Solution:
     			s[slow : fast] = reversed(s[slow : fast])
     			slow = fast + 1
     	s[slow:fast + 1] = reversed(s[slow:fast + 1])
+
+# 557. Reverse Words in a String |||
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        s = list(s)
+      	l = 0
+      	for r in range(len(s) + 1):
+      		if r == len(s) or s[r] == ' ':
+      			if l != r:
+      				a[l:r] = reversed(a[l:r])
+      				l = r + 1
+        return "".join(s)
+
+    def reverseWords(self, s):
+    	s = list(s)
+    	l = 0
+    	for r in range(len(s) + 1):
+    		if r == len(s) or s[r] == ' ':
+    			if l != r:
+    				self.reverseStr(s, l, r)
+    				l = r + 1
+    	return "".join(s)
+    	
+    def reverseStr(self, s, left, right):
+        if len(s) < 2:
+            return s
+        right -= 1
+        while left < right:
+            tmp = s[left]
+            s[left] = s[right]
+            s[right] = tmp
+            left += 1
+            right -= 1
+
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
