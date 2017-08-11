@@ -2428,6 +2428,24 @@ class Solution(object):
         	res.append(left[i] * right[i])
 
         return res
+
+    def productExceptSelf_m2(self, nums):
+    	# smart way
+    	# time: O(n), auxiliry sapce: O(1), space: O(n)
+    	prod = [1] * len(nums)
+
+    	temp = 1
+
+    	for i in range(len(nums)):
+    		prod[i] = temp
+    		temp *= nums[i]
+
+    	temp = 1
+    	for i in range(len(nums) - 1, -1, -1):
+    		prod[i] *= temp
+    		temp *= nums[i]
+
+    	return prod
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
