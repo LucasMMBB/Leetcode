@@ -2373,6 +2373,7 @@ class Solution(object):
             left += 1
             right -= 1
 
+# Copy List of Random Pointer
 # Definition for singly-linked list with a random pointer.
 # class RandomListNode(object):
 #     def __init__(self, x):
@@ -2446,6 +2447,21 @@ class Solution(object):
     		temp *= nums[i]
 
     	return prod
+
+#160. Intersection of Two Linked List
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """
+        
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
