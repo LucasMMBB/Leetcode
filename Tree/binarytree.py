@@ -101,3 +101,6 @@ def insert(root, node):
 				root.left = node
 			else:
 				insert(root.left, node)
+
+# Deletion of a key
+def delete(root, node):

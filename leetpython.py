@@ -2373,6 +2373,38 @@ class Solution(object):
             left += 1
             right -= 1
 
+# Definition for singly-linked list with a random pointer.
+# class RandomListNode(object):
+#     def __init__(self, x):
+#         self.label = x
+#         self.next = None
+#         self.random = None
+
+class Solution(object):
+    def copyRandomList(self, head):
+        """
+        :time: O(n), space: O(n)
+        :type head: RandomListNode
+        :rtype: RandomListNode
+        :method: hash table
+        """
+        # deep copy: copy everything
+        dic = {}
+        m = n = head
+
+        while m:
+        	dic[m] = RandomListNode(m.label)
+        	m = m.next
+
+        while n:
+        	dic[n].next = dic.get(n.next)
+        	dic[n].random = dic.get(n.random)
+        	n = n.next
+
+        return dic.get(head)
+
+
+
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
