@@ -2404,7 +2404,30 @@ class Solution(object):
         return dic.get(head)
 
 
+class Solution(object):
+    def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        left = [0] * len(nums)
+        right = [0] * len(nums)
+        res = []
+        templeft = tempright = 1
+        for i in range(len(nums)):
+        	if i > 0:
+        		templeft = templeft * nums[i - 1]
+        		left[i] = templeft
+        		tempright = tempright * nums[len(nums) - i]
+        		right[len(nums) - 1 - i]  = tempright
+        	elif i == 0:
+        		left[i] = templeft
+        		right[len(nums)-1-i] = tempright
 
+        for i in range(len(nums)):
+        	res.append(left[i] * right[i])
+
+        return res
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
