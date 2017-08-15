@@ -2448,7 +2448,7 @@ class Solution(object):
 
     	return prod
 
-# Count and Say
+# 38. Count and Say
 class Solution(object):
     def countAndSay(self, n):
         """
@@ -2470,8 +2470,30 @@ class Solution(object):
 
         return oldStr
 
-
+# 271. Encode and Decode Strings
+class Codec:
+    def encode(self, strs):
+        """Encodes a list of strings to a single string.
         
+        :type strs: List[str]
+        :rtype: str
+        """
+        return ''.join([s.replace('|','||') + ' | ' for s in strs])
+        
+
+    def decode(self, s):
+        """Decodes a single string to a list of strings.
+        
+        :type s: str
+        :rtype: List[str]
+        """
+        return [str.replace('||','|') for str in s.split(' | ')[:-1]]
+        
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(strs))
+
 #160. Intersection of Two Linked List
 # Definition for singly-linked list.
 # class ListNode(object):
