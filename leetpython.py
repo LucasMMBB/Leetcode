@@ -2448,6 +2448,30 @@ class Solution(object):
 
     	return prod
 
+# Count and Say
+class Solution(object):
+    def countAndSay(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        oldStr = '1'
+
+        for i in range(n-1):
+            tmp = ''
+            count = 1
+            for j in range(len(oldStr)):
+                if j < len(oldStr) - 1 and oldStr[j] == oldStr[j+1]:
+                    count += 1
+                else:
+                    tmp += str(count) + oldStr[j]
+                    count = 1
+            oldStr = tmp
+
+        return oldStr
+
+
+        
 #160. Intersection of Two Linked List
 # Definition for singly-linked list.
 # class ListNode(object):
