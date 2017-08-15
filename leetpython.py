@@ -2550,6 +2550,32 @@ class Codec:
         return root
 
 
+    def serialize(self, root):
+        vals = []
+        self.treeToStr(root, vals)
+        return ' '.join(vals)
+
+    def treeToStr(self, root, vals):
+        if root:
+            vals.append(str(root.val))
+            self.treeToStr(root.left, vals)
+            self.treeToStr(root.right, vals)
+        else:
+            vals.append('#')
+
+    def deserialize(self, data):
+        def doit():
+            val = next(vals)
+            if val == '#':
+                return None
+            node = TreeNode(int(val))
+            node.left = doit()
+            node.right = doit()
+            return node
+
+        vals = iter(data.split())
+        return doit()
+
 
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
