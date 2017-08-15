@@ -2488,7 +2488,68 @@ class Codec:
         :rtype: List[str]
         """
         return [str.replace('||','|') for str in s.split(' | ')[:-1]]
+
+
+# 297. Serialize and Deserialized Binary Tree
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Codec:
+
+    def serialize(self, root):
+        """Encodes a tree to a single string.
         
+        :type root: TreeNode
+        :rtype: str
+        """
+        if root is None:
+            return ""
+
+        queue = [root]
+        res = ""
+        while queue:
+            node = queue.pop(0)
+            if node is None:
+                res += "n "
+            else:
+                res += str(node.val) + " "
+                queue.append(node.left)
+                queue.append(node.right)
+        return res
+
+        
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+        
+        :type data: str
+        :rtype: TreeNode
+        """
+        if data == "":
+            return None
+        values = data.split(" ")[:-1]
+        root = TreeNode(int(values[0]))
+        queue = [root]
+        for i in range(1, len(values), 2):
+            node = queue.pop(0)
+            if values[i] != "n":
+                left = TreeNode(int(values[i]))
+                node.left = left
+                queue.append(left)
+
+            i += 1
+            if values[i] != "n":
+                right = TreeNode(int(values[i]))
+                node.right = right
+                queue.append(right)
+
+        return root
+
+
 
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
