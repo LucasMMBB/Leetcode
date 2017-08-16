@@ -2502,7 +2502,7 @@ class Codec:
 
     def serialize(self, root):
         """Encodes a tree to a single string.
-        
+        :bfs
         :type root: TreeNode
         :rtype: str
         """
@@ -2525,7 +2525,7 @@ class Codec:
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
-        
+        :bfs
         :type data: str
         :rtype: TreeNode
         """
@@ -2576,7 +2576,11 @@ class Codec:
         vals = iter(data.split())
         return doit()
 
-
+    def serialize(self, data):
+        # method: DFS
+    def serialize(self, data):
+        # method: DFS
+        
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
 # codec.decode(codec.encode(strs))
