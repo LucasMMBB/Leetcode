@@ -2588,21 +2588,56 @@ class MedianFinder(object):
         """
         initialize your data structure here.
         """
-        
+        self.data = []
 
     def addNum(self, num):
         """
         :type num: int
         :rtype: void
         """
+        self.data.append(num)
         
 
     def findMedian(self):
         """
         :rtype: float
         """
-        
+        if not self.data:
+            return
+        self.data.sort()
+        length = len(self.data)
+        if length % 2 == 0:
+            return float(self.data[length/2] + self.data[length/2 - 1])/2
+        else:
+            return float(self.data[length/2])     
 
+class MedianFinder(object):
+    # refactor
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.small = []
+        self.large = []
+
+    def addNum(self, num):
+        """
+        :type num: int
+        :rtype: void
+        """
+        heappush(self.large, num)
+        heappush(self.small, heappop(self.large))
+        
+        if len(self.large) < len(self.small):
+            heappush(self.large, heappop(self.small))
+
+    def findMedian(self):
+        """
+        :rtype: float
+        """
+        if len(self.small) == len(self.large):
+            return (self.large[0] + self.small[-1]) / 2.0
+        return float(self.large[0])
 
 # Your MedianFinder object will be instantiated and called as such:
 # obj = MedianFinder()
