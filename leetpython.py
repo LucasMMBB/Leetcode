@@ -2626,10 +2626,10 @@ class MedianFinder(object):
         :rtype: void
         """
         heappush(self.large, num)
-        heappush(self.small, heappop(self.large))
+        heappush(self.small, -heappop(self.large))
         
         if len(self.large) < len(self.small):
-            heappush(self.large, heappop(self.small))
+            heappush(self.large, -heappop(self.small))
 
     def findMedian(self):
         """
