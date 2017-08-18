@@ -2639,15 +2639,105 @@ class MedianFinder(object):
             return (self.large[0] + self.small[-1]) / 2.0
         return float(self.large[0])
 
-# Your MedianFinder object will be instantiated and called as such:
-# obj = MedianFinder()
-# obj.addNum(num)
-# param_2 = obj.findMedian()
+# 21. Merge Two Sorted Lists
+class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        cur = head = ListNode(0)
+        while l1 and l2:
+            if l1.val < l2.val:
+                cur.next = l1
+                l1 = l1.next
+            else:
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+        if not l1 and not l2:
+            return head.next
 
+        if not l1:
+            cur.next = l2
+        if not l2:
+            cur.next = l1
+        return head.next
 
-# Your Codec object will be instantiated and called as such:
-# codec = Codec()
-# codec.decode(codec.encode(strs))
+# 23. Merge k Sorted Lists
+class Solution(object):
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        if len(lists) == 0:
+            return None
+        res = lists[0]
+        for i in range(1, len(lists)):
+            if i == 1:
+                prev = lists[0]
+            else:
+                prev = res
+            res = self.mergeTwoLists(prev, lists[i])
+
+        return
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        cur = head = ListNode(0)
+        while l1 and l2:
+            if l1.val < l2.val:
+                cur.next = l1
+                l1 = l1.next
+            else:
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+        if not l1 and not l2:
+            return head.next
+
+        if not l1:
+            cur.next = l2
+        if not l2:
+            cur.next = l1
+        return head.next        
+
+    def mergeKLists_m2(self, lists):
+        # method: Priority Queue
+        from Queue import PriorityQueue
+        pq = PriorityQueue()
+        cur = dummy = ListNode(0)
+        for node in lists:
+            if node:
+                pq.put((node.val, node))
+
+        while not pq.empty():
+            cur.next = pq.get()[1]
+            cur = cur.next
+            if cur.next:
+                pq.put((cur.next.val, cur.next))
+        return dummy.next
+
+    def mergeKLists_m3(self, lists):
+        # method: heap queue
+        from heapq import *
+        hq = []
+        cur = dummy = ListNode(0)
+        for node in lists:
+            if node:
+                heappush(hq, (node.val, node))
+        while len(hq) > 0:
+            cur.next = heappop(hq)[1]
+            cur = cur.next
+            if cur.next:
+                heappush(hq, (cur.next.val, cur.next))
+
+        return dummy.next
 
 #160. Intersection of Two Linked List
 # Definition for singly-linked list.
