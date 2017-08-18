@@ -2647,6 +2647,7 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
+        # method: iterative, time: O(n), space: O(1)
         cur = head = ListNode(0)
         while l1 and l2:
             if l1.val < l2.val:
@@ -2664,6 +2665,20 @@ class Solution(object):
         if not l2:
             cur.next = l1
         return head.next
+
+    def mergeTwoLists(self, l1, l2):
+        # method: recursive, time: O(n), space: O(1)
+        if not l1:
+            return l2
+        if not l2:
+            return l1
+
+        if l1.val < l2.val:
+            l1.next = self.mergeTwoLists(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1, l2.next)
+            return l2
 
 # 23. Merge k Sorted Lists
 class Solution(object):
@@ -2738,6 +2753,34 @@ class Solution(object):
                 heappush(hq, (cur.next.val, cur.next))
 
         return dummy.next
+
+# 347. Top K Frequent Elements
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        # method: heapq, hash table
+        # time: O(N + klog(k))
+        from heapq import *
+        dic = {}
+        hq = []
+        res = []
+        for num in nums:
+            if num in dic:
+                dic[num] += 1
+            else:
+                dic[num] = 1
+
+        for key in dic:
+            heappush(hq, (-dic[key], key))
+
+        for i in range(k):
+            res.append(heappop(hq)[1])
+
+        return res     
 
 #160. Intersection of Two Linked List
 # Definition for singly-linked list.
