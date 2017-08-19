@@ -2823,7 +2823,24 @@ class Solution(object):
             headB = headB.next
         
         return res
-    
+
+    def getInsectionNode(self, headA, headB):
+        # clean up the code
+        m = self.getSize(headA)
+        n = self.getSize(headB)
+
+        if m < n:
+            return self.getIntersectionNode(headB, headA)
+
+        for i in range(m - n):
+            headA = headA.next
+
+        while headA:
+            if headA.val == headB.val:
+                return headA
+            headA, headB = headA.next, headB.next
+        return None
+        
     def getSize(self, head):
         size = 0
         while head:
