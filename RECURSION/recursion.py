@@ -26,5 +26,17 @@ def indirectFun_1():
 
 def indirectFun_2():
 	indirectFun_1()
+
+## tailed and non-tailed recursion
+# A recursive function is tail recursive when recursive call is the last thing executed by the function.
+# tail recursion is better than non-tail
+def printnum(n):
+    if n < 0:
+        print "fuck you" + str(n)
+        return
+    print " " + str(n)
+
+    # the last executed statement is recursive call
+    printnum(n-1)
 #----------- TEST CODE -----------
 print fact(3)
