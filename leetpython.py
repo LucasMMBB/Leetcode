@@ -2797,6 +2797,40 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
+        sizeA = self.getSize(headA)
+        sizeB = self.getSize(headB)
+
+        length = min(sizeA, sizeB)
+
+        while sizeA > length:
+            headA = headA.next
+            sizeA -= 1
+
+        while sizeB > length:
+            headB = headB.next
+            sizeB -= 1
+
+        res = None
+
+        while headA and headB:
+            if headA.val != headB.val:
+                if res:
+                    res = None
+            else:
+                if not res:
+                    res = headA
+            headA = headA.next
+            headB = headB.next
+        
+        return res
+    
+    def getSize(self, head):
+        size = 0
+        while head:
+            head = head.next
+            size += 1
+
+        return size
         
         
 #-------------- TO DO LIST -----------------
