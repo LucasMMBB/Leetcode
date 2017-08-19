@@ -2840,7 +2840,7 @@ class Solution(object):
                 return headA
             headA, headB = headA.next, headB.next
         return None
-        
+
     def getSize(self, head):
         size = 0
         while head:
@@ -2849,7 +2849,33 @@ class Solution(object):
 
         return size
         
+# 599. Minimum Index Sum of Two Lists
+class Solution(object):
+    def findRestaurant(self, list1, list2):
+        """
+        :type list1: List[str]
+        :type list2: List[str]
+        :rtype: List[str]
+        """
+        dic2 = {}
+        isum = len(list1) + len(list2) - 2
+        res = []
+
+        for j in range(len(list2)):
+            dic2[list2[j]] = j # j is index
+
+        for i in range(len(list1)):
+            if list1[i] in dic2 and (i + dic2[list1[i]]) < isum:
+                isum = i + dic2[list1[i]]
         
+        # isum is least list index sum
+        for i in range(len(i)):
+            if list1[i] in dic2 and i + dic2[list1[i]] == isum:
+                res.append(list1[i])
+        return res
+
+
+
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
