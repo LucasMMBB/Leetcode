@@ -2912,6 +2912,35 @@ class Solution(object):
                 dic[sum] = i
         return maxlen
 
+
+# 209. Minimum Size Subarray Sum
+class Solution(object):
+    def minSubArrayLen(self, s, nums):
+        """
+        :type s: int
+        :type nums: List[int]
+        :rtype: int
+        """
+        # time: O(n), space: O(1)
+        # method: two pointers
+        l, r, sum, length = 0, 0, 0, len(nums)
+        minlen = len(nums) + 1
+        while l < len(nums) and r < len(nums):
+            sum += nums[r]
+            if sum >= s:
+                minlen = min(minlen, r - l + 1)
+                l += 1
+                while l <= r:
+                    sum -= nums[l - 1]
+                    if sum < s:
+                        break
+                    else:
+                        minlen = min(minlen, r - l + 1)
+                        l += 1
+            
+            r += 1
+        
+        return minlen if minlen < len(nums) + 1 else 0
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
