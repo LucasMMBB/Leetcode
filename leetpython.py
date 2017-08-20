@@ -2942,6 +2942,13 @@ class Solution(object):
         
         return minlen if minlen < len(nums) + 1 else 0
 
+# 463. Island Perimeter
+class Solution(object):
+    def islandPerimeter(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
 
 #-------------- TO DO LIST -----------------
 
