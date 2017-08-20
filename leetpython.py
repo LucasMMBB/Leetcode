@@ -2942,10 +2942,7 @@ class Solution(object):
         
         return minlen if minlen < len(nums) + 1 else 0
 
-    def minSubArrayLen_m2(self, s, nums):
-        # time: O(nlogn)
-        # method: binary search
-        
+
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
