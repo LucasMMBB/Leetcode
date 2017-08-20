@@ -2874,6 +2874,20 @@ class Solution(object):
                 res.append(list1[i])
         return res
 
+# 525. Contiguous Array
+class Solution(object):
+    """docstring for Solution"""
+    def findMaxLength(self, nums):
+        dic = {}
+        dic[0] = -1 # (count, index)
+        maxlen = count = 0
+        for i in range(len(nums)):
+            count = count + ( 1 if nums[i] == 1 else -1 )
+            if count in dic:
+                maxlen = max(maxlen, i - dic.get(count))
+            else:
+                dic[count] = i
+        return maxlen
 
 
 #-------------- TO DO LIST -----------------
