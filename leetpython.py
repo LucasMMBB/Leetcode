@@ -2890,6 +2890,28 @@ class Solution(object):
         return maxlen
 
 
+# 325. Maximum Size Subarray Sum Equals K
+class Solution(object):
+    def maxSubArrayLen(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        dic = {}
+        maxlen = sum = 0
+        for i in range(len(nums)):
+            sum += nums[i]
+            if sum == k:
+                maxlen = max(maxlen, i + 1)
+            
+            if sum - k in dic:
+                maxlen = max(maxlen, i - dic.get(sum - k))
+            
+            if sum not in dic:
+                dic[sum] = i
+        return maxlen
+
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
