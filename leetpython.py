@@ -2970,7 +2970,18 @@ class NumMatrix(object):
         """
         :type matrix: List[List[int]]
         """
+        self.res = matrix
+        m = len(matrix)
+        n = len(matrix[0])
+        for i in range(1, m):
+            self.res[0][i] += self.res[0][i - 1]
+        for j in range(1, n):
+            self.res[j][0] += self.res[j - 1][0]
+        for i in range(1, m):
+            for j in range(1, n):
+                self.res[i][j] += self.res[i-1][j] + self.res[i][j-1] - self.res[i-1][j-1]
         
+
 
     def sumRegion(self, row1, col1, row2, col2):
         """
@@ -2980,6 +2991,34 @@ class NumMatrix(object):
         :type col2: int
         :rtype: int
         """
+        if row1 == 0 and col1 == 0:
+            return self.res[row2][col2]
+
+        if row1 == 0 and col1 != 0:
+            return self.res[row2][col2] - self.res[row2][col1 - 1]
+
+        if row1 != 0 and col1 == 0:
+            return self.res[row2][col2] - self.res[row1 - 1][col2]
+
+        if row1 * col1 != 0:
+            return self.res[row2][col2] - self.res[row1 - 1][col2] - self.res[row2][col1 - 1] + self.res[row1 - 1][col1 - 1]
+
+# clean up the previous code
+class NumMatrix(object):
+    def __init__(self, matrix):
+        if matrix is None or not matrix:
+            return
+        n, m = len(matrix), len(matrix[0])
+        self.sums = [ [0 for j in xrange(m+1)] for i in xrange(n+1) ]
+        for i in xrange(1, n+1):
+            for j in xrange(1, m+1):
+                self.sums[i][j] = matrix[i-1][j-1] + self.sums[i][j-1] + self.sums[i-1][j] - self.sums[i-1][j-1]
+    
+
+    def sumRegion(self, row1, col1, row2, col2):
+        row1, col1, row2, col2 = row1+1, col1+1, row2+1, col2+1
+        return self.sums[row2][col2] - self.sums[row2][col1-1] - self.sums[row1-1][col2] + self.sums[row1-1][col1-1]
+
 
 #-------------- TO DO LIST -----------------
 
