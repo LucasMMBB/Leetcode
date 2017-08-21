@@ -2970,6 +2970,8 @@ class NumMatrix(object):
         """
         :type matrix: List[List[int]]
         """
+        if len(matrix) == 0 || len(matrix[0]) == 0:
+            return
         self.res = matrix
         m = len(matrix)
         n = len(matrix[0])
@@ -3000,7 +3002,7 @@ class NumMatrix(object):
         if row1 != 0 and col1 == 0:
             return self.res[row2][col2] - self.res[row1 - 1][col2]
 
-        if row1 * col1 != 0:
+        if row1 != 0 and col1 != 0:
             return self.res[row2][col2] - self.res[row1 - 1][col2] - self.res[row2][col1 - 1] + self.res[row1 - 1][col1 - 1]
 
 # clean up the previous code
@@ -3019,6 +3021,31 @@ class NumMatrix(object):
         row1, col1, row2, col2 = row1+1, col1+1, row2+1, col2+1
         return self.sums[row2][col2] - self.sums[row2][col1-1] - self.sums[row1-1][col2] + self.sums[row1-1][col1-1]
 
+
+# 307. Range Sum Query - Mutable
+class NumArray(object):
+
+    def __init__(self, nums):
+        """
+        :type nums: List[int]
+        """
+        
+
+    def update(self, i, val):
+        """
+        :type i: int
+        :type val: int
+        :rtype: void
+        """
+        
+
+    def sumRange(self, i, j):
+        """
+        :type i: int
+        :type j: int
+        :rtype: int
+        """
+        
 
 #-------------- TO DO LIST -----------------
 
