@@ -2942,14 +2942,26 @@ class Solution(object):
         
         return minlen if minlen < len(nums) + 1 else 0
 
-# 463. Island Perimeter
-class Solution(object):
-    def islandPerimeter(self, grid):
+
+# 303. Range Sum Query - Immutable
+class NumArray(object):
+
+    def __init__(self, nums):
         """
-        :type grid: List[List[int]]
+        :type nums: List[int]
+        """
+        self.res = nums
+        for i in range(1, len(nums)):
+            self.res[i] += self.res[i - 1]
+
+    def sumRange(self, i, j):
+        """
+        :type i: int
+        :type j: int
         :rtype: int
         """
-
+        # time: O(1)
+        return self.res[j] - (self.res[i - 1] if i > 0 else 0)
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
