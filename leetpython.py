@@ -2962,6 +2962,25 @@ class NumArray(object):
         """
         # time: O(1)
         return self.res[j] - (self.res[i - 1] if i > 0 else 0)
+
+
+# 304. Range Sum Query 2D - Immutable
+class NumMatrix(object):
+    def __init__(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        """
+        
+
+    def sumRegion(self, row1, col1, row2, col2):
+        """
+        :type row1: int
+        :type col1: int
+        :type row2: int
+        :type col2: int
+        :rtype: int
+        """
+
 #-------------- TO DO LIST -----------------
 
 # 126. Word Ladder ||
