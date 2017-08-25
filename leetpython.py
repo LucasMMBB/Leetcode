@@ -3045,7 +3045,48 @@ class NumArray(object):
         :type j: int
         :rtype: int
         """
-        
+
+# 67. add binary
+class Solution(object):
+    def addBinary(self, a, b):
+        """
+        :type a: str
+        :type b: str
+        :rtype: str
+        """
+        # method: recursive
+        if len(a) == 0:
+            return b
+
+        if len(b) == 0:
+            return a
+
+        if a[-1] == '0' and b[-1] == '0':
+            return self.addBinary(a[:-1], b[:-1]) + '0'
+        elif a[-1] == '1' and b[-1] == '1':
+            return self.addBinary(self.addBinary(a[:-1], b[:-1]), '1') + '0'
+        else:
+            return self.addBinary(a[:-1], b[:-1]) + '1'
+
+    def addBinary(self, a, b):
+        m = len(a)
+        n = len(b)
+
+        maxlen = max(m, n)
+        carry = 0
+        res = ''
+        for i in range(maxlen):
+            x = int(a[m - 1 - i]) if i < m else 0
+            y = int(b[m - 1 - i]) if i < n else 0
+
+            tmp = (x + y + carry) % 2
+            res = str(tmp) + res
+            carry = (x + y + carry) / 2
+
+        if carry > 0:
+            res = '1' + res
+        return res
+
 
 #-------------- TO DO LIST -----------------
 
