@@ -3144,6 +3144,16 @@ class Solution(object):
             prev = cur
             cur = nxt
         return prev
+
+# 371. Sum of Two Integers
+class Solution(object):
+    def getSum(self, a, b):
+        """
+        :type a: int
+        :type b: int
+        :rtype: int
+        """
+        
 #-------------- TO DO LIST -----------------
 # 307. Range Sum Query - Mutable
 class NumArray(object):
