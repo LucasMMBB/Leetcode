@@ -3022,29 +3022,6 @@ class NumMatrix(object):
         return self.sums[row2][col2] - self.sums[row2][col1-1] - self.sums[row1-1][col2] + self.sums[row1-1][col1-1]
 
 
-# 307. Range Sum Query - Mutable
-class NumArray(object):
-
-    def __init__(self, nums):
-        """
-        :type nums: List[int]
-        """
-        
-
-    def update(self, i, val):
-        """
-        :type i: int
-        :type val: int
-        :rtype: void
-        """
-        
-
-    def sumRange(self, i, j):
-        """
-        :type i: int
-        :type j: int
-        :rtype: int
-        """
 
 # 67. add binary
 class Solution(object):
@@ -3087,8 +3064,110 @@ class Solution(object):
             res = '1' + res
         return res
 
+# 43. Multiply Strings
+class Solution(object):
+    def multiply(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        return self.str2int(num1) * self.str2int(num2)
+    
+    def str2int(self, strnum):
+        if len(strnum) == 0:
+            return 0
+        if len(strnum) < 2:
+            return int(strnum)
+        res = int(strnum[0])
+        for i in range(1, len(strnum)):
+            res = res*10 + int(strnum[i])
+        return res
 
+# 66. Plus One
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        carry = 1
+        i = len(digits) - 1
+        while carry > 0 and i >= 0:
+            sum = digits[i] + (carry if carry == 1 else 0)
+            carry = sum / 10
+            digits[i] = sum % 10
+            i -= 1
+        if carry == 1:
+            digits.insert(0, 1)
+        return digits
+
+# 369. Plus One Linked List
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def plusOne(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        head = self.reverse(head)
+        cur = head
+        carry = 1
+        while cur is not None and carry > 0:
+            tmp = carry
+            tmp += cur.val
+            cur.val = tmp % 10
+            carry = tmp / 10
+            cur = cur.next
+
+        head = self.reverse(head)
+        if carry > 0:
+            dummy = ListNode(1)
+            dummy.next = head
+            return dummy
+        return head
+
+
+    def reverse(self, head):
+        if head.next is None:
+            return head
+        prev = None
+        cur = head
+        while cur is not None:
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+        return prev
 #-------------- TO DO LIST -----------------
+# 307. Range Sum Query - Mutable
+class NumArray(object):
+
+    def __init__(self, nums):
+        """
+        :type nums: List[int]
+        """
+        
+
+    def update(self, i, val):
+        """
+        :type i: int
+        :type val: int
+        :rtype: void
+        """
+        
+
+    def sumRange(self, i, j):
+        """
+        :type i: int
+        :type j: int
+        :rtype: int
+        """
 
 # 126. Word Ladder ||
 class Solution(object):
