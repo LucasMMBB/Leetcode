@@ -3145,6 +3145,42 @@ class Solution(object):
             cur = nxt
         return prev
 
+
+# 83. Remove Duplicates from Sorted List
+
+class Solution(object):
+    def deleteDuplicates(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head:
+            return head
+        if not head.next:
+            return head
+        cur = head
+        nxt = cur.next
+        
+        while nxt:
+            if nxt.val == cur.val:
+                nxt = nxt.next
+                cur.next = nxt
+            else:
+                cur = nxt
+                nxt = nxt.next
+        
+        return head
+
+    def deleteDuplicates(self, head):
+        cur = head
+        while cur:
+            # remove duplicates
+            while cur.next and cur.next.val == cur.val:
+                cur.next = cur.next.next
+            cur = cur.next
+        return head
+
+#-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
     def getSum(self, a, b):
@@ -3153,8 +3189,7 @@ class Solution(object):
         :type b: int
         :rtype: int
         """
-        
-#-------------- TO DO LIST -----------------
+
 # 307. Range Sum Query - Mutable
 class NumArray(object):
 
