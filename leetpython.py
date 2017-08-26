@@ -3198,6 +3198,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        # method: iterative
         if head is None:
             return head
         if head.next is None:
@@ -3210,7 +3211,18 @@ class Solution(object):
             prev = cur
             cur = nxt
         return prev
+
+    def reverseList(self, head):
+        # method: recursive
         
+    def _reverse(self, node, prev=None):
+        if not Node:
+            return prev
+        n = node.next
+        node.next = prev
+        return  self._reverse(n, node)
+
+
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
