@@ -260,18 +260,6 @@ class Solution(object):
             cur = cur.next
         return dummy.next
 
-# 92. Reverse Linked List ||
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution(object):
-    def reverseBetween(self, head, m, n):
-    	dummy = cur = head
-    	left, right = m, n
-
 # 2. Add Two Numbers
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
@@ -3203,6 +3191,13 @@ class Solution(object):
                 
         return dummy.next  
 
+# 206. Reverse Linked List
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
