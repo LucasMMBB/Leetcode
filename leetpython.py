@@ -3147,7 +3147,7 @@ class Solution(object):
 
 
 # 83. Remove Duplicates from Sorted List
-
+# time: O(n), space: O(1)
 class Solution(object):
     def deleteDuplicates(self, head):
         """
@@ -3179,6 +3179,29 @@ class Solution(object):
                 cur.next = cur.next.next
             cur = cur.next
         return head
+
+# 82. Remove Duplicates from Sorted List ||
+class Solution(object):
+    def deleteDuplicates(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        dummy = pre = ListNode(0)
+        cur = head
+        pre.next = head
+
+        while cur and cur.next:
+            if cur.val == cur.next.val:
+                while cur.next and cur.val == cur.next.val:
+                    cur = cur.next
+                cur = cur.next
+                pre.next = cur
+            else:
+                cur = cur.next
+                pre = pre.next
+                
+        return dummy.next  
 
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
