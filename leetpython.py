@@ -3198,6 +3198,19 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        if head is None:
+            return head
+        if head.next is None:
+            return head
+        prev = None
+        cur = head
+        while cur:
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+        return prev
+        
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
