@@ -3214,7 +3214,7 @@ class Solution(object):
 
     def reverseList(self, head):
         # method: recursive
-        
+        return self._reverse(head)
     def _reverse(self, node, prev=None):
         if not Node:
             return prev
@@ -3222,7 +3222,39 @@ class Solution(object):
         node.next = prev
         return  self._reverse(n, node)
 
+# 92. Reverse Linked List ||
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
+class Solution(object):
+    def reverseBetween(self, head, m, n):
+        # time: O(n), space: O(1)
+        if m == n:
+            return head
+
+        dummy = ListNode(0)
+        dummy.next = head
+        pre = dummy
+        
+        for i in range(m - 1):
+            pre = pre.next
+
+        # reverse the [m, n] nodes
+        reverse = None
+        cur = pre.next
+        for i in range(n - m + 1):
+            nxt = cur.next
+            cur.next = reverse
+            reverse = cur
+            cur = nxt
+
+        pre.next.next = cur
+        pre.next = reverse
+
+        return dummy.next
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
