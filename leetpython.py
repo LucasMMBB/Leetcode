@@ -3322,12 +3322,10 @@ class Twitter(object):
         :type followeeId: int
         :rtype: void
         """
-        if followerId not in self.tweetDB or followeeId not in self.tweetDB or followerId not in self.followDB:
+        if followerId not in self.followDB:
             return
         if followeeId in self.followDB.get(followerId):
             self.followDB[followerId].discard(followeeId)
-
-        
 
 
 # Your Twitter object will be instantiated and called as such:
