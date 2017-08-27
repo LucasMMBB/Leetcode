@@ -3342,38 +3342,61 @@ class Twitter(object):
 
 # Method 2: since method 1 can't pass all test cases
 # data structure:
+from heapq import *
 class Twitter(object):
+
     def __init__(self):
         """
         Initialize your data structure here.
         """
+        self.timer = 0
         self.tweetDB = {}
         self.followDB = {}
 
     def postTweet(self, userId, tweetId):
+        """
+        Compose a new tweet.
+        :type userId: int
+        :type tweetId: int
+        :rtype: void
+        """
+        self.timer += 1
         if userId in self.tweetDB:
-            self.tweetDB[userId].add(tweetId)
+            self.tweetDB[userId].append((-self.timer, tweetId))
         else:
-            self.tweetDB[userId] = set([tweetId])
-            
+            self.tweetDB[userId] = [(-self.timer, tweetId)]
+        
 
     def getNewsFeed(self, userId):
-        news = self.tweetDB.get(userId)
-        if news is None:
-            news = set()
-        if userId in self.followDB and self.followDB.get(userId) is not None:
-            for user in self.followDB.get(userId):
-                tmp = self.tweetDB.get(user)
-                if tmp is not None:
-                    news = news | tmp
-        res = list(news)
-        res.reverse()
-        if len(res) < 10:
-            return res
-        else:
-            return res[0:10]
+        """
+        Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
+        :type userId: int
+        :rtype: List[int]
+        """
+        tweets = []
+        tweets += self.tweetDB.get(userId, [])
+
+        if userId in self.followDB:
+            for user in self.followDB.get(userId, set()):
+                tmp = self.tweetDB.get(user, [])
+                tweets += tmp       
+
+        heapify(tweets)
+        res = []
+        while len(res) < 10 and tweets:
+            res.append(heappop(tweets)[1])
+
+        return res
 
     def follow(self, followerId, followeeId):
+        """
+        Follower follows a followee. If the operation is invalid, it should be a no-op.
+        :type followerId: int
+        :type followeeId: int
+        :rtype: void
+        """
+        if followerId == followeeId:
+            return
         if followerId not in self.followDB:
             self.followDB[followerId] = set([followeeId])
         else:
@@ -3383,10 +3406,16 @@ class Twitter(object):
         
 
     def unfollow(self, followerId, followeeId):
-        if followerId not in self.followDB:
-            return
-        if followeeId in self.followDB.get(followerId):
+        """
+        Follower unfollows a followee. If the operation is invalid, it should be a no-op.
+        :type followerId: int
+        :type followeeId: int
+        :rtype: void
+        """
+        if followerId in self.followDB:
+            # do nothing if there is no such followeeId
             self.followDB[followerId].discard(followeeId)
+
 
 
 #-------------- TO DO LIST -----------------
