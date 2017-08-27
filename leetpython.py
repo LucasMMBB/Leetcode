@@ -3257,8 +3257,21 @@ class Solution(object):
         return dummy.next
 
 # 355. Design Twitter
+# -----------------test case procedure----------------
+# Your Twitter object will be instantiated and called as such:
+# obj = Twitter()
+# obj.postTweet(userId,tweetId)
+# param_2 = obj.getNewsFeed(userId)
+# obj.follow(followerId,followeeId)
+# obj.unfollow(followerId,followeeId)
 class Twitter(object):
-
+    '''
+    : assume tweetId 5 is posted after tweetId 3
+    : time: O(1), space: O(n)
+    : data structure:
+    :    tweetDB: {userId, tweetIds} % {int, set}
+    :    followDB: {userId, followIds} % {int, set}
+    '''
     def __init__(self):
         """
         Initialize your data structure here.
@@ -3327,13 +3340,76 @@ class Twitter(object):
         if followeeId in self.followDB.get(followerId):
             self.followDB[followerId].discard(followeeId)
 
+# Method 2: since method 1 can't pass all test cases
+class Twitter(object):
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.tweetDB = {}
+        self.followDB = {}
 
-# Your Twitter object will be instantiated and called as such:
-# obj = Twitter()
-# obj.postTweet(userId,tweetId)
-# param_2 = obj.getNewsFeed(userId)
-# obj.follow(followerId,followeeId)
-# obj.unfollow(followerId,followeeId)
+    def postTweet(self, userId, tweetId):
+        """
+        Compose a new tweet.
+        :type userId: int
+        :type tweetId: int
+        :rtype: void
+        """
+        if userId in self.tweetDB:
+            self.tweetDB[userId].add(tweetId)
+        else:
+            self.tweetDB[userId] = set([tweetId])
+            
+
+    def getNewsFeed(self, userId):
+        """
+        Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
+        :type userId: int
+        :rtype: List[int]
+        """
+        news = self.tweetDB.get(userId)
+        if news is None:
+            news = set()
+        if userId in self.followDB and self.followDB.get(userId) is not None:
+            for user in self.followDB.get(userId):
+                tmp = self.tweetDB.get(user)
+                if tmp is not None:
+                    news = news | tmp
+        res = list(news)
+        res.reverse()
+        if len(res) < 10:
+            return res
+        else:
+            return res[0:10]
+
+    def follow(self, followerId, followeeId):
+        """
+        Follower follows a followee. If the operation is invalid, it should be a no-op.
+        :type followerId: int
+        :type followeeId: int
+        :rtype: void
+        """
+        if followerId not in self.followDB:
+            self.followDB[followerId] = set([followeeId])
+        else:
+            self.followDB[followerId].add(followeeId)
+        
+        
+        
+
+    def unfollow(self, followerId, followeeId):
+        """
+        Follower unfollows a followee. If the operation is invalid, it should be a no-op.
+        :type followerId: int
+        :type followeeId: int
+        :rtype: void
+        """
+        if followerId not in self.followDB:
+            return
+        if followeeId in self.followDB.get(followerId):
+            self.followDB[followerId].discard(followeeId)
+
 
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
