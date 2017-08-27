@@ -3263,7 +3263,8 @@ class Twitter(object):
         """
         Initialize your data structure here.
         """
-        
+        self.tweetDB = {}
+        self.followDB = {}
 
     def postTweet(self, userId, tweetId):
         """
@@ -3272,7 +3273,11 @@ class Twitter(object):
         :type tweetId: int
         :rtype: void
         """
-        
+        if userId in self.tweetDB:
+            self.tweetDB[userId].add(tweetId)
+        else:
+            self.tweetDB[userId] = set([tweetId])
+            
 
     def getNewsFeed(self, userId):
         """
@@ -3280,7 +3285,20 @@ class Twitter(object):
         :type userId: int
         :rtype: List[int]
         """
-        
+        news = self.tweetDB.get(userId)
+        if news is None:
+            news = set()
+        if userId in self.followDB and self.followDB.get(userId) is not None:
+            for user in self.followDB.get(userId):
+                tmp = self.tweetDB.get(user)
+                if tmp is not None:
+                    news = news | tmp
+        res = list(news)
+        res.reverse()
+        if len(res) < 10:
+            return res
+        else:
+            return res[0:10]
 
     def follow(self, followerId, followeeId):
         """
@@ -3289,6 +3307,12 @@ class Twitter(object):
         :type followeeId: int
         :rtype: void
         """
+        if followerId not in self.followDB:
+            self.followDB[followerId] = set([followeeId])
+        else:
+            self.followDB[followerId].add(followeeId)
+        
+        
         
 
     def unfollow(self, followerId, followeeId):
@@ -3298,6 +3322,11 @@ class Twitter(object):
         :type followeeId: int
         :rtype: void
         """
+        if followerId not in self.tweetDB or followeeId not in self.tweetDB or followerId not in self.followDB:
+            return
+        if followeeId in self.followDB.get(followerId):
+            self.followDB[followerId].discard(followeeId)
+
         
 
 
