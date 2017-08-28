@@ -3418,6 +3418,14 @@ class Twitter(object):
 
 
 
+# 20. Valid Parentheses
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
