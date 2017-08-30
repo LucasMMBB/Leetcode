@@ -3425,7 +3425,22 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        
+        stack = []
+        dic = {
+            ')':'(',
+            ']':'[',
+            '}':'{'
+        }
+        for char in s:
+            if char in dic.values():
+                stack.append(char)
+            else:
+                if char in dic:
+                    if not stack or dic[char] != stack.pop():
+                        return False
+                else:
+                    return False
+        return stack == []
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
