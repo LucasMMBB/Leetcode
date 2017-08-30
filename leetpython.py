@@ -3441,6 +3441,15 @@ class Solution(object):
                 else:
                     return False
         return stack == []
+        
+# 301. Remove invalid parentheses
+class Solution(object):
+    def removeInvalidParentheses(self, s):
+        """
+        :type s: str
+        :rtype: List[str]
+        """
+
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
