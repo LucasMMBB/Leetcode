@@ -3441,7 +3441,15 @@ class Solution(object):
                 else:
                     return False
         return stack == []
+# 22. Generate Parentheses
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
         
+               
 # 301. Remove invalid parentheses
 class Solution(object):
     def removeInvalidParentheses(self, s):
@@ -3449,6 +3457,21 @@ class Solution(object):
         :type s: str
         :rtype: List[str]
         """
+        def isvalid(s):
+        	count = 0
+        	for c in s:
+        		if c == 'c':
+        			count += 1
+        		elif c == ')':
+        			count -= 1
+        			if count < 0:
+        				return False
+       	level = {s}
+       	while True:
+       		valid = filter(isvalid, level)
+       		if valid:
+       			return valid
+       		level = {s[:i] + s[i+1:] for s in level for i in range(len(s))}
 
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
