@@ -3501,7 +3501,29 @@ class Solution(object):
 
         return dp[n]
 
+    def numDecodings2(self, s):
+    	n = len(s)
+    	if not s or n == 0:
+    		return 0
 
+    	p = 1 # store the number of two digits
+
+    	if int(s[0]) != 0:
+    		q = 1
+
+    	for i in range(2, n + 1):
+    		tmp = q
+    		q = 0
+    		if int(s[i - 1]) != 0:
+    			q += tmp
+
+    		two = int(s[i-2] + s[i-1])
+    		if two >= 10 and two <= 26:
+    			q += p
+
+    		p = tmp
+
+    	return q
 #-------------- TO DO LIST -----------------
 # 371. Sum of Two Integers
 class Solution(object):
