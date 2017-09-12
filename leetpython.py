@@ -3524,15 +3524,45 @@ class Solution(object):
     		p = tmp
 
     	return q
-#-------------- TO DO LIST -----------------
-# 371. Sum of Two Integers
-class Solution(object):
-    def getSum(self, a, b):
+
+# 379. Design Phone Directory
+class PhoneDirectory(object):
+
+    def __init__(self, maxNumbers):
         """
-        :type a: int
-        :type b: int
+        Initialize your data structure here
+        @param maxNumbers - The maximum numbers that can be stored in the phone directory.
+        :type maxNumbers: int
+        """
+        self.PhoneDirectory = set(range(maxNumbers))
+
+    def get(self):
+        """
+        Provide a number which is not assigned to anyone.
+        @return - Return an available number. Return -1 if none is available.
         :rtype: int
         """
+        return self.PhoneDirectory.pop() if self.PhoneDirectory else -1
+        
+
+    def check(self, number):
+        """
+        Check if a number is available or not.
+        :type number: int
+        :rtype: bool
+        """
+        return number in self.PhoneDirectory
+
+    def release(self, number):
+        """
+        Recycle or release a number.
+        :type number: int
+        :rtype: void
+        """
+        self.PhoneDirectory.add(number)
+
+        
+#-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
 class NumArray(object):
