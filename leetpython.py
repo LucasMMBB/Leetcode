@@ -3561,7 +3561,31 @@ class PhoneDirectory(object):
         """
         self.PhoneDirectory.add(number)
 
+# 346. Moving Average from Data Stream
+class MovingAverage(object):
+
+    def __init__(self, size):
+        """
+        Initialize your data structure here.
+        :type size: int
+        """
+        self.queue = [] # queue
+        self.size = size
+
+    def next(self, val):
+        """
+        :type val: int
+        :rtype: float
+        """
+        self.queue.append(val)
         
+        if len(self.queue) < self.size:
+            return float(sum(self.queue)) / len(self.queue)
+        else:
+            while len(self.queue) > self.size:
+                self.queue.pop(0)
+            return float(sum(self.queue)) / self.size
+            
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
