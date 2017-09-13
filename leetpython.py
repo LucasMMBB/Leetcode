@@ -3736,6 +3736,21 @@ class ZigzagIterator(object):
         """
         return len(self.v1) + len(self.v2) != 0
 
+class ZigzagIterator_queue(object):
+	# method 2: using queue by python list
+	# time: O(k), space: O(n)
+	def __init__(self, v1, v2):
+		self.queue = [val for val in (v1, v2) if val]
+
+	def next(self):
+		tmp = self.queue.pop(0)
+		x = tmp.pop(0)
+		if tmp: self.queue.append(tmp)
+		return x
+
+	def hasNext(self):
+		if self.queue: return True
+		return False
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
