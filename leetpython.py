@@ -3599,6 +3599,43 @@ class MovingAverage_deque(object):
 	def next(self, val):
 		self.queue.append(val)
 		return float(sum(self.queue)) / len(self.queue)
+
+
+
+# 251. Flatten 2D Vector
+class Vector2D(object):
+
+    def __init__(self, vec2d):
+        """
+        Initialize your data structure here.
+        :type vec2d: List[List[int]]
+        """
+        self.data = []
+        for row in vec2d:
+            self.data += row
+        
+
+    def next(self):
+        """
+        :rtype: int
+        """
+        return self.data.pop(0)
+
+    def hasNext(self):
+        """
+        :rtype: bool
+        """
+        if len(self.data) == 0 or not self.data:
+            return False
+        else:
+            return True
+
+
+# Your Vector2D object will be instantiated and called as such:
+# i, v = Vector2D(vec2d), []
+# while i.hasNext(): v.append(i.next())
+
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
