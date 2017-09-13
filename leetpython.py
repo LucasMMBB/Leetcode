@@ -3585,7 +3585,20 @@ class MovingAverage(object):
             while len(self.queue) > self.size:
                 self.queue.pop(0)
             return float(sum(self.queue)) / self.size
-            
+
+
+'''
+: method 2: using deque from collections
+: time: O(1)
+'''
+from collections import deque
+class MovingAverage_deque(object):
+	def __init__(self, size):
+		self.queue = deque(maxlen = size)
+
+	def next(self, val):
+		self.queue.append(val)
+		return float(sum(self.queue)) / len(self.queue)
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
