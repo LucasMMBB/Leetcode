@@ -3664,6 +3664,8 @@ class PeekingIterator(object):
         Initialize your data structure here.
         :type iterator: Iterator
         """
+        self.iter = iterator
+        self.right = self.iter.next() if self.iter.hasNext() else None
         
 
     def peek(self):
@@ -3671,18 +3673,23 @@ class PeekingIterator(object):
         Returns the next element in the iteration without advancing the iterator.
         :rtype: int
         """
+        return self.right
         
 
     def next(self):
         """
         :rtype: int
         """
+        tmp = self.right
+        self.right = self.iter.next() if self.iter.hasNext() else None
+        return tmp
         
 
     def hasNext(self):
         """
         :rtype: bool
         """
+        return self.right is not None
         
 
 # Your PeekingIterator object will be instantiated and called as such:
