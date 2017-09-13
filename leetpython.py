@@ -3698,6 +3698,44 @@ class PeekingIterator(object):
 #     val = iter.peek()   # Get the next element but not advance the iterator.
 #     iter.next()         # Should return the same value as [val].
 
+# 281. Zigzag Iterator
+from collections import deque
+class ZigzagIterator(object):
+
+    def __init__(self, v1, v2):
+        """
+        Initialize your data structure here.
+        :type v1: List[int]
+        :type v2: List[int]
+        """
+        self.v1 = deque(v1)
+        self.v2 = deque(v2)
+        self.flag = 0
+        
+    def next(self):
+        """
+        :rtype: int
+        """
+        if len(self.v1) * len(self.v2) != 0:
+            if self.flag == 0:
+                self.flag = 1
+                return self.v1.popleft()
+            else:
+                self.flag = 0
+                return self.v2.popleft()
+        
+        if len(self.v1) != 0:
+            return self.v1.popleft()
+        if len(self.v2) != 0:
+            return self.v2.popleft()
+        
+
+    def hasNext(self):
+        """
+        :rtype: bool
+        """
+        return len(self.v1) + len(self.v2) != 0
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
