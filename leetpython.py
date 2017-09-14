@@ -3753,6 +3753,23 @@ class ZigzagIterator_queue(object):
 		return False
 
 
+
+# 328. Odd Even Linked List
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def oddEvenList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        
+
+
 # 341. Flatten Nested List Iterator
 # """
 # This is the interface that allows for creating nested lists.
@@ -3856,7 +3873,7 @@ class Solution(object):
         """
         
 
-        
+
 
 #-------------- TO DO LIST -----------------
 
