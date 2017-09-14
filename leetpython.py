@@ -3752,23 +3752,7 @@ class ZigzagIterator_queue(object):
 		if self.queue: return True
 		return False
 
-
-
-# 328. Odd Even Linked List
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution(object):
-    def oddEvenList(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
-        
-
+    
 
 # 341. Flatten Nested List Iterator
 # """
@@ -3828,56 +3812,32 @@ class NestedIterator(object):
 # while i.hasNext(): v.append(i.next())
 
 
-# 385. Mini Parser
-# """
-# This is the interface that allows for creating nested lists.
-# You should not implement it, or speculate about its implementation
-# """
-#class NestedInteger(object):
-#    def __init__(self, value=None):
-#        """
-#        If value is not specified, initializes an empty list.
-#        Otherwise initializes a single integer equal to value.
-#        """
-#
-#    def isInteger(self):
-#        """
-#        @return True if this NestedInteger holds a single integer, rather than a nested list.
-#        :rtype bool
-#        """
-#
-#    def add(self, elem):
-#        """
-#        Set this NestedInteger to hold a nested list and adds a nested integer elem to it.
-#        :rtype void
-#        """
-#
-#    def setInteger(self, value):
-#        """
-#        Set this NestedInteger to hold a single integer equal to value.
-#        :rtype void
-#        """
-#
-#    def getInteger(self):
-#        """
-#        @return the single integer that this NestedInteger holds, if it holds a single integer
-#        Return None if this NestedInteger holds a nested list
-#        :rtype int
-#        """
-#
-#    def getList(self):
-#        """
-#        @return the nested list that this NestedInteger holds, if it holds a nested list
-#        Return None if this NestedInteger holds a single integer
-#        :rtype List[NestedInteger]
-#        """
+# 535. Encode and Decode TinyURL
+class Codec:
+	def __init__(self):
+		self.urls = []
 
-class Solution(object):
-    def deserialize(self, s):
+	def encode(self, longUrl):
+        """Encodes a URL to a shortened URL.
+        
+        :type longUrl: str
+        :rtype: str
         """
-        :type s: str
-        :rtype: NestedInteger
+        self.urls.append(longUrl)
+        return 'http://tinyurl.com' + str(len(self.urls) - 1)
+
+    def decode(self, shortUrl):
+        """Decodes a shortened URL to its original URL.
+        
+        :type shortUrl: str
+        :rtype: str
         """
+        return self.urls[int(shortUrl.split('/')[-1])]
+        
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(url))
         
 
 
