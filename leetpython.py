@@ -3786,13 +3786,11 @@ class NestedIterator(object):
         Initialize your data structure here.
         :type nestedList: List[NestedInteger]
         """
-        
 
     def next(self):
         """
         :rtype: int
         """
-        
 
     def hasNext(self):
         """
@@ -3803,7 +3801,6 @@ class NestedIterator(object):
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
 # while i.hasNext(): v.append(i.next())
-
 
 
 #-------------- TO DO LIST -----------------
