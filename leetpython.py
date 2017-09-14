@@ -3838,9 +3838,23 @@ class Codec:
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
 # codec.decode(codec.encode(url))
-        
 
+class Codec:
+	alphabet = string.ascii_letters + '0123456789'
+	def __init__(self):
+		self.url2code = {} # {url: code}
+		self.code2url = {} # {code: url}
 
+	def encode(self, longUrl):
+		while longUrl not in self.url2code:
+			code = ''.join(random.choice(Codec.alphabet) for _ in range(6))
+			if code not in self.code2url:
+				self.url2code[longUrl] = code
+				self.code2url[code] = longUrl
+		return 'http://tinyurl.com/' + self.url2code[longUrl]
+
+	def decode(self, shortUrl):
+		return self.code2url[shortUrl[-6:]]
 
 #-------------- TO DO LIST -----------------
 
