@@ -3856,6 +3856,16 @@ class Codec:
 	def decode(self, shortUrl):
 		return self.code2url[shortUrl[-6:]]
 
+# 621. Task Scheduler
+class Solution(object):
+    def leastInterval(self, tasks, n):
+        """
+        :type tasks: List[str]
+        :type n: int
+        :rtype: int
+        """
+        
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
