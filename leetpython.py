@@ -3864,7 +3864,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        task_counts = collections.Counter(tasks).values()
+        M = max(task_counts)
+        Mct = task_counts.count(M)
+        return max(len(tasks), (M - 1) * (N + 1) + Mct)
 
 #-------------- TO DO LIST -----------------
 
