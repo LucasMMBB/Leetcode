@@ -3882,20 +3882,12 @@ class Solution(object):
         :type intervals: List[Interval]
         :rtype: bool
         """
+        intervals.sort(key = lambda x : x.start)
         
-
-# Definition for an interval.
-# class Interval(object):
-#     def __init__(self, s=0, e=0):
-#         self.start = s
-#         self.end = e
-
-class Solution(object):
-    def minMeetingRooms(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: int
-        """
+        for i in range(len(intervals) - 1):
+            if intervals[i].end > intervals[i + 1].start:
+                return False
+        return True
         
 
 #-------------- TO DO LIST -----------------
