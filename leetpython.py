@@ -3869,6 +3869,21 @@ class Solution(object):
         Mct = task_counts.count(M)
         return max(len(tasks), (M - 1) * (N + 1) + Mct)
 
+# 252. Meeting Rooms
+# Definition for an interval.
+# class Interval(object):
+#     def __init__(self, s=0, e=0):
+#         self.start = s
+#         self.end = e
+
+class Solution(object):
+    def canAttendMeetings(self, intervals):
+        """
+        :type intervals: List[Interval]
+        :rtype: bool
+        """
+        
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
@@ -3987,3 +4002,5 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+
+
