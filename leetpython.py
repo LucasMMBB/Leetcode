@@ -3882,6 +3882,8 @@ class Solution(object):
         :type intervals: List[Interval]
         :rtype: bool
         """
+        # time: sort - O(nlogn), O(n) to go through the array
+        # space: O(1): no additional space is allowed
         intervals.sort(key = lambda x : x.start)
         
         for i in range(len(intervals) - 1):
@@ -3890,6 +3892,38 @@ class Solution(object):
         return True
         
 
+# 253. Meeting Rooms ||
+# Definition for an interval.
+# class Interval(object):
+#     def __init__(self, s=0, e=0):
+#         self.start = s
+#         self.end = e
+
+class Solution(object):
+    def minMeetingRooms(self, intervals):
+        starts = []
+        ends = []
+        for i in intervals:
+            starts.append(i.start)
+            ends.append(i.end)
+
+        starts.sort()
+        ends.sort()
+        s = e = 0
+        numRooms = available = 0
+        while s < len(starts):
+            if starts[s] < ends[e]:
+                if available == 0:
+                    numRooms += 1
+                else:
+                    available -= 1
+
+                s += 1
+            else:
+                available += 1
+                e += 1
+
+        return numRooms
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
