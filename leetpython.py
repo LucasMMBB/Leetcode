@@ -3981,7 +3981,49 @@ class Solution(object):
             i += 1
         return res
 
+# 57. Insert Interval
+# Definition for an interval.
+# class Interval(object):
+#     def __init__(self, s=0, e=0):
+#         self.start = s
+#         self.end = e
 
+class Solution(object):
+    def insert(self, intervals, newInterval):
+        """
+        :type intervals: List[Interval]
+        :type newInterval: Interval
+        :rtype: List[Interval]
+        """
+
+# 13. Roman to Integer
+# The trick is that the last letter is always added. Except the last one,
+# if one letter is less than its latter one, this letter is substracted
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        # time: O(n)
+        # space: O(1)
+        romanNum = {
+            'M': 1000,
+            'D': 500,
+            'C': 100,
+            'L': 50,
+            'X': 10,
+            'V': 5,
+            'I': 1
+        }
+        num = 0
+        for i in range(len(s) - 1):
+            if romanNum[s[i]] < romanNum[s[i + 1]]:
+                num -= romanNum[s[i]]
+            else:
+                num += romanNum[s[i]]
+
+        return num + romanNum[s[-1]]
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
