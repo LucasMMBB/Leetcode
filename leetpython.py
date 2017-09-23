@@ -3949,7 +3949,9 @@ class Solution(object):
         """
         :type intervals: List[Interval]
         :rtype: List[Interval]
-        """            
+        """
+        # time: O(nlogn) + O(n)
+        # space: O(n)            
         out = []
         intervals.sort(key = lambda x : x.start)
         for i in intervals:
@@ -3958,6 +3960,28 @@ class Solution(object):
             else:
                 out.append(i)
         return out
+
+    def merge_m2(self, intervals):
+        res, starts, ends = [], [], []
+        for i in intervals:
+            starts.append(i.start)
+            ends.append(i.end)
+
+        starts.sort()
+        ends.sort()
+
+        i = 0
+        while i < len(intervals):
+            s = starts[i]
+            while i < len(intervals) - 1 and starts[i + 1] <= ends[i]:
+                i += 1
+            e = ends[i]
+            it = Interval(s, e)
+            res.append(it)
+            i += 1
+        return res
+
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
