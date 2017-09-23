@@ -3890,7 +3890,19 @@ class Solution(object):
             if intervals[i].end > intervals[i + 1].start:
                 return False
         return True
-        
+    
+    def canAttendMeetings_m2(self, intervals):
+        starts = []
+        ends = []
+        for i in intervals:
+            starts.append(i.start)
+            ends.append(i.end)
+        starts.sort()
+        ends.sort()
+        for i in range(len(intervals) - 1):
+            if not (starts[i] <= ends[i] and starts[i + 1] >= ends[i]):
+                return False
+        return True   
 
 # 253. Meeting Rooms ||
 # Definition for an interval.
