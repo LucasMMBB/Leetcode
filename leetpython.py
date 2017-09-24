@@ -4092,6 +4092,8 @@ class Solution(object):
                     return rm
             num = b
         return rm
+
+
      def intToRoman_m2(self, num):
         matrix = {
             1000:{
@@ -4143,13 +4145,39 @@ class Solution(object):
 
             num = b
         return rm
-        
-    def intToRoman(self, num):
+
+    def intToRoman_m3(self, num):
         M = ["", "M", "MM", "MMM"];
         C = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
         X = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
         I = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
         return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
+
+# 273.Integer to English Words
+class Solution(object):
+    def numberToWords(self, num):
+        """
+        :type num: int
+        :rtype: str
+        """
+        to19 = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'
+                'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen',
+                'Seventeen', 'Eighteen', 'Nineteen']
+        tens = ['Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety']
+
+        def words(n):
+            if n < 20:
+                return to19[n - 1: n]
+            if n < 100:
+                return [tens[n / 10 - 2]] + words(n % 10)
+            if n < 1000:
+                return [to19[n / 100 - 1]] + ['Hundred'] + words(n % 100)
+
+            for p, w in enumerate(('Thousand', 'Million', 'Billion'), 1):
+                if n < 1000**(p+1):
+                    return words(n/1000**p) + [w] + words(n%1000**p)
+
+        return ' '.join(words(num)) or 'Zero'
 
 #-------------- TO DO LIST -----------------
 
