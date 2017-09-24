@@ -4059,7 +4059,7 @@ class Solution(object):
             6: 'LX',
             7: 'LXX',
             8: 'LXXX',
-            9: 'CX'
+            9: 'XC'
         }
 
         one = {
@@ -4075,6 +4075,23 @@ class Solution(object):
         }
 
         rm = ''
+        for i in [1000, 100, 10, 1]:
+            a = num / i
+            b = num % i
+
+            if a != 0:
+                if i == 1000:
+                    rm += thousand[a]
+                elif i == 100:
+                    rm += hundred[a]
+                elif i == 10:
+                    rm += ten[a]
+                elif i == 1:
+                    rm += one[a]
+                if b == 0:
+                    return rm
+            num = b
+        return rm
 
 #-------------- TO DO LIST -----------------
 
