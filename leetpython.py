@@ -4203,6 +4203,44 @@ class Solution(object):
                 cols[i].append(node.val)
                 queue += (node.left, i - 1), (node.right, i + 1)
         return [cols[i] for i in sorted(cols)]
+
+    def verticalOrder_m2(self, root):
+        # time: O(nlogn) 
+        # space: O(n)
+        queue = [(root, 0)]
+        cols = {}
+
+        while queue:
+            node, i = queue.pop(0)
+            if node:
+                if i not in cols:
+                    cols[i] = []
+                cols[i].append(node.val)
+                queue += (node.left, i - 1), (node.right, i + 1)
+        return [cols[i] for i in sorted(cols)]
+
+    def verticalOrder_m3(self, root):
+        # time: O(n)
+        # space: O(n)
+        queue = [(root, 0)]
+        cols = {}
+        mi, mx = 0, 0
+        while queue:
+            node, i = queue.pop(0)
+            if i < mi: mi = i
+            if i > mx: mx = i
+            if node:
+                if i not in cols:
+                    cols[i] = []
+                cols[i].append(node.val)
+                queue += (node.left, i - 1), (node.right, i + 1)
+        res = []
+        for i in range(mi, mx + 1):
+            if i in cols:
+                res.append(cols[i])
+        return res
+ 
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
