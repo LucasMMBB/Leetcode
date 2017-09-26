@@ -4287,6 +4287,31 @@ class Solution(object):
             if NotKnowOthers(person) and Otherknows(person):
                 return person
         return -1
+
+    def findCelebrity_m2(self, n):
+        candidate = 0
+        for i in range(n):
+            if knows(candidate, i):
+                candidate = i
+
+        for i in range(candidate):
+            if knows(candidate, i):
+                return -1
+
+        for i in range(n):
+            if not knows(i, candidate):
+                return -1
+        return candidate
+
+
+# 76. Minimum Window Substring
+class Solution(object):
+    def minWindow(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
