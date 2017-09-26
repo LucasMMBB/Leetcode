@@ -4239,7 +4239,24 @@ class Solution(object):
             if i in cols:
                 res.append(cols[i])
         return res
- 
+
+# Keyboard Row
+class Solution(object):
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        line1 = set('qwertyuiop')
+        line2 = set('asdfghjkl')
+        line3 = set('zxcvbnm')
+
+        res = []
+        for word in words:
+            w = word.lower()
+            if set(w).issubset(line1) or set(w).issubset(line2) or set(w).issubset(line3):
+                res.append(word)
+        return res
 
 #-------------- TO DO LIST -----------------
 
