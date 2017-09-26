@@ -4179,6 +4179,30 @@ class Solution(object):
 
         return ' '.join(words(num)) or 'Zero'
 
+
+
+# 314. Binary Tree Vertical Order Traversal
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def verticalOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        cols = collections.defaultdict(list)
+        queue = [(root, 0)]
+
+        for node, i in queue:
+            if node:
+                cols[i].append(node.val)
+                queue += (node.left, i - 1), (node.right, i + 1)
+        return [cols[i] for i in sorted(cols)]
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
