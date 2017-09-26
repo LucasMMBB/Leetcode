@@ -4258,6 +4258,35 @@ class Solution(object):
                 res.append(word)
         return res
 
+# 277. Find the Celebrity
+# The knows API is already defined for you.
+# @param a, person a
+# @param b, person b
+# @return a boolean, whether a knows b
+# def knows(a, b):
+
+class Solution(object):
+    def findCelebrity(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # time: O(n**2)
+        # space: O(1)
+        def NotKnowOthers(p):
+            for i in range(n):
+                if i != p and knows(p, i):
+                    return False
+            return True
+        def Otherknows(p):
+            for i in range(n):
+                if i != p and not knows(i, p):
+                    return False
+            return True
+        for person in range(n):
+            if NotKnowOthers(person) and Otherknows(person):
+                return person
+        return -1
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
