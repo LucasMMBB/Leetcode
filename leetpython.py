@@ -4312,13 +4312,6 @@ class Solution(object):
         :type t: str
         :rtype: str
         """
-        need, missing = collections.Count(t), len(t)
-        i = I = J = 0
-        for j, c in enumerate(s, 1):
-            missing -= need[c] > 0
-            need[c] -= 1
-
-            if not missing
 
 
 # 257. Binary Tree Paths
@@ -4335,7 +4328,51 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[str]
         """
-        
+        # recursively
+        if not root:
+            return []
+
+        res = []
+        self.dfs(root, "", res)
+        return res
+
+    def dfs(self, root, ls, res):
+        if not root.left and not root.right:
+            res.append(ls + str(root.val))
+        if root.left:
+            self.dfs(root.left, ls + str(root.val) + "->", res)
+        if root.right:
+            self.dfs(root.right, l + str(root.val) + "->", res)       
+
+    def binaryTreePaths(self, root):
+        if not root:
+            return []
+
+        res, stack = [], [(root, "")]
+        while stack:
+            node, ls = stack.pop()
+            if not node.left and not node.right:
+                res.append(ls + str(node.val))
+            if node.right:
+                stack.append((node.right), ls + str(node.val) + "->")
+            if node.left:
+                stack.append((node.left), ls + str(node.val) + "->")
+        return res
+
+    def binaryTreePaths(self, root):
+        if not root:
+            return []
+        res, queue = [], collections.deque([(root, "")])
+        while queue:
+            node, ls = queue.popleft()
+            if not node.left and not node.right:
+                res.append(ls + str(node.val))
+            if node.left:
+                queue.append((node.left, ls + str(node.val) + "->"))
+            if node.right:
+                queue.append((node.right, ls + str(node.val) + "->"))
+        return res
+
 
 # 157. Read N Characters Given Read4
 # The read4 API is already defined for you.
