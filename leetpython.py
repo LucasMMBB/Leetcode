@@ -4312,6 +4312,37 @@ class Solution(object):
         :type t: str
         :rtype: str
         """
+
+# 257. Binary Tree Paths
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def binaryTreePaths(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[str]
+        """
+        
+
+# 157. Read N Characters Given Read4
+# The read4 API is already defined for you.
+# @param buf, a list of characters
+# @return an integer
+# def read4(buf):
+
+class Solution(object):
+    def read(self, buf, n):
+        """
+        :type buf: Destination buffer (List[str])
+        :type n: Maximum number of characters to read (int)
+        :rtype: The number of characters read (int)
+        """
+        
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
