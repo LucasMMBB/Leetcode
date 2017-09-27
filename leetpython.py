@@ -4312,6 +4312,14 @@ class Solution(object):
         :type t: str
         :rtype: str
         """
+        need, missing = collections.Count(t), len(t)
+        i = I = J = 0
+        for j, c in enumerate(s, 1):
+            missing -= need[c] > 0
+            need[c] -= 1
+
+            if not missing
+
 
 # 257. Binary Tree Paths
 # Definition for a binary tree node.
@@ -4342,7 +4350,7 @@ class Solution(object):
         :type n: Maximum number of characters to read (int)
         :rtype: The number of characters read (int)
         """
-        
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
