@@ -4397,6 +4397,28 @@ class Solution(object):
             i += count
         return i
 
+    def read(self, buf, n):
+        EOF = False
+        total = 0
+        tmp = [''] * 4 # tempary buffer
+
+        while not EOF and total< n:
+            count = read4(tmp)
+
+            # check if it's the end of the file
+            EOF = count < 4
+
+            # get the actual count
+            count = min(count, n - total)
+
+            # copy from temp buffer to buf
+            for i in range(count):
+                buf[total] = tmp[i]
+                total += 1
+
+        return total
+         
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
