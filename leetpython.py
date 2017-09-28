@@ -4457,7 +4457,7 @@ class Solution(object):
         return count == 1
 
 
-# 72. Edit Distance
+# 72. Edit Distance( NOT DONE)
 class Solution(object):
     def minDistance(self, word1, word2):
         """
@@ -4466,6 +4466,8 @@ class Solution(object):
         :rtype: int
         """
         # method: Dynamic Programming
+        # time: O(m*n)
+        # space: O(1)
         m, n = len(word1), len(word2)
         # If second string is empty, the only option is to
         # insert all characters of second string into first
@@ -4486,6 +4488,32 @@ class Solution(object):
         methodReplace = self.minDistance(word1[:m-1], word2[:n-1])
         res = 1 + min(methodInsert, methodRemove, methodReplace)
         return res
+
+    def minDistance_m2(self, word1, word2):
+        m, n = len(word1), len(word2)
+        dp = [[0 for x in range(n + 1)] for y in range(m + 1)]
+        for i in range(1, m + 1):
+            dp[i][0] = i
+        for j in range(1, n + 1):
+            dp[0][j] = j
+
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                if word1[i - 1] == word2[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = min(dp[i - 1][j - 1] + 1, min(dp[i][j - 1] + 1, dp[i - 1][j] + 1))
+        return dp[m][n]
+
+# 282. Expression Add Operators
+class Solution(object):
+    def addOperators(self, num, target):
+        """
+        :type num: str
+        :type target: int
+        :rtype: List[str]
+        """
+        
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
@@ -4606,3 +4634,11 @@ class Solution(object):
         """
 
 
+# 583. Delete Operation for Two Strings
+class Solution(object):
+    def minDistance(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: int
+        """
