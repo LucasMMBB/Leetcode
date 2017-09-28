@@ -4426,6 +4426,8 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+        # time: O(n)
+        # space: O(1)
         m, n = len(s), len(t)
         if abs(m - n) > 1:
             return False
