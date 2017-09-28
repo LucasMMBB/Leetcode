@@ -4455,6 +4455,37 @@ class Solution(object):
             count += 1
             
         return count == 1
+
+
+# 72. Edit Distance
+class Solution(object):
+    def minDistance(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: int
+        """
+        # method: Dynamic Programming
+        m, n = len(word1), len(word2)
+        # If second string is empty, the only option is to
+        # insert all characters of second string into first
+        if m == 0:
+            return n
+        # vice versa
+        if n == 0:
+            return m
+
+        # If last characters of two strings are same, nothing
+        # much to do. Ignore last characters and get count for
+        # remaining strings
+        if word1[-1] == word2[-1]:
+            return self.minDistance(word1[:m-1], word2[:n-1])
+
+        methodInsert = self.minDistance(word1, word2[:n-1])
+        methodRemove = self.minDistance(word1[:m-1], word2)
+        methodReplace = self.minDistance(word1[:m-1], word2[:n-1])
+        res = 1 + min(methodInsert, methodRemove, methodReplace)
+        return res
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
