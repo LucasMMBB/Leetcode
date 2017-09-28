@@ -4433,7 +4433,7 @@ class Solution(object):
         i = 0
         j = 0
         while i < m and j < n:
-            if s[i].lower() != t[j].lower():
+            if s[i] != t[j]:
                 if count == 1:
                     return False
                 else:
@@ -4444,6 +4444,7 @@ class Solution(object):
                     else:
                         i += 1
                         j += 1
+                        
                     count += 1
             else:
                 i += 1
@@ -4452,7 +4453,6 @@ class Solution(object):
             count += 1
             
         return count == 1
-
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
