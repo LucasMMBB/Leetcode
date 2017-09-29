@@ -119,6 +119,32 @@ class Solution(object):
 				queue.append((node.right, path+[node.val]))
         return res
 
+# 112. Path Sum
+class Solution(object):
+    def hasPathSum(self, root, sum):
+    	if not root:
+    		return False
+    	if not root.left and not root.right and sum == root.val:
+    		return True
+    	return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - node.val)
+
+# follow up
+# find the number of paths whose'sum from root to leaf is equal to sum
+	def pathSum(self, root, sum):
+		if not root:
+			return 0
+		count = 0
+		self.dfs(root, sum, count)
+		return count
+
+	def dfs(self, node, sum, count):
+		if not node.left and not node.right and sum == node.val:
+			count += 1
+		if node.left:
+			self.dfs(node.left, sum - node.val, count)
+		if node.right:
+			self.dfs(node.right, sum - node.val, count)
+
 
 # 113. Path Sum ||
 # Definition for a binary tree node.
