@@ -4304,15 +4304,6 @@ class Solution(object):
         return candidate
 
 
-# 76. Minimum Window Substring
-class Solution(object):
-    def minWindow(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: str
-        """
-
 
 # 257. Binary Tree Paths
 # Definition for a binary tree node.
@@ -4505,6 +4496,19 @@ class Solution(object):
                     dp[i][j] = min(dp[i - 1][j - 1] + 1, min(dp[i][j - 1] + 1, dp[i - 1][j] + 1))
         return dp[m][n]
 
+
+
+#-------------- TO DO LIST -----------------
+
+# 76. Minimum Window Substring
+class Solution(object):
+    def minWindow(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+
 # 282. Expression Add Operators
 class Solution(object):
     def addOperators(self, num, target):
@@ -4513,13 +4517,7 @@ class Solution(object):
         :type target: int
         :rtype: List[str]
         """
-# subset
-def subset(array):
-    array.sort()
-    
-
-#-------------- TO DO LIST -----------------
-
+        
 # 307. Range Sum Query - Mutable
 class NumArray(object):
 
