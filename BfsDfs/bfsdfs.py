@@ -119,3 +119,68 @@ class Solution(object):
 				queue.append((node.right, path+[node.val]))
         return res
 
+# 113. Path Sum ||
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def pathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: List[List[int]]
+        """
+        # method: recursion
+        # time: O(n), space: O(1)
+        if not root:
+        	return []
+
+        result = []
+        self.dfs(root, sum, [], result)
+        return result
+
+    def dfs(self, node, sum, path, res):
+    	if not node.left and not node.right and node.val == sum:
+    		path.append(node.val)
+    		res.append(path)
+    	if node.left:
+    		self.dfs(node.left, sum-node.val, path+[node.val], res)
+    	if node.right:
+    		self.dfs(node.right, sum-node.val, path+[node.val], res)
+
+   	def pathSum_dfs(self, root, sum):
+   		# method: dfs + stack
+   		if not root:
+   			return []
+   		res = []
+   		stack = [(root, [], sum)]
+   		while stack:
+   			node, path, sm = stack.pop()
+   			if not node.left and not node.right and sm == node.val:
+   				path.append(node.val)
+   				res.append(path)
+   			if node.right:
+   				stack.append((node.right, path+[node.val], sm - node.val))
+   			if node.left:
+   				stack.append((node.left, path+[node.val], sm - node.val))
+   		return res
+
+   	def pathSum_bfs(self, root, sum):
+   		if not root:
+   			return  []
+   		res = []
+   		queue = collections.deque([(root, [], sum)])
+   		while queue:
+   			node, path, sm = queue.popleft()
+   			if not node.left and not node.right and sm == node.val:
+   				path.append(node.val)
+   				res.append(path)
+   			if node.left:
+   				queue.append((node.left, path + [node.val], sm - node.val))
+   			if node.right:
+   				queue.append((node.right, path + [node.val], sm - node.val))
+   		return res
