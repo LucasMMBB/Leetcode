@@ -1,5 +1,5 @@
-# -------- BFS ---------
-# -------- DFS ---------
+# -------- BFS && DFS && RECURSION---------
+
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -127,6 +127,21 @@ class Solution(object):
     	if not root.left and not root.right and sum == root.val:
     		return True
     	return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - node.val)
+
+    def hasPathSum_dfs(self, root, sum):
+    	if not root:
+    		return False
+    	stack = [(root, sum)]
+    	while stack:
+    		node, sm = stack.pop()
+    		if not node.left and not node.right and sm == node.val:
+    			return True
+    		if node.right:
+    			stack.append((node.right, sm - node.val))
+    		if node.left:
+    			stack.append((node.left, sm - node.val))
+
+    	return False
 
 # follow up
 # find the number of paths whose'sum from root to leaf is equal to sum
