@@ -4497,6 +4497,34 @@ class Solution(object):
         return dp[m][n]
 
 
+# 129. Sum Roof to Leaf Numbers
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def sumNumbers(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+        	return 0
+        res = 0
+        stack = [(root, "")]
+        while stack:
+        	node, path = stack.pop()
+        	if not node.left and not node.right:
+        		path += str(node.val)
+        		res += int(path)
+        	if node.left:
+        		stack.append((node.left, path+str(node.val)))
+        	if node.right:
+        		stack.append((node.right, path+ str(node.val)))
+        return res
 
 #-------------- TO DO LIST -----------------
 
@@ -4517,7 +4545,7 @@ class Solution(object):
         :type target: int
         :rtype: List[str]
         """
-        
+
 # 307. Range Sum Query - Mutable
 class NumArray(object):
 

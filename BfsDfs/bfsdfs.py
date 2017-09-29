@@ -119,6 +119,7 @@ class Solution(object):
 				queue.append((node.right, path+[node.val]))
         return res
 
+
 # 113. Path Sum ||
 # Definition for a binary tree node.
 # class TreeNode(object):
