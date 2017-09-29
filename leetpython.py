@@ -4513,7 +4513,11 @@ class Solution(object):
         :type target: int
         :rtype: List[str]
         """
-        
+# subset
+def subset(array):
+    array.sort()
+    
+
 #-------------- TO DO LIST -----------------
 
 # 307. Range Sum Query - Mutable
