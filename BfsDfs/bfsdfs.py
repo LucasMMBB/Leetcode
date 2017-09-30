@@ -226,3 +226,34 @@ class Solution(object):
    			if node.right:
    				queue.append((node.right, path + [node.val], sm - node.val))
    		return res
+
+
+# 404. Sum of Left Leaves
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def sumOfLeftLeaves(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+        	return 0
+
+        res = 0
+        queue = collections.deque([root])
+
+        while queue:
+        	node = queue.popleft()
+        	if node.left and not node.left.left and not node.left.right:
+        		res += node.left.val
+        	if node.left:
+        		queue.append(node.left)
+        	if node.right:
+        		queue.append(node.right)
+        return res
