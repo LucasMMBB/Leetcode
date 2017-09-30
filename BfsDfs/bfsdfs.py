@@ -237,7 +237,31 @@ class Solution(object):
 #         self.right = None
 
 class Solution(object):
-    def sumOfLeftLeaves(self, root):
+	def sumOfLeftLeaves(self, node):
+		# method: recursion
+		if not node:
+			return 0 # base case
+		if node.left and not node.left.lef and not node.left.right:
+			return node.left.val + self.sumOfLeftLeaves(node.right)
+		return self.sumOfLeftLeaves(node.left) + self.sumOfLeftLeaves(node.right)
+	
+	def sumOfLeftLeaves_bfs(self, root):
+		if not root:
+			return 0
+		res = 0
+		stack = [root]
+		while stack:
+			node = stack.pop()
+			if node.left:
+				if not node.left.left and not node.left.right:
+					res += node.left.val
+			if node.left:
+				stack.append(node.left)
+			if node.right:
+				stack.append(node.right)
+		return res
+
+    def sumOfLeftLeaves_dfs(self, root):
         """
         :type root: TreeNode
         :rtype: int
