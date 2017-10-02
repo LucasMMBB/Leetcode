@@ -58,9 +58,12 @@ def postorderTraverse(root):
 			node = stack.pop()
 			cur = node.left
 	return res
+
+
 '''
 :Binary Search Tree
 :Defination Highlights:
+:   - BST is a node-based binary tree data structure.
 :	- the left subtree of a node contains only nodes with keys less than node's key
 :	- the right subttree contains only nodes with keys more than node's key
 : 	- the left and right each much also be a binary search tree.

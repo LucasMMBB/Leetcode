@@ -4573,6 +4573,7 @@ class Solution(object):
         return self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
 
 
+
 #-------------- TO DO LIST -----------------
 
 # 76. Minimum Window Substring
