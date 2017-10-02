@@ -4572,6 +4572,14 @@ class Solution(object):
         	return root.val + self.sumOfLeftLeaves(root.right)
         return self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
 
+# 543. Diameter of Bianry Tree
+class Solution(object):
+    def diameterOfBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        
 
 
 #-------------- TO DO LIST -----------------
