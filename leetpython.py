@@ -4579,7 +4579,16 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        
+        self.best = 1
+        def depth(node):
+        	if not node: return 0
+        	left, right = depth(node.left), depth(node.right)
+        	self.best = max(self.best, left + right + 1)
+        	return 1 + max(left, right)
+
+        depth(root)
+        return self.best - 1
+
 
 
 #-------------- TO DO LIST -----------------
