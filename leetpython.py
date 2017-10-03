@@ -4624,6 +4624,18 @@ class Solution(object):
         	n = n & (n - 1)
         	count += 1
         return count
+
+# 461. Hamming Distance
+class Solution(object):
+    def hammingDistance(self, x, y):
+        """
+        :type x: int
+        :type y: int
+        :rtype: int
+        """
+        # method: xor 1^0 = 1, 0^1 = 1
+        return bin(x^y).count("1")
+
 #-------------- TO DO LIST -----------------
 
 # 76. Minimum Window Substring
