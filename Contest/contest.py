@@ -49,3 +49,4 @@ class Solution(object):
                     res.append(length)
                     stack.append((node.right, 0))
         return max(res)
+    

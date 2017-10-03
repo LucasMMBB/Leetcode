@@ -4589,8 +4589,39 @@ class Solution(object):
         depth(root)
         return self.best - 1
 
+# 687. Longest Univalue Path
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
+class Solution(object):
+    def longestUnivaluePath(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+        	return 0
+        res = []
+        def depth(node):
+        	if not node: return 0
+        
+        depth(node)
+        return self.best - 1
 
+# 191. Number of 1 Bits
+class Solution(object):
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        
+
+        
 #-------------- TO DO LIST -----------------
 
 # 76. Minimum Window Substring
