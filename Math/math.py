@@ -7,9 +7,23 @@ def swap(a, b):
 	:type b: int
 	:rtype tuple
 	'''
+	# method: Arithmetic Operators
 	a = a + b
 	b = a - b
 	a = a - b
-	return (a,b)
+	return (a, b)
+
+def swap(a, b):
+	# method: Arithmetic Operators
+	a = a * b
+	b = a / b
+	a = a / b
+	return (a, b)
+
+def swap(a, b):
+	a = a ^ b
+	b = a ^ b
+	a = a ^ b
+	return (a, b)
 
 print swap(1,2)
