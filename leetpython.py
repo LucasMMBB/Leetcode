@@ -4636,6 +4636,18 @@ class Solution(object):
         # method: xor 1^0 = 1, 0^1 = 1
         return bin(x^y).count("1")
 
+# 677. Total Hamming Distance
+class Solution(object):
+    def totalHammingDistance(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        for i in range(len(nums)):
+        	
+    def hammingDistance(self, x, y):
+    	return bin(x^y).count("1")
+
 #-------------- TO DO LIST -----------------
 
 # 76. Minimum Window Substring
