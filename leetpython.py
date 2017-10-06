@@ -4699,6 +4699,7 @@ class Solution(object):
         :rtype: int
         """
         # method quick select
+        # time: O(n), space: O(1)
         pivot = nums[0]
         init = 0
         for i in range(1 : len(nums)):
@@ -4713,6 +4714,33 @@ class Solution(object):
             return self.findKthLargest(nums[:init], k)
         else:
             return self.findKthLargest(nums[init:],k-init-1)
+
+
+# 414. Third Maximum Number
+class Solution(object):
+    def thirdMax(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums) < 3:
+            return max(nums)
+        nums.remove(max(nums))
+        nums.remove(max(nums))
+        return nums.remove(max(nums))
+
+    def thirdMax_m2(self, nums):
+        v = [float('-inf'), float('-inf'), float('-inf')]
+        for num in nums:
+            if num not in v:
+                if num > v[0]:
+                    v[0], v[1], v[2] = num, v[0], v[1]
+                elif num > v[1]:
+                    v[0], v[1], v[2] = v[0], num, v[1]
+                elif num > v[2]:
+                    v[0], v[1], v[2] = v[0], v[1], num
+        return max(nums) if float('-inf') in v else v[2]
+        
 #-------------- TO DO LIST -----------------
 
 # 76. Minimum Window Substring
