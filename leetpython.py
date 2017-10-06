@@ -4740,6 +4740,7 @@ class Solution(object):
                 elif num > v[2]:
                     v[0], v[1], v[2] = v[0], v[1], num
         return max(nums) if float('-inf') in v else v[2]
+
         
 #-------------- TO DO LIST -----------------
 
