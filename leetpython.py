@@ -4690,6 +4690,29 @@ class Solution(object):
     def hammingDistance(self, x, y):
     	return bin(x^y).count("1")
 
+# 215. Kth Largest Element in an Array
+class Solution(object):
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        # method quick select
+        pivot = nums[0]
+        init = 0
+        for i in range(1 : len(nums)):
+            if nums[i] > pivot:
+                init += 1
+                nums[i], nums[init] = nums[init], nums[i]
+                
+        nums[0], nums[init] = nums[init], nums[0]
+        if init + 1 == k:
+            return pivot
+        elif init + 1 > k:
+            return self.findKthLargest(nums[:init], k)
+        else:
+            return self.findKthLargest(nums[init:],k-init-1)
 #-------------- TO DO LIST -----------------
 
 # 76. Minimum Window Substring
