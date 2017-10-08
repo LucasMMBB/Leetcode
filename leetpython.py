@@ -4741,7 +4741,24 @@ class Solution(object):
                     v[0], v[1], v[2] = v[0], v[1], num
         return max(nums) if float('-inf') in v else v[2]
 
-        
+# 693. Binary Number with Alternating Bits
+class Solution(object):
+    def hasAlternatingBits(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        prev = n % 2
+        n = / 2
+
+        while n > 0:
+            cur = n % 2
+            if cur == prev:
+                return False
+
+            prev = cur
+            n = n / 2
+        return True     
 #-------------- TO DO LIST -----------------
 
 # 76. Minimum Window Substring
