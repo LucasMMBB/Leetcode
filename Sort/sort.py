@@ -27,6 +27,20 @@ class Sort(object):
 
 		return self.arr
 
+	def insertSort(self):
+		for i in range(1, len(self.arr)):
+			num = self.arr[i]
+
+			j = i - 1
+			while j >= 0 and num < self.arr[j]:
+				arr[j+1] = arr[j]
+				j -= 1
+			arr[j+1] = num
+
+	def heapSort(self):
+		
+
+
 # Sample question for Selection Sort
 # Question: Given an array of strings, sort the array using Selection Sort by word length.
 class Solution(object):
