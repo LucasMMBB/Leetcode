@@ -38,7 +38,32 @@ class Sort(object):
 			arr[j+1] = num
 
 	def heapSort(self):
-		
+		n = len(self.arr)
+
+		# To heapify subtree rooted at index i
+		# n is the size of heap
+		def heapify(arr, n, i):
+			largest = i
+			l = 2 * i + 1 # left
+			r = 2 * i + 2 # right
+
+			if l < n and arr[i] < arr[l]:
+				largest = l
+
+			if r < n and arr[largest] < arr[r]:
+				largest = r
+
+			if largest != i:
+				arr[i], arr[largest] = arr[largest], arr[largest] # swap
+				heapify(arr, n, largest)
+		# Build a maxheap
+		for i in range(n, -1, -1):
+			heapify(arr, n, i)
+
+		# Remove element one by one
+		for i in range(n-1, 0, -1):
+			self.arr[i], self.arr[0] = self.arr[0], self.arr[i]
+			heapify(arr, i, 0)
 
 
 # Sample question for Selection Sort
