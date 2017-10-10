@@ -4759,6 +4759,38 @@ class Solution(object):
             prev = cur
             n = n / 2
         return True     
+
+# 6. ZigZag Conversion
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if numRows <= 1:
+            return s
+
+        res = ''
+        n = len(s)
+        for i in range(numRows):
+            for j in range(i, n, 2*(numRows-1)):
+                res += s[j]
+
+                if i > 0 and i < numRows-1 and j + 2*(numRows-1-i)<n:
+                    res += s[j+2*(numRows-1-i)]
+
+        return res
+
+# 678. Valid Parenthesis String
+class Solution(object):
+    def checkValidString(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+
 #-------------- TO DO LIST -----------------
 
 # 76. Minimum Window Substring
