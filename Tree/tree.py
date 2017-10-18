@@ -1,3 +1,4 @@
+# Tree
 class Tree:
 	def __init__(self, val, left = None, right = None):
 		self.val = val
@@ -52,6 +53,89 @@ def postorder(tree):
 		postorder(tree.right)
 		print tree.val
 
+
+# Trie
+class TrieNode(object):
+
+	def __init__(self):
+		self.R = 26
+		self.links = self.R * [None]
+		self.isEnd = False
+
+	def put(ch, node):
+		self.links[ch - 'a'] = node
+	
+	def containsKey(ch):
+		return self.links[ch - 'a'] != None
+
+	def get(ch):
+		return self.links[ch - 'a']
+
+	def setEnd():
+		self.isEnd = True
+
+	def isEnd():
+		return self.isEnd
+
+class TrieNode:
+	def __init__(self):
+		self.children = [None]*26
+		self.isEnd = False
+
+class Trie(object):
+	"""docstring for Trie"""
+	def __init__(self):
+		self.root = self.getNode()
+
+	def getNode(self):
+		return TrieNode()
+
+	def _charToIndex(self, ch):
+		# private helper function
+		# converts key current character into index
+		# use only 'a' through 'z' and lower case
+		return ord(ch) - ord('a')
+
+	def insert(self, key):
+		# if not present, inserts key into trie
+		# if the key is prefix of trie node
+		# just marks leaf node
+		node = self.root
+		for i in key:
+			index = self._charToIndex(i)
+
+			# if current character is not present
+			if not node.children[index]:
+				node.children[index] = self.getNode()
+
+			node = node.children[index]
+
+		# mark last node as leaf
+		node.isEnd = True
+
+	def search(self, key):
+		# search key in the trie
+		# Returns true if key presents in trie, else false
+
+		node = self.root
+		for i in key:
+			index = self._charToIndex(i)
+			if not node.children[index]:
+				return False
+			node = node.children[index]
+
+		return node != None and node.isEnd
+
+	def startsWith(self, prefix):
+		node = self.root
+
+		for i in prefix:
+			index = self._charToIndex(i)
+			if not node.children[index]:
+				return False
+			node = node.children[index]
+
+		return True and node != None
 
 #-------------- test part --------------------------#
 test = Tree(1, Tree(2, Tree(4), Tree(5)), Tree(3))
