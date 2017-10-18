@@ -4835,12 +4835,19 @@ class Trie(object):
         return True and node != None
 
 # 211. Add and Search Word - Data structure design
+class TrieNode(object):
+
+    def __init__(self):
+        self.children = [None] * 26
+        self.isEnd = False
+
 class WordDictionary(object):
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
+        self.root = TrieNode()
         
 
     def addWord(self, word):
@@ -4849,6 +4856,14 @@ class WordDictionary(object):
         :type word: str
         :rtype: void
         """
+
+        node = self.root
+        for letter in word:
+            index = self._charToIndex(letter)
+            if not node.children[index]:
+                node.children[index] = TrieNode()
+            node = node.children[index]
+        node.isEnd = True
         
 
     def search(self, word):
@@ -4857,7 +4872,17 @@ class WordDictionary(object):
         :type word: str
         :rtype: bool
         """
+        node = self.root
+        for letter in word:
+            index =  self._charToIndex(letter)
+            if not node.children[index]:
+                return False
+            node = node.children[index]
+            
+        return node != None and node.isEnd
         
+    def _charToIndex(self, ch):
+        return ord(ch) - ord('a')
 
 
 # Your WordDictionary object will be instantiated and called as such:
