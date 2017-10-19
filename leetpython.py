@@ -4835,58 +4835,6 @@ class Trie(object):
         return True and node != None
 
 # 648. Replace Words
-class TrieNode(object):
-    def __init__(self):
-        self.children = [None]*26
-        self.isEnd = False
-
-class Trie(object):
-    """docstring for Trie"""
-    def __init__(self):
-        self.root = self.getNode()
-
-    def getNode(self):
-        return TrieNode()
-
-    def _charToIndex(self, ch):
-        return ord(ch) - ord('a')
-
-    def insert(self, key):
-        node = self.root
-        for i in key:
-            index = self._charToIndex(i)
-
-            # if current character is not present
-            if not node.children[index]:
-                node.children[index] = self.getNode()
-
-            node = node.children[index]
-
-        # mark last node as leaf
-        node.isEnd = True
-
-    def search(self, key):
-        node = self.root
-        for i in key:
-            index = self._charToIndex(i)
-            if not node.children[index]:
-                return False
-            node = node.children[index]
-
-        return node != None and node.isEnd
-
-    def startsWith(self, prefix):
-        node = self.root
-
-        for i in prefix:
-            index = self._charToIndex(i)
-            if not node.children[index]:
-                return False
-            node = node.children[index]
-
-        return True and node != None
-        
-
 class Solution(object):
     def replaceWords(self, dict, sentence):
         """
@@ -4894,6 +4842,8 @@ class Solution(object):
         :type sentence: str
         :rtype: str
         """
+        # time: O(n*m)
+        # space: O(1)
         rootset = set(dict)
 
         def replace(word):
@@ -4904,6 +4854,33 @@ class Solution(object):
 
         return " ".join(map(replace, sentence.split()))
 
+# 692. Top K Frequent Words
+from heapq import *
+class Solution(object):
+    def topKFrequent(self, words, k):
+        """
+        :type words: List[str]
+        :type k: int
+        :rtype: List[str]
+        """
+
+        dic = {}
+        heapq = []
+        res = []
+
+        for word in words:
+            if word not in dic:
+                dic[word] = 1
+            else:
+                dic[word] += 1
+
+        for word in dic:
+            heappush(heapq, (-dic[word], word))
+
+        for i in range(k):
+            res.append(heappop(heapq)[1])
+
+        return res
 
 # 211. Add and Search Word - Data structure design
 class TrieNode(object):
