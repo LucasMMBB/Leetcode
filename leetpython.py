@@ -4834,6 +4834,77 @@ class Trie(object):
 
         return True and node != None
 
+# 648. Replace Words
+class TrieNode(object):
+    def __init__(self):
+        self.children = [None]*26
+        self.isEnd = False
+
+class Trie(object):
+    """docstring for Trie"""
+    def __init__(self):
+        self.root = self.getNode()
+
+    def getNode(self):
+        return TrieNode()
+
+    def _charToIndex(self, ch):
+        return ord(ch) - ord('a')
+
+    def insert(self, key):
+        node = self.root
+        for i in key:
+            index = self._charToIndex(i)
+
+            # if current character is not present
+            if not node.children[index]:
+                node.children[index] = self.getNode()
+
+            node = node.children[index]
+
+        # mark last node as leaf
+        node.isEnd = True
+
+    def search(self, key):
+        node = self.root
+        for i in key:
+            index = self._charToIndex(i)
+            if not node.children[index]:
+                return False
+            node = node.children[index]
+
+        return node != None and node.isEnd
+
+    def startsWith(self, prefix):
+        node = self.root
+
+        for i in prefix:
+            index = self._charToIndex(i)
+            if not node.children[index]:
+                return False
+            node = node.children[index]
+
+        return True and node != None
+        
+
+class Solution(object):
+    def replaceWords(self, dict, sentence):
+        """
+        :type dict: List[str]
+        :type sentence: str
+        :rtype: str
+        """
+        rootset = set(dict)
+
+        def replace(word):
+            for i in range(1, len(word)):
+                if word[:i] in rootset:
+                    return word[:i]
+            return word
+
+        return " ".join(map(replace, sentence.split()))
+
+
 # 211. Add and Search Word - Data structure design
 class TrieNode(object):
 
