@@ -160,6 +160,7 @@ class Solution(object):
     		temp = [line + [num] for line in res]
     		res += temp
     	return res
+    	
 # 79. Word Search
 class Solution(object):
     def exist(self, board, word):
