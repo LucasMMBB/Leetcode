@@ -161,6 +161,19 @@ class Solution(object):
     		res += temp
     	return res
     	
+# 89. Gray Code
+class Solution(object):
+    def grayCode(self, n):
+        """
+        :type n: int
+        :rtype: List[int]
+        """
+        res = [0]
+        for i in range(n):
+        	res += [x + pow(2, i) for x in reversed(res)]
+
+        return res
+
 # 79. Word Search
 class Solution(object):
     def exist(self, board, word):
@@ -169,4 +182,9 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
-        
+
+# GeeksForGeeks Questions------------
+# Subset Sum
+class Solution(object):
+    def subsum(self, arr, sum):
+
