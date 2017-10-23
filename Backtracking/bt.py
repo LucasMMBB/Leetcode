@@ -176,12 +176,40 @@ class Solution(object):
 
 # 36. Valid Sudoku
 class Solution(object):
-    def isValidSudoku(self, board):
+    
+   	def row_valid(self, board):
+   		for row in board:
+   			if not self.unit_valid(row):
+   				return False
+   		return True
+
+   	def col_valid(self, board):
+   		for col in zip(*board):
+   			if not self.unit_valid(col):
+   				return False
+   		return True
+
+   	def squ_valid(self, board):
+   		for i in (0, 3, 6):
+   			for j in (0, 3, 6):
+   				tmp = [board[x][y] for x in range(i, i + 3) for y in range(j, j + 3)]
+   				if not self.unit_valid(tmp):
+   					return False
+   		return True
+
+   	def unit_valid(self, unit):
+   		tmp = []
+   		for i in unit:
+   			if i != '.':
+   				tmp.append(i)
+   		return len(set(tmp)) == len(tmp)
+
+   	def isValidSudoku(self, board):
         """
         :type board: List[List[str]]
         :rtype: bool
         """
-        
+        return self.row_valid(board) and self.col_valid(board) and self.squ_valid(board)
 
 # 79. Word Search
 class Solution(object):
