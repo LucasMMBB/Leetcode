@@ -213,6 +213,17 @@ class Solution(object):
                 self.col_valid(board) and
                 self.squ_valid(board))
 
+#------------ TBD -----------
+
+
+# 22. Generate Parentheses
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+
 # 37. Sudoku Solver
 class Solution(object):
     def solveSudoku(self, board):
@@ -220,7 +231,7 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: void Do not return anything, modify board in-place instead.
         """
-        
+
 
 # 79. Word Search
 class Solution(object):
