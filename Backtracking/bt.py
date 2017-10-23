@@ -160,7 +160,7 @@ class Solution(object):
     		temp = [line + [num] for line in res]
     		res += temp
     	return res
-    	
+
 # 89. Gray Code
 class Solution(object):
     def grayCode(self, n):
@@ -173,6 +173,15 @@ class Solution(object):
         	res += [x + pow(2, i) for x in reversed(res)]
 
         return res
+
+# 36. Valid Sudoku
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        
 
 # 79. Word Search
 class Solution(object):
