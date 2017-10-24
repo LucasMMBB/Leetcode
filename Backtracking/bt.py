@@ -223,6 +223,7 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
+<<<<<<< HEAD
         if n == 0:
             return []
 
@@ -242,6 +243,8 @@ class Solution(object):
 
         if r > 0:
             self.helper(l, r - 1, res, line + ')')
+=======
+>>>>>>> c7196e48b3a618a252e88a8204c450f65e27442b
 
 # 37. Sudoku Solver
 class Solution(object):
