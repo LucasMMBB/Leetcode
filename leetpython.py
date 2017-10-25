@@ -4952,6 +4952,21 @@ class Solution(object):
         return n % 4 != 0
 
 
+# 293. Flip Game
+class Solution(object):
+    def generatePossibleNextMoves(self, s):
+        """
+        :type s: str
+        :rtype: List[str]
+        """
+        res = []
+        
+        for i in range(len(s) - 1):
+            if s[i] == "+" and s[i + 1] == "+":
+                res.append(s[:i] + "--" + s[i+2:])
+                
+        return res
+
 #------------- to do list -------------
 # 8. String to Integer(atoi)
 class Solution(object):
