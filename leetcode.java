@@ -3653,7 +3653,13 @@ class Solution {
     }
 }
 
+class Solution {
+    public boolean canWinNim(int n) {
+        return (n % 4) != 0;
+    }
+}
 
+// ------- To do List ----------
 
 // 103. Binary Tree Zigzag Level Order Traversal
 public class Solution {

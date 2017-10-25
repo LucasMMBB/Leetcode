@@ -4937,7 +4937,31 @@ class WordDictionary(object):
 # obj = WordDictionary()
 # obj.addWord(word)
 # param_2 = obj.search(word)
-#-------------- TO DO LIST -----------------
+
+
+# 292. Nim Game
+# you can always win a nim game if the number of stones n in the pile
+# is not divisible by 4
+class Solution(object):
+    def canWinNim(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+
+        return n % 4 != 0
+
+
+#------------- to do list -------------
+# 8. String to Integer(atoi)
+class Solution(object):
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        
+        
 
 # 76. Minimum Window Substring
 class Solution(object):
