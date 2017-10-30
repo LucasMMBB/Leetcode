@@ -4967,8 +4967,15 @@ class Solution(object):
                 
         return res
 
-        
 
+# 169. Majority Element
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
 
 #------------- to do list -------------
 # 294. Flip Game ||
