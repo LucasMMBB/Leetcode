@@ -4975,7 +4975,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        major, count = nums[0], 1
+
+        for num in nums[1:]:
+            if count == 0:
+                count += 1
+                major = num
+            elif major == num:
+                count += 1
+            else:
+                count -= 1
+
+        return major      
 
 #------------- to do list -------------
 # 294. Flip Game ||
