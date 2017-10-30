@@ -4967,6 +4967,10 @@ class Solution(object):
                 
         return res
 
+        
+
+
+#------------- to do list -------------
 # 294. Flip Game ||
 class Solution(object):
     def canWin(self, s):
@@ -4974,11 +4978,8 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
+
         
-
-
-
-#------------- to do list -------------
 # 8. String to Integer(atoi)
 class Solution(object):
     def myAtoi(self, str):
