@@ -3700,6 +3700,13 @@ class Solution {
 }
 
 
+// 229. Majority Element ||
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        
+    }
+}
+
 // ------- To do List ----------
 
 // 103. Binary Tree Zigzag Level Order Traversal

@@ -4973,22 +4973,54 @@ class Solution(object):
     def majorityElement(self, nums):
         """
         :type nums: List[int]
-        :rtype: int
+        :rtype: List[int]
         """
-        major, count = 0, 0
+        if not nums:
+            return []
 
+        count1, count2, candidate1, candidate2 = 0, 0, 0, 1
         for num in nums:
-            if count == 0:
-                major = num
-            elif major == num:
-                count += 1
+            if num == candidate1:
+                count1 += 1
+            elif num == candidate2:
+                count2 += 2
+            elif count1 == 0:
+                candidate1, count1 = num, 1
+            elif count2 == 0:
+                candidate2, count2 = num, 1
             else:
-                count -= 1
+                count1 -= 1
+                count2 -= 1
 
-        return major      
+        return [num for num in (candidate1, candidate2) if nums.count(num)>len(nums)/3]
 
+
+# 229. Majority Element ||
+class Solution(object):
     def majorityElement(self, nums):
-        return nums.sort()[len(nums)/2]
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        if not nums:
+            return []
+
+        count1, count2, candidate1, candidate2 = 0, 0, 0, 1
+        for num in nums:
+            if num == candidate1:
+                count1 += 1
+            elif num == candidate2:
+                count2 += 2
+            elif count1 == 1:
+                candidate1, count1 = num, 1
+            elif count2 == 2:
+                candidate2, count2 = num, 1
+            else:
+                count1 -= 1
+                count2 -= 2
+
+        return [num for num in (candidate1, candidate2) if nums.count(num)>len(nums)/3]
+
 
 
 
