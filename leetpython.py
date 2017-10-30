@@ -4975,11 +4975,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        major, count = nums[0], 1
+        major, count = 0, 0
 
-        for num in nums[1:]:
+        for num in nums:
             if count == 0:
-                count += 1
                 major = num
             elif major == num:
                 count += 1
@@ -4987,6 +4986,11 @@ class Solution(object):
                 count -= 1
 
         return major      
+
+    def majorityElement(self, nums):
+        return nums.sort()[len(nums)/2]
+
+
 
 #------------- to do list -------------
 # 294. Flip Game ||
