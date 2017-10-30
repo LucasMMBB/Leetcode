@@ -3703,7 +3703,46 @@ class Solution {
 // 229. Majority Element ||
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        
+        int cnt1 = 0, cnt2 = 1;
+        int m1 = 0, m2 = 1;
+
+        List<Integer> result = new ArrayList<Integer>();
+        int len = nums.length;
+
+        for(int i = 0; i < len; i++){
+            if(nums[i] == m1){
+                cnt1++;
+            }else if(nums[i] == m2){
+                cnt2++
+            }else if(cnt1 == 0){
+                m1 = nums[i];
+                cnt = 1;
+            }else if(cnt2 == 0){
+                m2 = nums[i];
+                cnt = 2;
+            }else{
+                cnt1--;
+                cnt2--;
+            }
+        }
+
+        cnt1 = 0;
+        cnt2 = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == m1){
+                cnt2++;
+            }
+            if(nums[i] == m2){
+                cnt2++;
+            }
+        }
+
+        if(cnt1 > len / 3)
+            res.add(m1);
+        if(cnt2 > len / 3)
+            res.add(m2);
+
+        return res;
     }
 }
 
