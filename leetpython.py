@@ -5021,14 +5021,6 @@ class Solution(object):
 
         return [num for num in (candidate1, candidate2) if nums.count(num)>len(nums)/3]
 
-
-# 118. Pascal's Triangle
-class Solution(object):
-    def generate(self, numRows):
-        """
-        :type numRows: int
-        :rtype: List[List[int]]
-        """
         
 
 #------------- to do list -------------
