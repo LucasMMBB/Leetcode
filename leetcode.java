@@ -3703,23 +3703,23 @@ class Solution {
 // 229. Majority Element ||
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        int cnt1 = 0, cnt2 = 1;
+        int cnt1 = 0, cnt2 = 0;
         int m1 = 0, m2 = 1;
 
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
         int len = nums.length;
 
         for(int i = 0; i < len; i++){
             if(nums[i] == m1){
                 cnt1++;
             }else if(nums[i] == m2){
-                cnt2++
+                cnt2++;
             }else if(cnt1 == 0){
                 m1 = nums[i];
-                cnt = 1;
+                cnt1 = 1;
             }else if(cnt2 == 0){
                 m2 = nums[i];
-                cnt = 2;
+                cnt2 = 1;
             }else{
                 cnt1--;
                 cnt2--;
@@ -3730,7 +3730,7 @@ class Solution {
         cnt2 = 0;
         for(int i = 0; i < nums.length; i++){
             if(nums[i] == m1){
-                cnt2++;
+                cnt1++;
             }
             if(nums[i] == m2){
                 cnt2++;
@@ -3745,6 +3745,36 @@ class Solution {
         return res;
     }
 }
+
+
+// 118. Pascal's Triangle
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        // caculate element value:
+        // k(i)(j) = k(i-1)(j-1) + k(i-1)(j) except for the first and last element
+        List<List<Integer>> triangle = new ArrayList<List<Integer>>();
+        if(numRows <= 0)
+            return triangle;
+        int tmp;
+        for(int i = 0; i < numRows; i++){
+            List<Integer> row = new ArrayList<Integer>();
+            for(int j = 0; j < i + 1; j++){
+                if(j == 0 || j == i){
+                    row.add(1);
+                }else{
+                    tmp = triangle.get(i-1).get(j-1) + triangle.get(i-1).get(j);
+                    row.add(tmp);
+                }
+            }
+            triangle.add(row);
+        }
+        return triangle;  
+
+    }
+
+}
+
+
 
 // ------- To do List ----------
 
