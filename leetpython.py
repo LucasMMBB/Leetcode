@@ -5035,7 +5035,16 @@ class Solution(object):
             res += min(nums[i], nums[i+1])
             
         return res
-        
+
+
+# 70. Climbing Stairs
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+               
 
 #------------- to do list -------------
 # 294. Flip Game ||
