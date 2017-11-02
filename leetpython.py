@@ -5044,7 +5044,17 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-               
+        # brute force
+        cnt = self.helper(0, n)
+        return cnt
+    def helper(self, i, n):
+        if i > n:
+            return 0
+
+        if i == n:
+            return 1
+
+        return self.helper(i + 1, n) + self.helper(i + 2, n)       
 
 #------------- to do list -------------
 # 294. Flip Game ||
