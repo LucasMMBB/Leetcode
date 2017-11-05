@@ -5141,6 +5141,37 @@ class Solution(object):
                 queue.append(node.right)
         return root
 
+# 70. Climbing Stairs
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # dynnamic programming
+        # 1 - 1 way
+        # 2 - 2 ways
+        # 3 - 3 ways
+        # 4 - 5 ways
+        # dp[n] = dp[n-1] + dp[n-2]
+        # Time/Space complexity: O(n)
+        dp = [0] * (n + 1)
+        dp[0:2] = 1
+
+        for i in range(2, n + 1):
+            dp[i] = dp[i - 1] + dp[i - 2]
+
+        return dp[n]
+
+    def climbStairs(self, n):
+        prev2 = prev1 = 1
+        res = 1
+        for i in range(2, n + 1):
+            res = prev1 + prev2
+
+            prev2, prev1 = prev1, res
+        return res
+
 
 #------------- to do list -------------
 # 294. Flip Game ||
