@@ -5173,6 +5173,16 @@ class Solution(object):
         return res
 
 
+# 388. Longest Absolute File Path
+class Solution(object):
+    def lengthLongestPath(self, input):
+        """
+        :type input: str
+        :rtype: int
+        """
+        
+
+
 #------------- to do list -------------
 # 294. Flip Game ||
 class Solution(object):

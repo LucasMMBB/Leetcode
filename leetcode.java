@@ -3829,6 +3829,13 @@ class Solution {
 }
 
 
+// 388. Longest Absolute File Path
+class Solution {
+    public int lengthLongestPath(String input) {
+        
+    }
+}
+
 // ------- To do List ----------
 
 // 103. Binary Tree Zigzag Level Order Traversal
