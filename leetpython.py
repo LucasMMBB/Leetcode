@@ -5180,6 +5180,8 @@ class Solution(object):
         :type input: str
         :rtype: int
         """
+        # Time: O(K) where K is the components after splitlines
+        # Space: O(K) in the worst case
         maxlen = 0
         pathlen = {0: 0}
         for line in input.splitlines():
@@ -5199,7 +5201,55 @@ class Solution(object):
         return maxlen
 
 
+# 171. Excel Sheet Column Number
+class Solution(object):
+    def titleToNumber(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        # time: O(n)
+        # space: O(1) - constant
+        hashmap = {
+            'A': 1,
+            'B': 2,
+            'C': 3,
+            'D': 4,
+            'E': 5,
+            'F': 6,
+            'G': 7,
+            'H': 8,
+            'I': 9,
+            'J': 10,
+            'K': 11,
+            'L': 12,
+            'M': 13,
+            'N': 14,
+            'O': 15,
+            'P': 16,
+            'Q': 17,
+            'R': 18,
+            'S': 19,
+            'T': 20,
+            'U': 21,
+            'V': 22,
+            'W': 23,
+            'X': 24,
+            'Y': 25,
+            'Z': 26
+        }
 
+        res = 0
+        length = len(s)
+        for i in range(length):
+            res += hashmap[s[i]] * (26 ** (length - 1 - i))
+
+        return res
+
+
+
+    def titleToNumber(self, s):
+        return reduce(lambda x, y : x*26+y, [ord(c)-64 for c in s])
 #------------- to do list -------------
 # 294. Flip Game ||
 class Solution(object):
