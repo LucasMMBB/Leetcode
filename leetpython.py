@@ -5097,15 +5097,49 @@ class Solution(object):
         return root
         
     def helper(self, node):
-        if node == None:
-            return node
+        if not node:
+            return
         
         node.left, node.right = node.right, node.left
         
         self.helper(node.left)
         self.helper(node.right)
-        
+    
+    def invertTree(self, root):
+        # Recursive
+        # because of recursion, O(h) function calls will be placed on the stack
+        # in the worst case, where h is the height of the tree. Because h < n, where
+        # n is the number of nodes. so the SPACE complexity is O(n)
+        # Time complexity: O(n)
+        if not root:
+            return None
 
+        right = self.invertTree(root.right)
+        left = self.invertTree(root.left)
+
+        root.left, root.right = right, left
+
+        return root
+
+    def invertTree(self, root):
+        # Iterative
+        # Time complexity: O(n)
+        # Space complexity: O(n). since in the worst case, the queue will contain
+        # all nodes in one level of the binary tree. For a full binary tree,
+        # the leaf level has [n/2] = O(n) leaves
+        if not root:
+            return None
+
+        queue = [root]
+
+        while queue:
+            node = queue.pop()
+            node.left, node.right = node.right, node.left
+
+            if not node.left:
+                queue.append(node.left)
+                queue.append(node.right)
+        return root
 
 
 #------------- to do list -------------
