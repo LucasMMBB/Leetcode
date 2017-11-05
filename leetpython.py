@@ -5180,7 +5180,15 @@ class Solution(object):
         :type input: str
         :rtype: int
         """
-        
+        maxlen = 0
+        pathlen = {0: 0}
+        for line in input.splitlines():
+            name = line.lstrip('\t')
+            depth = len(line) - len(name)
+            if '.' in name:
+                maxlen = max(maxlen, pathlen[depth] + len(name))
+            else:
+                
 
 
 #------------- to do list -------------
