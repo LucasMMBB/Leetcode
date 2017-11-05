@@ -5188,7 +5188,16 @@ class Solution(object):
             if '.' in name:
                 maxlen = max(maxlen, pathlen[depth] + len(name))
             else:
+                pathlen[depth + 1] = pathlen[depth] + len(name) + 1
                 
+            print 'line is %s' % line
+            print 'name is %s' % name
+            print 'depth is %i' % depth
+            print pathlen
+            print '--------------------'
+        print pathlen
+        return maxlen
+
 
 
 #------------- to do list -------------

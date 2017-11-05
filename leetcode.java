@@ -3829,12 +3829,6 @@ class Solution {
 }
 
 
-// 388. Longest Absolute File Path
-class Solution {
-    public int lengthLongestPath(String input) {
-        
-    }
-}
 
 // ------- To do List ----------
 
