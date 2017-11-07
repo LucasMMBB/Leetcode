@@ -5251,7 +5251,23 @@ class Solution(object):
     def titleToNumber(self, s):
         return reduce(lambda x, y : x * 26 + y, [ord(c) - 64 for c in s])
 
-        
+# 168. Excel Sheet Column Title
+class Solution(object):
+    def convertToTitle(self, num):
+        """
+        :type n: int
+        :rtype: str
+        """
+        capitals = [chr(x) for x in range(ord('A'), ord('Z') + 1)]
+        res = []
+        while num > 0:
+            res.append(capitals[(num - 1) % 26])
+            num = (num - 1) / 26
+        res.reverse()
+        return ''.join(res)
+
+
+
 #------------- to do list -------------
 # 294. Flip Game ||
 class Solution(object):
