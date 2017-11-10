@@ -5287,6 +5287,8 @@ class Solution(object):
 
         return origin == [0, 0]
 
+    def judgeCircle(self, moves):
+        return moves.count('L') == moves.count('R') == moves.count('U') == moves.count('D')
 
 
 # 137. Single Number ||
