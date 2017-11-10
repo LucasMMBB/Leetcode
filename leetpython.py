@@ -5267,6 +5267,27 @@ class Solution(object):
         return ''.join(res)
 
 
+# 657. Judge Route Circle
+class Solution(object):
+    def judgeCircle(self, moves):
+        """
+        :type moves: str
+        :rtype: bool
+        """
+        origin = [0, 0]
+        for char in moves:
+            if char == 'U':
+                origin[1] += 1
+            elif char == 'D':
+                origin[1] -= 1
+            elif char == 'L'
+                origin[0] -= 1:
+            elif char == 'R':
+                origin[0] += 1
+
+        return origin == [0, 0]
+
+
 
 # 137. Single Number ||
 class Solution(object):
