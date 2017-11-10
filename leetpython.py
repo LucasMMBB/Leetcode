@@ -5329,9 +5329,17 @@ class Solution(object):
                 return i
 
         return -1
+
+
+# 224. Basic Calculator
+class Solution(object):
+    def calculate(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
         
 
-        
 # ------------- TODO --------
 
 # 137. Single Number ||
