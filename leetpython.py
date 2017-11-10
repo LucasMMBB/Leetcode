@@ -5291,6 +5291,28 @@ class Solution(object):
         return moves.count('L') == moves.count('R') == moves.count('U') == moves.count('D')
 
 
+# 164. Maximum Gap
+class Solution(object):
+    def maximumGap(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # time: O(nlogn)
+        if len(nums) < 2:
+            return 0
+        
+        nums.sort()
+        
+        gap = nums[1] - nums[0] 
+        for i in range(2, len(nums)):
+            gap = max(gap, nums[i] - nums[i - 1])
+        
+        return gap
+
+
+# ------------- TODO --------
+
 # 137. Single Number ||
 class Solution(object):
     def singleNumber(self, nums):
@@ -5300,8 +5322,6 @@ class Solution(object):
         """
         
 
-
-#------------- to do list -------------
 # 294. Flip Game ||
 class Solution(object):
     def canWin(self, s):
