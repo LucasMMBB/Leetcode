@@ -3454,6 +3454,26 @@ public class Solution {
         }
         return true;
     }
+	
+	
+    // method 2 - Hash Table(array)
+    // time: O(n)
+    // space: O(k) - k is constant(26)
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length()) return false;
+        int[] tmp = new int[26];
+        Arrays.fill(tmp, 0);
+        
+        for(int i=0; i<s.length(); i++){
+            tmp[(int)s.charAt(i) - 97] += 1;
+            tmp[(int)t.charAt(i) - 97] -= 1;
+        }
+
+        for(int j=0; j<tmp.length; j++){
+            if(tmp[j]!=0) return false;
+        }
+        return true;
+    }
 }
 
 
