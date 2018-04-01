@@ -3389,6 +3389,30 @@ public class Solution {
     }
 }
 
+// update version: using Math.pow so that I need to transfer from double to int
+// double Math.pow(double a, double b)
+class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer> st = new HashSet<Integer>();
+        while(n != 1){
+            n = help(n);
+            if(st.contains(n)){return false;}
+            st.add(n);
+        }
+        return true;
+    }
+    
+    public int help(int num){
+        if(num < 10){return (int)Math.pow(num, 2);}
+        double sum = 0;
+        while(num >= 10){
+            sum += Math.pow(num%10, 2);
+            num = num / 10;
+        }
+        sum += Math.pow(num, 2);
+        return (int)sum;
+    }
+}
 
 // 258. Add Digits
 public class Solution {
